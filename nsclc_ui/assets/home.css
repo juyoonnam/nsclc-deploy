@@ -1,0 +1,43 @@
+/*
+ * NSCLC Insight Engine — Home page card hover styles
+ *
+ * Place at: nsclc_ui/assets/home.css
+ * Dash auto-loads any *.css in assets/ folder.
+ */
+
+.home-main-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 18px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.home-main-card:hover {
+  border-color: var(--accent-hover-border);
+  transform: translateY(-2px);
+}
+
+.home-ref-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.home-ref-card:hover {
+  border-color: var(--accent-hover-border);
+  transform: translateY(-2px);
+}
+
+/* button reset for toggle buttons */
+.home-main-card button,
+.home-ref-card button {
+  font-family: inherit;
+}

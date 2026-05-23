@@ -1,0 +1,41 @@
+# 자격증명
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# 백업
+*.bak
+*.bak*
+*.before_*
+*~
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Docker volumes / 로그
+logs/
+data/
+*.log
+
+# 빌드 산물
+build/
+dist/
+
+# backup 변형들
+*_backup
+*.v*_backup
+*.bak*

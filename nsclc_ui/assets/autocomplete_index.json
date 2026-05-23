@@ -1,0 +1,6472 @@
+[
+  {
+    "id": "hsa05223",
+    "type": "pathway",
+    "label": "NSCLC (Non-small cell lung cancer)",
+    "alias": [
+      "hsa05223"
+    ],
+    "rank": 0
+  },
+  {
+    "id": "hsa04010",
+    "type": "pathway",
+    "label": "MAPK signaling pathway",
+    "alias": [
+      "hsa04010"
+    ],
+    "rank": 0
+  },
+  {
+    "id": "hsa04151",
+    "type": "pathway",
+    "label": "PI3K-Akt signaling pathway",
+    "alias": [
+      "hsa04151"
+    ],
+    "rank": 0
+  },
+  {
+    "id": "ALK",
+    "type": "target",
+    "label": "ALK",
+    "alias": [
+      "CHEMBL4247"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "ARAF",
+    "type": "target",
+    "label": "ARAF",
+    "alias": [
+      "CHEMBL1169596"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "BRAF",
+    "type": "target",
+    "label": "BRAF",
+    "alias": [
+      "CHEMBL5145"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "CDK4",
+    "type": "target",
+    "label": "CDK4",
+    "alias": [
+      "CHEMBL331"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "CDK6",
+    "type": "target",
+    "label": "CDK6",
+    "alias": [
+      "CHEMBL2508"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "EGFR",
+    "type": "target",
+    "label": "EGFR",
+    "alias": [
+      "CHEMBL203"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "ERBB2",
+    "type": "target",
+    "label": "ERBB2",
+    "alias": [
+      "CHEMBL1824"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "KRAS",
+    "type": "target",
+    "label": "KRAS",
+    "alias": [
+      "CHEMBL2189121"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "MAP2K1",
+    "type": "target",
+    "label": "MAP2K1",
+    "alias": [
+      "CHEMBL3587"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "MAP2K2",
+    "type": "target",
+    "label": "MAP2K2",
+    "alias": [
+      "CHEMBL2964"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "MET",
+    "type": "target",
+    "label": "MET",
+    "alias": [
+      "CHEMBL3717"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "NTRK1",
+    "type": "target",
+    "label": "NTRK1",
+    "alias": [
+      "CHEMBL2815"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "RAF1",
+    "type": "target",
+    "label": "RAF1",
+    "alias": [
+      "CHEMBL1906"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "RET",
+    "type": "target",
+    "label": "RET",
+    "alias": [
+      "CHEMBL2041"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "ROS1",
+    "type": "target",
+    "label": "ROS1",
+    "alias": [
+      "CHEMBL5568"
+    ],
+    "rank": 1,
+    "is_project_target": true
+  },
+  {
+    "id": "PRKCA",
+    "type": "target",
+    "label": "PRKCA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRKCB",
+    "type": "target",
+    "label": "PRKCB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRKCG",
+    "type": "target",
+    "label": "PRKCG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FOXO3",
+    "type": "target",
+    "label": "FOXO3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CASP9",
+    "type": "target",
+    "label": "CASP9",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "BAD",
+    "type": "target",
+    "label": "BAD",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "AKT3",
+    "type": "target",
+    "label": "AKT3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "AKT1",
+    "type": "target",
+    "label": "AKT1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "AKT2",
+    "type": "target",
+    "label": "AKT2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PDPK1",
+    "type": "target",
+    "label": "PDPK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "P3R3URF-PIK3R3",
+    "type": "target",
+    "label": "P3R3URF-PIK3R3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3CA",
+    "type": "target",
+    "label": "PIK3CA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3CB",
+    "type": "target",
+    "label": "PIK3CB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3CD",
+    "type": "target",
+    "label": "PIK3CD",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3R1",
+    "type": "target",
+    "label": "PIK3R1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3R2",
+    "type": "target",
+    "label": "PIK3R2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3R3",
+    "type": "target",
+    "label": "PIK3R3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CCND1",
+    "type": "target",
+    "label": "CCND1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "E2F1",
+    "type": "target",
+    "label": "E2F1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "E2F2",
+    "type": "target",
+    "label": "E2F2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "E2F3",
+    "type": "target",
+    "label": "E2F3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HRAS",
+    "type": "target",
+    "label": "HRAS",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NRAS",
+    "type": "target",
+    "label": "NRAS",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PLCG1",
+    "type": "target",
+    "label": "PLCG1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PLCG2",
+    "type": "target",
+    "label": "PLCG2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TGFA",
+    "type": "target",
+    "label": "TGFA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "STK4",
+    "type": "target",
+    "label": "STK4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EGF",
+    "type": "target",
+    "label": "EGF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RB1",
+    "type": "target",
+    "label": "RB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RARB",
+    "type": "target",
+    "label": "RARB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "SOS1",
+    "type": "target",
+    "label": "SOS1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "SOS2",
+    "type": "target",
+    "label": "SOS2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GRB2",
+    "type": "target",
+    "label": "GRB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RXRA",
+    "type": "target",
+    "label": "RXRA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RXRB",
+    "type": "target",
+    "label": "RXRB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RXRG",
+    "type": "target",
+    "label": "RXRG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASSF1",
+    "type": "target",
+    "label": "RASSF1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASSF5",
+    "type": "target",
+    "label": "RASSF5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CDKN2A",
+    "type": "target",
+    "label": "CDKN2A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FHIT",
+    "type": "target",
+    "label": "FHIT",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK1",
+    "type": "target",
+    "label": "MAPK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK3",
+    "type": "target",
+    "label": "MAPK3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EML4",
+    "type": "target",
+    "label": "EML4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "JAK3",
+    "type": "target",
+    "label": "JAK3",
+    "alias": [
+      "CHEMBL2148"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "STAT3",
+    "type": "target",
+    "label": "STAT3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "STAT5A",
+    "type": "target",
+    "label": "STAT5A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "STAT5B",
+    "type": "target",
+    "label": "STAT5B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TP53",
+    "type": "target",
+    "label": "TP53",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CDKN1A",
+    "type": "target",
+    "label": "CDKN1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GADD45G",
+    "type": "target",
+    "label": "GADD45G",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GADD45A",
+    "type": "target",
+    "label": "GADD45A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GADD45B",
+    "type": "target",
+    "label": "GADD45B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "BAX",
+    "type": "target",
+    "label": "BAX",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "BAK1",
+    "type": "target",
+    "label": "BAK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DDB2",
+    "type": "target",
+    "label": "DDB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "POLK",
+    "type": "target",
+    "label": "POLK",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HGF",
+    "type": "target",
+    "label": "HGF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "KIF5A",
+    "type": "target",
+    "label": "KIF5A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "KIF5B",
+    "type": "target",
+    "label": "KIF5B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "KIF5C",
+    "type": "target",
+    "label": "KIF5C",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASGRF1",
+    "type": "target",
+    "label": "RASGRF1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASGRF2",
+    "type": "target",
+    "label": "RASGRF2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP10",
+    "type": "target",
+    "label": "DUSP10",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP1",
+    "type": "target",
+    "label": "DUSP1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP2",
+    "type": "target",
+    "label": "DUSP2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP4",
+    "type": "target",
+    "label": "DUSP4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP5",
+    "type": "target",
+    "label": "DUSP5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP6",
+    "type": "target",
+    "label": "DUSP6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP7",
+    "type": "target",
+    "label": "DUSP7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP8",
+    "type": "target",
+    "label": "DUSP8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP9",
+    "type": "target",
+    "label": "DUSP9",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP16",
+    "type": "target",
+    "label": "DUSP16",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DUSP3",
+    "type": "target",
+    "label": "DUSP3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PTPN7",
+    "type": "target",
+    "label": "PTPN7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PTPRR",
+    "type": "target",
+    "label": "PTPRR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PTPN5",
+    "type": "target",
+    "label": "PTPN5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPM1B",
+    "type": "target",
+    "label": "PPM1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FASLG",
+    "type": "target",
+    "label": "FASLG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP4K4",
+    "type": "target",
+    "label": "MAP4K4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PLA2G4B",
+    "type": "target",
+    "label": "PLA2G4B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PLA2G4E",
+    "type": "target",
+    "label": "PLA2G4E",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PLA2G4F",
+    "type": "target",
+    "label": "PLA2G4F",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PLA2G4D",
+    "type": "target",
+    "label": "PLA2G4D",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PLA2G4A",
+    "type": "target",
+    "label": "PLA2G4A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PLA2G4C",
+    "type": "target",
+    "label": "PLA2G4C",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "JMJD7-PLA2G4B",
+    "type": "target",
+    "label": "JMJD7-PLA2G4B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "STMN1",
+    "type": "target",
+    "label": "STMN1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPT",
+    "type": "target",
+    "label": "MAPT",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NFKB1",
+    "type": "target",
+    "label": "NFKB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NFKB2",
+    "type": "target",
+    "label": "NFKB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RELA",
+    "type": "target",
+    "label": "RELA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RELB",
+    "type": "target",
+    "label": "RELB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CHUK",
+    "type": "target",
+    "label": "CHUK",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IKBKB",
+    "type": "target",
+    "label": "IKBKB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IKBKG",
+    "type": "target",
+    "label": "IKBKG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K14",
+    "type": "target",
+    "label": "MAP3K14",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMTOR3",
+    "type": "target",
+    "label": "LAMTOR3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASA1",
+    "type": "target",
+    "label": "RASA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NF1",
+    "type": "target",
+    "label": "NF1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RAP1A",
+    "type": "target",
+    "label": "RAP1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RAP1B",
+    "type": "target",
+    "label": "RAP1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRKACA",
+    "type": "target",
+    "label": "PRKACA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRKACB",
+    "type": "target",
+    "label": "PRKACB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRKACG",
+    "type": "target",
+    "label": "PRKACG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RAPGEF2",
+    "type": "target",
+    "label": "RAPGEF2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASA2",
+    "type": "target",
+    "label": "RASA2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RRAS2",
+    "type": "target",
+    "label": "RRAS2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MRAS",
+    "type": "target",
+    "label": "MRAS",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RRAS",
+    "type": "target",
+    "label": "RRAS",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASGRP1",
+    "type": "target",
+    "label": "RASGRP1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASGRP2",
+    "type": "target",
+    "label": "RASGRP2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASGRP4",
+    "type": "target",
+    "label": "RASGRP4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RASGRP3",
+    "type": "target",
+    "label": "RASGRP3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNA12",
+    "type": "target",
+    "label": "GNA12",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG12",
+    "type": "target",
+    "label": "GNG12",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CSF1R",
+    "type": "target",
+    "label": "CSF1R",
+    "alias": [
+      "CHEMBL1844"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EPHA2",
+    "type": "target",
+    "label": "EPHA2",
+    "alias": [
+      "CHEMBL2068"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ERBB3",
+    "type": "target",
+    "label": "ERBB3",
+    "alias": [
+      "CHEMBL5838"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ERBB4",
+    "type": "target",
+    "label": "ERBB4",
+    "alias": [
+      "CHEMBL3009"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGFR1",
+    "type": "target",
+    "label": "FGFR1",
+    "alias": [
+      "CHEMBL3650"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGFR3",
+    "type": "target",
+    "label": "FGFR3",
+    "alias": [
+      "CHEMBL2742"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGFR2",
+    "type": "target",
+    "label": "FGFR2",
+    "alias": [
+      "CHEMBL4142"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGFR4",
+    "type": "target",
+    "label": "FGFR4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FLT1",
+    "type": "target",
+    "label": "FLT1",
+    "alias": [
+      "CHEMBL1868"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FLT3",
+    "type": "target",
+    "label": "FLT3",
+    "alias": [
+      "CHEMBL1974"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FLT4",
+    "type": "target",
+    "label": "FLT4",
+    "alias": [
+      "CHEMBL1955"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IGF1R",
+    "type": "target",
+    "label": "IGF1R",
+    "alias": [
+      "CHEMBL1957"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "INSR",
+    "type": "target",
+    "label": "INSR",
+    "alias": [
+      "CHEMBL1981"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "KDR",
+    "type": "target",
+    "label": "KDR",
+    "alias": [
+      "CHEMBL279"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "KIT",
+    "type": "target",
+    "label": "KIT",
+    "alias": [
+      "CHEMBL1936"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NGFR",
+    "type": "target",
+    "label": "NGFR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NTRK2",
+    "type": "target",
+    "label": "NTRK2",
+    "alias": [
+      "CHEMBL4898"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PDGFRA",
+    "type": "target",
+    "label": "PDGFRA",
+    "alias": [
+      "CHEMBL2007"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PDGFRB",
+    "type": "target",
+    "label": "PDGFRB",
+    "alias": [
+      "CHEMBL1913"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TEK",
+    "type": "target",
+    "label": "TEK",
+    "alias": [
+      "CHEMBL4128"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNG3",
+    "type": "target",
+    "label": "CACNG3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNG2",
+    "type": "target",
+    "label": "CACNG2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNG5",
+    "type": "target",
+    "label": "CACNG5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNG4",
+    "type": "target",
+    "label": "CACNG4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA2D3",
+    "type": "target",
+    "label": "CACNA2D3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNG8",
+    "type": "target",
+    "label": "CACNG8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNG7",
+    "type": "target",
+    "label": "CACNG7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNG6",
+    "type": "target",
+    "label": "CACNG6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1A",
+    "type": "target",
+    "label": "CACNA1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1B",
+    "type": "target",
+    "label": "CACNA1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1C",
+    "type": "target",
+    "label": "CACNA1C",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1D",
+    "type": "target",
+    "label": "CACNA1D",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1E",
+    "type": "target",
+    "label": "CACNA1E",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1F",
+    "type": "target",
+    "label": "CACNA1F",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1S",
+    "type": "target",
+    "label": "CACNA1S",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA2D1",
+    "type": "target",
+    "label": "CACNA2D1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNB1",
+    "type": "target",
+    "label": "CACNB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNB2",
+    "type": "target",
+    "label": "CACNB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNB3",
+    "type": "target",
+    "label": "CACNB3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNB4",
+    "type": "target",
+    "label": "CACNB4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNG1",
+    "type": "target",
+    "label": "CACNG1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1I",
+    "type": "target",
+    "label": "CACNA1I",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1H",
+    "type": "target",
+    "label": "CACNA1H",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA1G",
+    "type": "target",
+    "label": "CACNA1G",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA2D2",
+    "type": "target",
+    "label": "CACNA2D2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CACNA2D4",
+    "type": "target",
+    "label": "CACNA2D4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NR4A1",
+    "type": "target",
+    "label": "NR4A1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK7",
+    "type": "target",
+    "label": "MAPK7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP2K5",
+    "type": "target",
+    "label": "MAP2K5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NLK",
+    "type": "target",
+    "label": "NLK",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CDC25B",
+    "type": "target",
+    "label": "CDC25B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6KA4",
+    "type": "target",
+    "label": "RPS6KA4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6KA5",
+    "type": "target",
+    "label": "RPS6KA5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPKAPK3",
+    "type": "target",
+    "label": "MAPKAPK3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPKAPK2",
+    "type": "target",
+    "label": "MAPKAPK2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ATF4",
+    "type": "target",
+    "label": "ATF4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MEF2C",
+    "type": "target",
+    "label": "MEF2C",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAX",
+    "type": "target",
+    "label": "MAX",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DDIT3",
+    "type": "target",
+    "label": "DDIT3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ELK4",
+    "type": "target",
+    "label": "ELK4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ELK1",
+    "type": "target",
+    "label": "ELK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ATF2",
+    "type": "target",
+    "label": "ATF2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK14",
+    "type": "target",
+    "label": "MAPK14",
+    "alias": [
+      "CHEMBL260"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK11",
+    "type": "target",
+    "label": "MAPK11",
+    "alias": [
+      "CHEMBL3961"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK13",
+    "type": "target",
+    "label": "MAPK13",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK12",
+    "type": "target",
+    "label": "MAPK12",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP5C",
+    "type": "target",
+    "label": "PPP5C",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP2K6",
+    "type": "target",
+    "label": "MAP2K6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP2K3",
+    "type": "target",
+    "label": "MAP2K3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPM1A",
+    "type": "target",
+    "label": "PPM1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TAOK3",
+    "type": "target",
+    "label": "TAOK3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TAOK1",
+    "type": "target",
+    "label": "TAOK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TAOK2",
+    "type": "target",
+    "label": "TAOK2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K4",
+    "type": "target",
+    "label": "MAP3K4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSPB1",
+    "type": "target",
+    "label": "HSPB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K7",
+    "type": "target",
+    "label": "MAP3K7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K5",
+    "type": "target",
+    "label": "MAP3K5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K6",
+    "type": "target",
+    "label": "MAP3K6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K20",
+    "type": "target",
+    "label": "MAP3K20",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K12",
+    "type": "target",
+    "label": "MAP3K12",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K13",
+    "type": "target",
+    "label": "MAP3K13",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K9",
+    "type": "target",
+    "label": "MAP3K9",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K10",
+    "type": "target",
+    "label": "MAP3K10",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K21",
+    "type": "target",
+    "label": "MAP3K21",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP4K2",
+    "type": "target",
+    "label": "MAP4K2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "STK3",
+    "type": "target",
+    "label": "STK3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ECSIT",
+    "type": "target",
+    "label": "ECSIT",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TAB2",
+    "type": "target",
+    "label": "TAB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TAB1",
+    "type": "target",
+    "label": "TAB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TRAF6",
+    "type": "target",
+    "label": "TRAF6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DAXX",
+    "type": "target",
+    "label": "DAXX",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TRAF2",
+    "type": "target",
+    "label": "TRAF2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CASP3",
+    "type": "target",
+    "label": "CASP3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CD14",
+    "type": "target",
+    "label": "CD14",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TGFBR1",
+    "type": "target",
+    "label": "TGFBR1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TGFBR2",
+    "type": "target",
+    "label": "TGFBR2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FAS",
+    "type": "target",
+    "label": "FAS",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL1R1",
+    "type": "target",
+    "label": "IL1R1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL1RAP",
+    "type": "target",
+    "label": "IL1RAP",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TNFRSF1A",
+    "type": "target",
+    "label": "TNFRSF1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TGFB1",
+    "type": "target",
+    "label": "TGFB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TGFB2",
+    "type": "target",
+    "label": "TGFB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TGFB3",
+    "type": "target",
+    "label": "TGFB3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL1A",
+    "type": "target",
+    "label": "IL1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL1B",
+    "type": "target",
+    "label": "IL1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TNF",
+    "type": "target",
+    "label": "TNF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPKAPK5",
+    "type": "target",
+    "label": "MAPKAPK5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RAC1",
+    "type": "target",
+    "label": "RAC1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RAC2",
+    "type": "target",
+    "label": "RAC2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RAC3",
+    "type": "target",
+    "label": "RAC3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CDC42",
+    "type": "target",
+    "label": "CDC42",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PAK1",
+    "type": "target",
+    "label": "PAK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PAK2",
+    "type": "target",
+    "label": "PAK2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K2",
+    "type": "target",
+    "label": "MAP3K2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K3",
+    "type": "target",
+    "label": "MAP3K3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK8IP2",
+    "type": "target",
+    "label": "MAPK8IP2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK8IP1",
+    "type": "target",
+    "label": "MAPK8IP1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K11",
+    "type": "target",
+    "label": "MAP3K11",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP2K7",
+    "type": "target",
+    "label": "MAP2K7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK8",
+    "type": "target",
+    "label": "MAPK8",
+    "alias": [
+      "CHEMBL2276"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK9",
+    "type": "target",
+    "label": "MAPK9",
+    "alias": [
+      "CHEMBL4179"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK10",
+    "type": "target",
+    "label": "MAPK10",
+    "alias": [
+      "CHEMBL2637"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP2K4",
+    "type": "target",
+    "label": "MAP2K4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CRK",
+    "type": "target",
+    "label": "CRK",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CRKL",
+    "type": "target",
+    "label": "CRKL",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ARRB1",
+    "type": "target",
+    "label": "ARRB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ARRB2",
+    "type": "target",
+    "label": "ARRB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MECOM",
+    "type": "target",
+    "label": "MECOM",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSPA1A",
+    "type": "target",
+    "label": "HSPA1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSPA1B",
+    "type": "target",
+    "label": "HSPA1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSPA1L",
+    "type": "target",
+    "label": "HSPA1L",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSPA6",
+    "type": "target",
+    "label": "HSPA6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSPA8",
+    "type": "target",
+    "label": "HSPA8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "JUND",
+    "type": "target",
+    "label": "JUND",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FOS",
+    "type": "target",
+    "label": "FOS",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "JUN",
+    "type": "target",
+    "label": "JUN",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NFATC3",
+    "type": "target",
+    "label": "NFATC3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NFATC1",
+    "type": "target",
+    "label": "NFATC1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP3CA",
+    "type": "target",
+    "label": "PPP3CA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP3CB",
+    "type": "target",
+    "label": "PPP3CB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP3CC",
+    "type": "target",
+    "label": "PPP3CC",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP3R1",
+    "type": "target",
+    "label": "PPP3R1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP3R2",
+    "type": "target",
+    "label": "PPP3R2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAPK8IP3",
+    "type": "target",
+    "label": "MAPK8IP3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FLNA",
+    "type": "target",
+    "label": "FLNA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K1",
+    "type": "target",
+    "label": "MAP3K1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP3K8",
+    "type": "target",
+    "label": "MAP3K8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP4K1",
+    "type": "target",
+    "label": "MAP4K1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAP4K3",
+    "type": "target",
+    "label": "MAP4K3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "SRF",
+    "type": "target",
+    "label": "SRF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MYC",
+    "type": "target",
+    "label": "MYC",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6KA6",
+    "type": "target",
+    "label": "RPS6KA6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6KA1",
+    "type": "target",
+    "label": "RPS6KA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6KA2",
+    "type": "target",
+    "label": "RPS6KA2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6KA3",
+    "type": "target",
+    "label": "RPS6KA3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MKNK2",
+    "type": "target",
+    "label": "MKNK2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MKNK1",
+    "type": "target",
+    "label": "MKNK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EFNA4-EFNA3",
+    "type": "target",
+    "label": "EFNA4-EFNA3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CSF1",
+    "type": "target",
+    "label": "CSF1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EFNA1",
+    "type": "target",
+    "label": "EFNA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EFNA2",
+    "type": "target",
+    "label": "EFNA2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EFNA3",
+    "type": "target",
+    "label": "EFNA3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EFNA4",
+    "type": "target",
+    "label": "EFNA4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EFNA5",
+    "type": "target",
+    "label": "EFNA5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EREG",
+    "type": "target",
+    "label": "EREG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF1",
+    "type": "target",
+    "label": "FGF1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF2",
+    "type": "target",
+    "label": "FGF2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF3",
+    "type": "target",
+    "label": "FGF3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF4",
+    "type": "target",
+    "label": "FGF4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF5",
+    "type": "target",
+    "label": "FGF5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF6",
+    "type": "target",
+    "label": "FGF6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF7",
+    "type": "target",
+    "label": "FGF7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF8",
+    "type": "target",
+    "label": "FGF8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF9",
+    "type": "target",
+    "label": "FGF9",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF10",
+    "type": "target",
+    "label": "FGF10",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "VEGFD",
+    "type": "target",
+    "label": "VEGFD",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FLT3LG",
+    "type": "target",
+    "label": "FLT3LG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF20",
+    "type": "target",
+    "label": "FGF20",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF21",
+    "type": "target",
+    "label": "FGF21",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GDNF",
+    "type": "target",
+    "label": "GDNF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF22",
+    "type": "target",
+    "label": "FGF22",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ANGPT1",
+    "type": "target",
+    "label": "ANGPT1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ANGPT2",
+    "type": "target",
+    "label": "ANGPT2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IGF1",
+    "type": "target",
+    "label": "IGF1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IGF2",
+    "type": "target",
+    "label": "IGF2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "INS",
+    "type": "target",
+    "label": "INS",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "AREG",
+    "type": "target",
+    "label": "AREG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "KITLG",
+    "type": "target",
+    "label": "KITLG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NGF",
+    "type": "target",
+    "label": "NGF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NRTN",
+    "type": "target",
+    "label": "NRTN",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NTF3",
+    "type": "target",
+    "label": "NTF3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NTF4",
+    "type": "target",
+    "label": "NTF4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ANGPT4",
+    "type": "target",
+    "label": "ANGPT4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PDGFA",
+    "type": "target",
+    "label": "PDGFA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PDGFB",
+    "type": "target",
+    "label": "PDGFB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PGF",
+    "type": "target",
+    "label": "PGF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PDGFC",
+    "type": "target",
+    "label": "PDGFC",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PSPN",
+    "type": "target",
+    "label": "PSPN",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "BDNF",
+    "type": "target",
+    "label": "BDNF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "VEGFA",
+    "type": "target",
+    "label": "VEGFA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "VEGFB",
+    "type": "target",
+    "label": "VEGFB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "VEGFC",
+    "type": "target",
+    "label": "VEGFC",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PDGFD",
+    "type": "target",
+    "label": "PDGFD",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF23",
+    "type": "target",
+    "label": "FGF23",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF18",
+    "type": "target",
+    "label": "FGF18",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF17",
+    "type": "target",
+    "label": "FGF17",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF16",
+    "type": "target",
+    "label": "FGF16",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ARTN",
+    "type": "target",
+    "label": "ARTN",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FGF19",
+    "type": "target",
+    "label": "FGF19",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TRADD",
+    "type": "target",
+    "label": "TRADD",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MYD88",
+    "type": "target",
+    "label": "MYD88",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IRAK1",
+    "type": "target",
+    "label": "IRAK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IRAK4",
+    "type": "target",
+    "label": "IRAK4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EIF4E",
+    "type": "target",
+    "label": "EIF4E",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EIF4E1B",
+    "type": "target",
+    "label": "EIF4E1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EIF4E2",
+    "type": "target",
+    "label": "EIF4E2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EIF4EBP1",
+    "type": "target",
+    "label": "EIF4EBP1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6",
+    "type": "target",
+    "label": "RPS6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EIF4B",
+    "type": "target",
+    "label": "EIF4B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6KB1",
+    "type": "target",
+    "label": "RPS6KB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPS6KB2",
+    "type": "target",
+    "label": "RPS6KB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RPTOR",
+    "type": "target",
+    "label": "RPTOR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MTOR",
+    "type": "target",
+    "label": "MTOR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MLST8",
+    "type": "target",
+    "label": "MLST8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RHEB",
+    "type": "target",
+    "label": "RHEB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TSC2",
+    "type": "target",
+    "label": "TSC2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TSC1",
+    "type": "target",
+    "label": "TSC1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PTEN",
+    "type": "target",
+    "label": "PTEN",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IRS1",
+    "type": "target",
+    "label": "IRS1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LPAR6",
+    "type": "target",
+    "label": "LPAR6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CHRM1",
+    "type": "target",
+    "label": "CHRM1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CHRM2",
+    "type": "target",
+    "label": "CHRM2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LPAR1",
+    "type": "target",
+    "label": "LPAR1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "F2R",
+    "type": "target",
+    "label": "F2R",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LPAR3",
+    "type": "target",
+    "label": "LPAR3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LPAR4",
+    "type": "target",
+    "label": "LPAR4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LPAR5",
+    "type": "target",
+    "label": "LPAR5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LPAR2",
+    "type": "target",
+    "label": "LPAR2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GSK3B",
+    "type": "target",
+    "label": "GSK3B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CDKN1B",
+    "type": "target",
+    "label": "CDKN1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RBL2",
+    "type": "target",
+    "label": "RBL2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "BCL2L11",
+    "type": "target",
+    "label": "BCL2L11",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MDM2",
+    "type": "target",
+    "label": "MDM2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "BCL2L1",
+    "type": "target",
+    "label": "BCL2L1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GYS1",
+    "type": "target",
+    "label": "GYS1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GYS2",
+    "type": "target",
+    "label": "GYS2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PCK1",
+    "type": "target",
+    "label": "PCK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PCK2",
+    "type": "target",
+    "label": "PCK2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "G6PC1",
+    "type": "target",
+    "label": "G6PC1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "G6PC2",
+    "type": "target",
+    "label": "G6PC2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "G6PC3",
+    "type": "target",
+    "label": "G6PC3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "YWHAQ",
+    "type": "target",
+    "label": "YWHAQ",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "YWHAB",
+    "type": "target",
+    "label": "YWHAB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "YWHAE",
+    "type": "target",
+    "label": "YWHAE",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "YWHAG",
+    "type": "target",
+    "label": "YWHAG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "YWHAH",
+    "type": "target",
+    "label": "YWHAH",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "YWHAZ",
+    "type": "target",
+    "label": "YWHAZ",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "THEM4",
+    "type": "target",
+    "label": "THEM4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R3B",
+    "type": "target",
+    "label": "PPP2R3B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R3C",
+    "type": "target",
+    "label": "PPP2R3C",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2CA",
+    "type": "target",
+    "label": "PPP2CA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2CB",
+    "type": "target",
+    "label": "PPP2CB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R1A",
+    "type": "target",
+    "label": "PPP2R1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R1B",
+    "type": "target",
+    "label": "PPP2R1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R2A",
+    "type": "target",
+    "label": "PPP2R2A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R2B",
+    "type": "target",
+    "label": "PPP2R2B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R2C",
+    "type": "target",
+    "label": "PPP2R2C",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R3A",
+    "type": "target",
+    "label": "PPP2R3A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R5A",
+    "type": "target",
+    "label": "PPP2R5A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R5B",
+    "type": "target",
+    "label": "PPP2R5B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R5C",
+    "type": "target",
+    "label": "PPP2R5C",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R5D",
+    "type": "target",
+    "label": "PPP2R5D",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R5E",
+    "type": "target",
+    "label": "PPP2R5E",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PPP2R2D",
+    "type": "target",
+    "label": "PPP2R2D",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSP90AA1",
+    "type": "target",
+    "label": "HSP90AA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSP90AB1",
+    "type": "target",
+    "label": "HSP90AB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "HSP90B1",
+    "type": "target",
+    "label": "HSP90B1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CDC37",
+    "type": "target",
+    "label": "CDC37",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "NOS3",
+    "type": "target",
+    "label": "NOS3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRKAA1",
+    "type": "target",
+    "label": "PRKAA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRKAA2",
+    "type": "target",
+    "label": "PRKAA2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "DDIT4",
+    "type": "target",
+    "label": "DDIT4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "STK11",
+    "type": "target",
+    "label": "STK11",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CRTC2",
+    "type": "target",
+    "label": "CRTC2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PHLPP2",
+    "type": "target",
+    "label": "PHLPP2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PHLPP1",
+    "type": "target",
+    "label": "PHLPP1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CDK2",
+    "type": "target",
+    "label": "CDK2",
+    "alias": [
+      "CHEMBL301"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3R6",
+    "type": "target",
+    "label": "PIK3R6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3R5",
+    "type": "target",
+    "label": "PIK3R5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3CG",
+    "type": "target",
+    "label": "PIK3CG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "immunoglobulin heavy variable 4-38-2-like",
+    "type": "target",
+    "label": "immunoglobulin heavy variable 4-38-2-like",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CD19",
+    "type": "target",
+    "label": "CD19",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "SYK",
+    "type": "target",
+    "label": "SYK",
+    "alias": [
+      "CHEMBL2599"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNB5",
+    "type": "target",
+    "label": "GNB5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNB1",
+    "type": "target",
+    "label": "GNB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNB2",
+    "type": "target",
+    "label": "GNB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNB3",
+    "type": "target",
+    "label": "GNB3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG3",
+    "type": "target",
+    "label": "GNG3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG4",
+    "type": "target",
+    "label": "GNG4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG5",
+    "type": "target",
+    "label": "GNG5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG7",
+    "type": "target",
+    "label": "GNG7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG10",
+    "type": "target",
+    "label": "GNG10",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG11",
+    "type": "target",
+    "label": "GNG11",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNGT1",
+    "type": "target",
+    "label": "GNGT1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNGT2",
+    "type": "target",
+    "label": "GNGT2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG13",
+    "type": "target",
+    "label": "GNG13",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG2",
+    "type": "target",
+    "label": "GNG2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNB4",
+    "type": "target",
+    "label": "GNB4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GNG8",
+    "type": "target",
+    "label": "GNG8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA11",
+    "type": "target",
+    "label": "ITGA11",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA6",
+    "type": "target",
+    "label": "ITGA6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA1",
+    "type": "target",
+    "label": "ITGA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA2",
+    "type": "target",
+    "label": "ITGA2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA2B",
+    "type": "target",
+    "label": "ITGA2B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA3",
+    "type": "target",
+    "label": "ITGA3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA4",
+    "type": "target",
+    "label": "ITGA4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA5",
+    "type": "target",
+    "label": "ITGA5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA7",
+    "type": "target",
+    "label": "ITGA7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA9",
+    "type": "target",
+    "label": "ITGA9",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGAV",
+    "type": "target",
+    "label": "ITGAV",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA10",
+    "type": "target",
+    "label": "ITGA10",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGA8",
+    "type": "target",
+    "label": "ITGA8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGB1",
+    "type": "target",
+    "label": "ITGB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGB3",
+    "type": "target",
+    "label": "ITGB3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGB4",
+    "type": "target",
+    "label": "ITGB4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGB5",
+    "type": "target",
+    "label": "ITGB5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGB6",
+    "type": "target",
+    "label": "ITGB6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGB7",
+    "type": "target",
+    "label": "ITGB7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ITGB8",
+    "type": "target",
+    "label": "ITGB8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMC3",
+    "type": "target",
+    "label": "LAMC3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CHAD",
+    "type": "target",
+    "label": "CHAD",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL1A1",
+    "type": "target",
+    "label": "COL1A1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL1A2",
+    "type": "target",
+    "label": "COL1A2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL2A1",
+    "type": "target",
+    "label": "COL2A1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL4A1",
+    "type": "target",
+    "label": "COL4A1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL4A2",
+    "type": "target",
+    "label": "COL4A2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL4A3",
+    "type": "target",
+    "label": "COL4A3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL4A4",
+    "type": "target",
+    "label": "COL4A4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL4A5",
+    "type": "target",
+    "label": "COL4A5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL4A6",
+    "type": "target",
+    "label": "COL4A6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL6A1",
+    "type": "target",
+    "label": "COL6A1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL6A2",
+    "type": "target",
+    "label": "COL6A2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL6A3",
+    "type": "target",
+    "label": "COL6A3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL9A1",
+    "type": "target",
+    "label": "COL9A1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL9A2",
+    "type": "target",
+    "label": "COL9A2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL9A3",
+    "type": "target",
+    "label": "COL9A3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COMP",
+    "type": "target",
+    "label": "COMP",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL6A6",
+    "type": "target",
+    "label": "COL6A6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMB4",
+    "type": "target",
+    "label": "LAMB4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "FN1",
+    "type": "target",
+    "label": "FN1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "COL6A5",
+    "type": "target",
+    "label": "COL6A5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMA1",
+    "type": "target",
+    "label": "LAMA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TNC",
+    "type": "target",
+    "label": "TNC",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IBSP",
+    "type": "target",
+    "label": "IBSP",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMA2",
+    "type": "target",
+    "label": "LAMA2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMA3",
+    "type": "target",
+    "label": "LAMA3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMA4",
+    "type": "target",
+    "label": "LAMA4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMA5",
+    "type": "target",
+    "label": "LAMA5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMB1",
+    "type": "target",
+    "label": "LAMB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMB2",
+    "type": "target",
+    "label": "LAMB2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMB3",
+    "type": "target",
+    "label": "LAMB3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMC1",
+    "type": "target",
+    "label": "LAMC1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "LAMC2",
+    "type": "target",
+    "label": "LAMC2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "RELN",
+    "type": "target",
+    "label": "RELN",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TNN",
+    "type": "target",
+    "label": "TNN",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "SPP1",
+    "type": "target",
+    "label": "SPP1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "THBS1",
+    "type": "target",
+    "label": "THBS1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "THBS2",
+    "type": "target",
+    "label": "THBS2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "THBS3",
+    "type": "target",
+    "label": "THBS3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "THBS4",
+    "type": "target",
+    "label": "THBS4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TNR",
+    "type": "target",
+    "label": "TNR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TNXB",
+    "type": "target",
+    "label": "TNXB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "VTN",
+    "type": "target",
+    "label": "VTN",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "VWF",
+    "type": "target",
+    "label": "VWF",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PTK2",
+    "type": "target",
+    "label": "PTK2",
+    "alias": [
+      "CHEMBL2695"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TLR2",
+    "type": "target",
+    "label": "TLR2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TLR4",
+    "type": "target",
+    "label": "TLR4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CSF3R",
+    "type": "target",
+    "label": "CSF3R",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EPOR",
+    "type": "target",
+    "label": "EPOR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GHR",
+    "type": "target",
+    "label": "GHR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNAR1",
+    "type": "target",
+    "label": "IFNAR1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNAR2",
+    "type": "target",
+    "label": "IFNAR2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL2RA",
+    "type": "target",
+    "label": "IL2RA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL2RB",
+    "type": "target",
+    "label": "IL2RB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL2RG",
+    "type": "target",
+    "label": "IL2RG",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL3RA",
+    "type": "target",
+    "label": "IL3RA",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL4R",
+    "type": "target",
+    "label": "IL4R",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL6R",
+    "type": "target",
+    "label": "IL6R",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL7R",
+    "type": "target",
+    "label": "IL7R",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRLR",
+    "type": "target",
+    "label": "PRLR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "OSMR",
+    "type": "target",
+    "label": "OSMR",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "JAK1",
+    "type": "target",
+    "label": "JAK1",
+    "alias": [
+      "CHEMBL2835"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "JAK2",
+    "type": "target",
+    "label": "JAK2",
+    "alias": [
+      "CHEMBL2971"
+    ],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CSF3",
+    "type": "target",
+    "label": "CSF3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CSH1",
+    "type": "target",
+    "label": "CSH1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CSH2",
+    "type": "target",
+    "label": "CSH2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CSHL1",
+    "type": "target",
+    "label": "CSHL1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "EPO",
+    "type": "target",
+    "label": "EPO",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GH1",
+    "type": "target",
+    "label": "GH1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "GH2",
+    "type": "target",
+    "label": "GH2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA1",
+    "type": "target",
+    "label": "IFNA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA2",
+    "type": "target",
+    "label": "IFNA2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA4",
+    "type": "target",
+    "label": "IFNA4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA5",
+    "type": "target",
+    "label": "IFNA5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA6",
+    "type": "target",
+    "label": "IFNA6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA7",
+    "type": "target",
+    "label": "IFNA7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA8",
+    "type": "target",
+    "label": "IFNA8",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA10",
+    "type": "target",
+    "label": "IFNA10",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA13",
+    "type": "target",
+    "label": "IFNA13",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA14",
+    "type": "target",
+    "label": "IFNA14",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA16",
+    "type": "target",
+    "label": "IFNA16",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA17",
+    "type": "target",
+    "label": "IFNA17",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNA21",
+    "type": "target",
+    "label": "IFNA21",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IFNB1",
+    "type": "target",
+    "label": "IFNB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL2",
+    "type": "target",
+    "label": "IL2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL3",
+    "type": "target",
+    "label": "IL3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL4",
+    "type": "target",
+    "label": "IL4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL6",
+    "type": "target",
+    "label": "IL6",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "IL7",
+    "type": "target",
+    "label": "IL7",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "OSM",
+    "type": "target",
+    "label": "OSM",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PRL",
+    "type": "target",
+    "label": "PRL",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "BRCA1",
+    "type": "target",
+    "label": "BRCA1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CREB3",
+    "type": "target",
+    "label": "CREB3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CREB1",
+    "type": "target",
+    "label": "CREB1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "ATF6B",
+    "type": "target",
+    "label": "ATF6B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CREB3L4",
+    "type": "target",
+    "label": "CREB3L4",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CREB3L2",
+    "type": "target",
+    "label": "CREB3L2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CREB3L3",
+    "type": "target",
+    "label": "CREB3L3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CREB3L1",
+    "type": "target",
+    "label": "CREB3L1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CREB5",
+    "type": "target",
+    "label": "CREB5",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "BCL2",
+    "type": "target",
+    "label": "BCL2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MCL1",
+    "type": "target",
+    "label": "MCL1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MYB",
+    "type": "target",
+    "label": "MYB",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PKN3",
+    "type": "target",
+    "label": "PKN3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PKN1",
+    "type": "target",
+    "label": "PKN1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PKN2",
+    "type": "target",
+    "label": "PKN2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "C8orf44-SGK3",
+    "type": "target",
+    "label": "C8orf44-SGK3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "SGK2",
+    "type": "target",
+    "label": "SGK2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "SGK3",
+    "type": "target",
+    "label": "SGK3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "SGK1",
+    "type": "target",
+    "label": "SGK1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "PIK3AP1",
+    "type": "target",
+    "label": "PIK3AP1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CCND2",
+    "type": "target",
+    "label": "CCND2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CCND3",
+    "type": "target",
+    "label": "CCND3",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CCNE1",
+    "type": "target",
+    "label": "CCNE1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CCNE2",
+    "type": "target",
+    "label": "CCNE2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MTCP1",
+    "type": "target",
+    "label": "MTCP1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TCL1A",
+    "type": "target",
+    "label": "TCL1A",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "TCL1B",
+    "type": "target",
+    "label": "TCL1B",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAGI1",
+    "type": "target",
+    "label": "MAGI1",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "MAGI2",
+    "type": "target",
+    "label": "MAGI2",
+    "alias": [],
+    "rank": 2,
+    "is_project_target": false
+  },
+  {
+    "id": "CHEMBL101253",
+    "type": "drug",
+    "label": "VATALANIB",
+    "alias": [
+      "CHEMBL101253"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1079742",
+    "type": "drug",
+    "label": "ERLOTINIB HYDROCHLORIDE",
+    "alias": [
+      "CHEMBL1079742"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL109480",
+    "type": "drug",
+    "label": "TANESPIMYCIN",
+    "alias": [
+      "CHEMBL109480"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1171837",
+    "type": "drug",
+    "label": "CHEMBL1171837",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1173655",
+    "type": "drug",
+    "label": "CHEMBL1173655",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1201179",
+    "type": "drug",
+    "label": "LAPATINIB DITOSYLATE",
+    "alias": [
+      "CHEMBL1201179"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1229517",
+    "type": "drug",
+    "label": "VEMURAFENIB",
+    "alias": [
+      "CHEMBL1229517"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1230609",
+    "type": "drug",
+    "label": "FORETINIB",
+    "alias": [
+      "CHEMBL1230609"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1231124",
+    "type": "drug",
+    "label": "AZD-1480",
+    "alias": [
+      "CHEMBL1231124"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1289494",
+    "type": "drug",
+    "label": "TIVOZANIB",
+    "alias": [
+      "CHEMBL1289494"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1289601",
+    "type": "drug",
+    "label": "CHEMBL1289601",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1336",
+    "type": "drug",
+    "label": "CHEMBL1336",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL140",
+    "type": "drug",
+    "label": "CHEMBL140",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1421",
+    "type": "drug",
+    "label": "DASATINIB ANHYDROUS",
+    "alias": [
+      "CHEMBL1421"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1738797",
+    "type": "drug",
+    "label": "CHEMBL1738797",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL180022",
+    "type": "drug",
+    "label": "NERATINIB",
+    "alias": [
+      "CHEMBL180022"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL18797",
+    "type": "drug",
+    "label": "CHEMBL18797",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1873475",
+    "type": "drug",
+    "label": "IBRUTINIB",
+    "alias": [
+      "CHEMBL1873475"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1946170",
+    "type": "drug",
+    "label": "REGORAFENIB",
+    "alias": [
+      "CHEMBL1946170"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1983268",
+    "type": "drug",
+    "label": "ENTRECTINIB",
+    "alias": [
+      "CHEMBL1983268"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2028663",
+    "type": "drug",
+    "label": "CHEMBL2028663",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2087361",
+    "type": "drug",
+    "label": "ICOTINIB",
+    "alias": [
+      "CHEMBL2087361"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2103868",
+    "type": "drug",
+    "label": "CABOZANTINIB S-MALATE",
+    "alias": [
+      "CHEMBL2103868"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2103882",
+    "type": "drug",
+    "label": "TIVANTINIB",
+    "alias": [
+      "CHEMBL2103882"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2105712",
+    "type": "drug",
+    "label": "AFATINIB DIMALEATE",
+    "alias": [
+      "CHEMBL2105712"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2105717",
+    "type": "drug",
+    "label": "CHEMBL2105717",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2105719",
+    "type": "drug",
+    "label": "DACOMITINIB",
+    "alias": [
+      "CHEMBL2105719"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2110732",
+    "type": "drug",
+    "label": "DACOMITINIB ANHYDROUS",
+    "alias": [
+      "CHEMBL2110732"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2146883",
+    "type": "drug",
+    "label": "COBIMETINIB",
+    "alias": [
+      "CHEMBL2146883"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL217092",
+    "type": "drug",
+    "label": "SARACATINIB",
+    "alias": [
+      "CHEMBL217092"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL223360",
+    "type": "drug",
+    "label": "LINIFANIB",
+    "alias": [
+      "CHEMBL223360"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2403108",
+    "type": "drug",
+    "label": "CERITINIB",
+    "alias": [
+      "CHEMBL2403108"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL2408045",
+    "type": "drug",
+    "label": "SAPITINIB",
+    "alias": [
+      "CHEMBL2408045"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL24828",
+    "type": "drug",
+    "label": "VANDETANIB",
+    "alias": [
+      "CHEMBL24828"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL288441",
+    "type": "drug",
+    "label": "BOSUTINIB",
+    "alias": [
+      "CHEMBL288441"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL297453",
+    "type": "drug",
+    "label": "CHEMBL297453",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL298734",
+    "type": "drug",
+    "label": "LONAFARNIB",
+    "alias": [
+      "CHEMBL298734"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3137331",
+    "type": "drug",
+    "label": "DEFACTINIB",
+    "alias": [
+      "CHEMBL3137331"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3188267",
+    "type": "drug",
+    "label": "CAPMATINIB",
+    "alias": [
+      "CHEMBL3188267"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3264002",
+    "type": "drug",
+    "label": "AVUTOMETINIB",
+    "alias": [
+      "CHEMBL3264002"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3286830",
+    "type": "drug",
+    "label": "LORLATINIB",
+    "alias": [
+      "CHEMBL3286830"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3301610",
+    "type": "drug",
+    "label": "ABEMACICLIB",
+    "alias": [
+      "CHEMBL3301610"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3301612",
+    "type": "drug",
+    "label": "ENCORAFENIB",
+    "alias": [
+      "CHEMBL3301612"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3301622",
+    "type": "drug",
+    "label": "GILTERITINIB",
+    "alias": [
+      "CHEMBL3301622"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3334567",
+    "type": "drug",
+    "label": "SAVOLITINIB",
+    "alias": [
+      "CHEMBL3334567"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3348923",
+    "type": "drug",
+    "label": "TOVORAFENIB",
+    "alias": [
+      "CHEMBL3348923"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3353410",
+    "type": "drug",
+    "label": "OSIMERTINIB",
+    "alias": [
+      "CHEMBL3353410"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3402762",
+    "type": "drug",
+    "label": "TEPOTINIB",
+    "alias": [
+      "CHEMBL3402762"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3544983",
+    "type": "drug",
+    "label": "TESEVATINIB",
+    "alias": [
+      "CHEMBL3544983"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3545027",
+    "type": "drug",
+    "label": "XL-281",
+    "alias": [
+      "CHEMBL3545027"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3545154",
+    "type": "drug",
+    "label": "POZIOTINIB",
+    "alias": [
+      "CHEMBL3545154"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3545307",
+    "type": "drug",
+    "label": "MERESTINIB",
+    "alias": [
+      "CHEMBL3545307"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3545308",
+    "type": "drug",
+    "label": "ROCILETINIB",
+    "alias": [
+      "CHEMBL3545308"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3545311",
+    "type": "drug",
+    "label": "BRIGATINIB",
+    "alias": [
+      "CHEMBL3545311"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3577124",
+    "type": "drug",
+    "label": "LY-3009120",
+    "alias": [
+      "CHEMBL3577124"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3623290",
+    "type": "drug",
+    "label": "AZD-3759",
+    "alias": [
+      "CHEMBL3623290"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3647420",
+    "type": "drug",
+    "label": "PYROTINIB",
+    "alias": [
+      "CHEMBL3647420"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3663929",
+    "type": "drug",
+    "label": "NAQUOTINIB",
+    "alias": [
+      "CHEMBL3663929"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3707348",
+    "type": "drug",
+    "label": "ACALABRUTINIB",
+    "alias": [
+      "CHEMBL3707348"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3764045",
+    "type": "drug",
+    "label": "TAS-115",
+    "alias": [
+      "CHEMBL3764045"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3786098",
+    "type": "drug",
+    "label": "PF-06459988",
+    "alias": [
+      "CHEMBL3786098"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3786343",
+    "type": "drug",
+    "label": "OLMUTINIB",
+    "alias": [
+      "CHEMBL3786343"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3787344",
+    "type": "drug",
+    "label": "NAZARTINIB",
+    "alias": [
+      "CHEMBL3787344"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3809489",
+    "type": "drug",
+    "label": "BEMCENTINIB",
+    "alias": [
+      "CHEMBL3809489"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3889654",
+    "type": "drug",
+    "label": "LAROTRECTINIB",
+    "alias": [
+      "CHEMBL3889654"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3984441",
+    "type": "drug",
+    "label": "NINGETINIB",
+    "alias": [
+      "CHEMBL3984441"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3989868",
+    "type": "drug",
+    "label": "TUCATINIB",
+    "alias": [
+      "CHEMBL3989868"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3989914",
+    "type": "drug",
+    "label": "GLESATINIB",
+    "alias": [
+      "CHEMBL3989914"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3989926",
+    "type": "drug",
+    "label": "CHEMBL3989926",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3989939",
+    "type": "drug",
+    "label": "LAROTRECTINIB SULFATE",
+    "alias": [
+      "CHEMBL3989939"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL3989970",
+    "type": "drug",
+    "label": "MAVELERTINIB",
+    "alias": [
+      "CHEMBL3989970"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4113131",
+    "type": "drug",
+    "label": "ENSARTINIB",
+    "alias": [
+      "CHEMBL4113131"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4116008",
+    "type": "drug",
+    "label": "CERDULATINIB",
+    "alias": [
+      "CHEMBL4116008"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4212692",
+    "type": "drug",
+    "label": "CHEMBL4212692",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL428647",
+    "type": "drug",
+    "label": "PACLITAXEL",
+    "alias": [
+      "CHEMBL428647"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4297865",
+    "type": "drug",
+    "label": "ABIVERTINIB",
+    "alias": [
+      "CHEMBL4297865"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4298138",
+    "type": "drug",
+    "label": "REPOTRECTINIB",
+    "alias": [
+      "CHEMBL4298138"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL44",
+    "type": "drug",
+    "label": "CHEMBL44",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4535757",
+    "type": "drug",
+    "label": "SOTORASIB",
+    "alias": [
+      "CHEMBL4535757"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4558324",
+    "type": "drug",
+    "label": "LAZERTINIB",
+    "alias": [
+      "CHEMBL4558324"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4559134",
+    "type": "drug",
+    "label": "SELPERCATINIB",
+    "alias": [
+      "CHEMBL4559134"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4582651",
+    "type": "drug",
+    "label": "PRALSETINIB",
+    "alias": [
+      "CHEMBL4582651"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4583691",
+    "type": "drug",
+    "label": "NAPORAFENIB",
+    "alias": [
+      "CHEMBL4583691"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4594350",
+    "type": "drug",
+    "label": "ADAGRASIB",
+    "alias": [
+      "CHEMBL4594350"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4594400",
+    "type": "drug",
+    "label": "CHEMBL4594400",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4650281",
+    "type": "drug",
+    "label": "CLN-081",
+    "alias": [
+      "CHEMBL4650281"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4650319",
+    "type": "drug",
+    "label": "MOBOCERTINIB",
+    "alias": [
+      "CHEMBL4650319"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4650443",
+    "type": "drug",
+    "label": "CHEMBL4650443",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL4761468",
+    "type": "drug",
+    "label": "AUMOLERTINIB",
+    "alias": [
+      "CHEMBL4761468"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL502835",
+    "type": "drug",
+    "label": "CHEMBL502835",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL507361",
+    "type": "drug",
+    "label": "MIRDAMETINIB",
+    "alias": [
+      "CHEMBL507361"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL5077861",
+    "type": "drug",
+    "label": "CHEMBL5077861",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL5095061",
+    "type": "drug",
+    "label": "CHEMBL5095061",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL5095063",
+    "type": "drug",
+    "label": "CHEMBL5095063",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL5095068",
+    "type": "drug",
+    "label": "CHEMBL5095068",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL5095236",
+    "type": "drug",
+    "label": "CHEMBL5095236",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL513909",
+    "type": "drug",
+    "label": "BI-2536",
+    "alias": [
+      "CHEMBL513909"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL521851",
+    "type": "drug",
+    "label": "PICTILISIB",
+    "alias": [
+      "CHEMBL521851"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL535",
+    "type": "drug",
+    "label": "SUNITINIB",
+    "alias": [
+      "CHEMBL535"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL53463",
+    "type": "drug",
+    "label": "CHEMBL53463",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL5314497",
+    "type": "drug",
+    "label": "CHEMBL5314497",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL5416410",
+    "type": "drug",
+    "label": "DASATINIB",
+    "alias": [
+      "CHEMBL5416410"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL545315",
+    "type": "drug",
+    "label": "CANERTINIB DIHYDROCHLORIDE",
+    "alias": [
+      "CHEMBL545315"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL553",
+    "type": "drug",
+    "label": "CHEMBL553",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL554",
+    "type": "drug",
+    "label": "CHEMBL554",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL572881",
+    "type": "drug",
+    "label": "MOTESANIB",
+    "alias": [
+      "CHEMBL572881"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL584",
+    "type": "drug",
+    "label": "CHEMBL584",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL598797",
+    "type": "drug",
+    "label": "CUDC-101",
+    "alias": [
+      "CHEMBL598797"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL601719",
+    "type": "drug",
+    "label": "CRIZOTINIB",
+    "alias": [
+      "CHEMBL601719"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL607707",
+    "type": "drug",
+    "label": "PELITINIB",
+    "alias": [
+      "CHEMBL607707"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL787",
+    "type": "drug",
+    "label": "CHEMBL787",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL83",
+    "type": "drug",
+    "label": "CHEMBL83",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL939",
+    "type": "drug",
+    "label": "GEFITINIB",
+    "alias": [
+      "CHEMBL939"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL941",
+    "type": "drug",
+    "label": "CHEMBL941",
+    "alias": [],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL98",
+    "type": "drug",
+    "label": "VORINOSTAT",
+    "alias": [
+      "CHEMBL98"
+    ],
+    "rank": 1
+  },
+  {
+    "id": "CHEMBL1009",
+    "type": "drug",
+    "label": "LEVODOPA",
+    "alias": [
+      "CHEMBL1009"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1016",
+    "type": "drug",
+    "label": "CANDESARTAN",
+    "alias": [
+      "CHEMBL1016"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL103667",
+    "type": "drug",
+    "label": "DORAMAPIMOD",
+    "alias": [
+      "CHEMBL103667"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL104",
+    "type": "drug",
+    "label": "CLOTRIMAZOLE",
+    "alias": [
+      "CHEMBL104"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1200558",
+    "type": "drug",
+    "label": "BACITRACIN",
+    "alias": [
+      "CHEMBL1200558"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1236107",
+    "type": "drug",
+    "label": "SGX-523",
+    "alias": [
+      "CHEMBL1236107"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1287853",
+    "type": "drug",
+    "label": "FEDRATINIB",
+    "alias": [
+      "CHEMBL1287853"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1448",
+    "type": "drug",
+    "label": "NICLOSAMIDE",
+    "alias": [
+      "CHEMBL1448"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1614707",
+    "type": "drug",
+    "label": "MUBRITINIB",
+    "alias": [
+      "CHEMBL1614707"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1614725",
+    "type": "drug",
+    "label": "TAK-285",
+    "alias": [
+      "CHEMBL1614725"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1630578",
+    "type": "drug",
+    "label": "TIRILAZAD",
+    "alias": [
+      "CHEMBL1630578"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1645462",
+    "type": "drug",
+    "label": "AC-480",
+    "alias": [
+      "CHEMBL1645462"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL17157",
+    "type": "drug",
+    "label": "TERFENADINE",
+    "alias": [
+      "CHEMBL17157"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1738757",
+    "type": "drug",
+    "label": "REBASTINIB",
+    "alias": [
+      "CHEMBL1738757"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1822792",
+    "type": "drug",
+    "label": "MK-2461",
+    "alias": [
+      "CHEMBL1822792"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1834657",
+    "type": "drug",
+    "label": "INFIGRATINIB PHOSPHATE",
+    "alias": [
+      "CHEMBL1834657"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1852688",
+    "type": "drug",
+    "label": "INFIGRATINIB",
+    "alias": [
+      "CHEMBL1852688"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1947204",
+    "type": "drug",
+    "label": "ALLITINIB",
+    "alias": [
+      "CHEMBL1947204"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1950289",
+    "type": "drug",
+    "label": "TANZISERTIB",
+    "alias": [
+      "CHEMBL1950289"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL1980297",
+    "type": "drug",
+    "label": "ILORASERTIB",
+    "alias": [
+      "CHEMBL1980297"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL2001019",
+    "type": "drug",
+    "label": "PF-04217903",
+    "alias": [
+      "CHEMBL2001019"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL2010872",
+    "type": "drug",
+    "label": "CEP-11981",
+    "alias": [
+      "CHEMBL2010872"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL2029988",
+    "type": "drug",
+    "label": "CEP-32496",
+    "alias": [
+      "CHEMBL2029988"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL2103842",
+    "type": "drug",
+    "label": "VARLITINIB",
+    "alias": [
+      "CHEMBL2103842"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL2133806",
+    "type": "drug",
+    "label": "JNJ-38877605",
+    "alias": [
+      "CHEMBL2133806"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL2143592",
+    "type": "drug",
+    "label": "BMS-794833",
+    "alias": [
+      "CHEMBL2143592"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL2180604",
+    "type": "drug",
+    "label": "TAK-593",
+    "alias": [
+      "CHEMBL2180604"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL2323775",
+    "type": "drug",
+    "label": "MK-8033",
+    "alias": [
+      "CHEMBL2323775"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL24944",
+    "type": "drug",
+    "label": "TRIBROMSALAN",
+    "alias": [
+      "CHEMBL24944"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL253969",
+    "type": "drug",
+    "label": "OSI-632",
+    "alias": [
+      "CHEMBL253969"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL258805",
+    "type": "drug",
+    "label": "SU-9516",
+    "alias": [
+      "CHEMBL258805"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL258940",
+    "type": "drug",
+    "label": "FALNIDAMOL",
+    "alias": [
+      "CHEMBL258940"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL276711",
+    "type": "drug",
+    "label": "SEMAXANIB",
+    "alias": [
+      "CHEMBL276711"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL290106",
+    "type": "drug",
+    "label": "BITHIONOL",
+    "alias": [
+      "CHEMBL290106"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL296419",
+    "type": "drug",
+    "label": "ASTEMIZOLE",
+    "alias": [
+      "CHEMBL296419"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3039525",
+    "type": "drug",
+    "label": "GOLVATINIB",
+    "alias": [
+      "CHEMBL3039525"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL305660",
+    "type": "drug",
+    "label": "EBASTINE",
+    "alias": [
+      "CHEMBL305660"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3128043",
+    "type": "drug",
+    "label": "PF-03758309",
+    "alias": [
+      "CHEMBL3128043"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3265032",
+    "type": "drug",
+    "label": "ENTOSPLETINIB",
+    "alias": [
+      "CHEMBL3265032"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3408947",
+    "type": "drug",
+    "label": "OCIFISERTIB",
+    "alias": [
+      "CHEMBL3408947"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3545360",
+    "type": "drug",
+    "label": "ASP-3026",
+    "alias": [
+      "CHEMBL3545360"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3545365",
+    "type": "drug",
+    "label": "ALTIRATINIB",
+    "alias": [
+      "CHEMBL3545365"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3659497",
+    "type": "drug",
+    "label": "AZD-7451",
+    "alias": [
+      "CHEMBL3659497"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3673452",
+    "type": "drug",
+    "label": "GZ-389988",
+    "alias": [
+      "CHEMBL3673452"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3678958",
+    "type": "drug",
+    "label": "RUSERONTINIB",
+    "alias": [
+      "CHEMBL3678958"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3785909",
+    "type": "drug",
+    "label": "AMG-337",
+    "alias": [
+      "CHEMBL3785909"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3936761",
+    "type": "drug",
+    "label": "ZANUBRUTINIB",
+    "alias": [
+      "CHEMBL3936761"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3951811",
+    "type": "drug",
+    "label": "CEP-37440",
+    "alias": [
+      "CHEMBL3951811"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL3977543",
+    "type": "drug",
+    "label": "BELVARAFENIB",
+    "alias": [
+      "CHEMBL3977543"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL402548",
+    "type": "drug",
+    "label": "DANUSERTIB",
+    "alias": [
+      "CHEMBL402548"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL404849",
+    "type": "drug",
+    "label": "SULOCTIDIL",
+    "alias": [
+      "CHEMBL404849"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL405130",
+    "type": "drug",
+    "label": "WHI-P131",
+    "alias": [
+      "CHEMBL405130"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL4080062",
+    "type": "drug",
+    "label": "BFH-772",
+    "alias": [
+      "CHEMBL4080062"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL4209157",
+    "type": "drug",
+    "label": "LIFIRAFENIB",
+    "alias": [
+      "CHEMBL4209157"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL428690",
+    "type": "drug",
+    "label": "ALVOCIDIB",
+    "alias": [
+      "CHEMBL428690"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL4297627",
+    "type": "drug",
+    "label": "SELITRECTINIB",
+    "alias": [
+      "CHEMBL4297627"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL4297640",
+    "type": "drug",
+    "label": "VECABRUTINIB",
+    "alias": [
+      "CHEMBL4297640"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL4297674",
+    "type": "drug",
+    "label": "BRANEBRUTINIB",
+    "alias": [
+      "CHEMBL4297674"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL4461070",
+    "type": "drug",
+    "label": "SAR-125844",
+    "alias": [
+      "CHEMBL4461070"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL459",
+    "type": "drug",
+    "label": "METHYLDOPA",
+    "alias": [
+      "CHEMBL459"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL460702",
+    "type": "drug",
+    "label": "BMS-777607",
+    "alias": [
+      "CHEMBL460702"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL4650321",
+    "type": "drug",
+    "label": "ORELABRUTINIB",
+    "alias": [
+      "CHEMBL4650321"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL4650323",
+    "type": "drug",
+    "label": "TOLEBRUTINIB",
+    "alias": [
+      "CHEMBL4650323"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL475251",
+    "type": "drug",
+    "label": "R-406",
+    "alias": [
+      "CHEMBL475251"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL479",
+    "type": "drug",
+    "label": "THIORIDAZINE",
+    "alias": [
+      "CHEMBL479"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL482968",
+    "type": "drug",
+    "label": "ENMD-2076",
+    "alias": [
+      "CHEMBL482968"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL483321",
+    "type": "drug",
+    "label": "CP-724714",
+    "alias": [
+      "CHEMBL483321"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL492399",
+    "type": "drug",
+    "label": "VERUBULIN",
+    "alias": [
+      "CHEMBL492399"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL495727",
+    "type": "drug",
+    "label": "AT-9283",
+    "alias": [
+      "CHEMBL495727"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL496",
+    "type": "drug",
+    "label": "HEXACHLOROPHENE",
+    "alias": [
+      "CHEMBL496"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL496102",
+    "type": "drug",
+    "label": "AMG-208",
+    "alias": [
+      "CHEMBL496102"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL558752",
+    "type": "drug",
+    "label": "RAF-265",
+    "alias": [
+      "CHEMBL558752"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL564829",
+    "type": "drug",
+    "label": "MILCICLIB",
+    "alias": [
+      "CHEMBL564829"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL575448",
+    "type": "drug",
+    "label": "BMS-754807",
+    "alias": [
+      "CHEMBL575448"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL576982",
+    "type": "drug",
+    "label": "QUIZARTINIB",
+    "alias": [
+      "CHEMBL576982"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL587723",
+    "type": "drug",
+    "label": "AEE-788",
+    "alias": [
+      "CHEMBL587723"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL603",
+    "type": "drug",
+    "label": "ZAFIRLUKAST",
+    "alias": [
+      "CHEMBL603"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL608533",
+    "type": "drug",
+    "label": "MIDOSTAURIN",
+    "alias": [
+      "CHEMBL608533"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL64894",
+    "type": "drug",
+    "label": "GENTIAN VIOLET",
+    "alias": [
+      "CHEMBL64894"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL71",
+    "type": "drug",
+    "label": "CHLORPROMAZINE",
+    "alias": [
+      "CHEMBL71"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL91",
+    "type": "drug",
+    "label": "MICONAZOLE",
+    "alias": [
+      "CHEMBL91"
+    ],
+    "rank": 2
+  },
+  {
+    "id": "CHEMBL954",
+    "type": "drug",
+    "label": "ENCLOMIPHENE",
+    "alias": [
+      "CHEMBL954"
+    ],
+    "rank": 2
+  }
+]

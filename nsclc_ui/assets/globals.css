@@ -1,0 +1,427 @@
+/*
+ * NSCLC Insight Engine v2.2 — Global Color Token System
+ * 다크 모드 전용. 모든 UI 컴포넌트는 이 토큰을 참조한다.
+ */
+
+:root {
+  /* ── Base Backgrounds ── */
+  --nsclc-bg-primary: #0a0d14;
+  --nsclc-bg-card: #161b26;
+  --nsclc-bg-elevated: #1f2531;
+  --nsclc-bg-secondary: #11151d;
+
+  /* ── Borders ── */
+  --nsclc-border: #2a3140;
+  --nsclc-border-strong: #3a4459;
+
+  /* ── Text ── */
+  --nsclc-text-primary: #e8eaed;
+  --nsclc-text-secondary: #a0a8b8;
+  --nsclc-text-tertiary: #6b7689;
+
+  /* ── Accent Colors ── */
+  --accent-purple: #7F77DD;
+  --accent-purple-bg: rgba(127, 119, 221, 0.12);
+  --accent-purple-bg-strong: rgba(127, 119, 221, 0.22);
+
+  --accent-cyan: #5DCAA5;
+  --accent-cyan-bg: rgba(93, 202, 165, 0.12);
+
+  --accent-amber: #EF9F27;
+  --accent-amber-bg: rgba(239, 159, 39, 0.12);
+
+  --accent-coral: #F0997B;
+  --accent-coral-bg: rgba(240, 153, 123, 0.12);
+
+  --accent-blue: #85B7EB;
+  --accent-blue-bg: rgba(133, 183, 235, 0.12);
+
+  /* ── Heatmap Ramp (sensitive → resistant) ── */
+  --heatmap-strong-sensitive: #085041;
+  --heatmap-sensitive: #1D9E75;
+  --heatmap-mild-sensitive: #5DCAA5;
+  --heatmap-neutral: #9FE1CB;
+  --heatmap-mild-resistant: #F4C0D1;
+  --heatmap-resistant: #D4537E;
+  --heatmap-strong-resistant: #A32D2D;
+
+  /* ── Mutation Bar (purple ramp) ── */
+  --bar-high: #534AB7;
+  --bar-mid: #7F77DD;
+  --bar-low: #AFA9EC;
+  --bar-min: #CECBF6;
+
+  /* ── Semantic Tokens ── */
+  --warning-border: var(--accent-amber);
+  --warning-bg: var(--accent-amber-bg);
+  --new-badge-color: var(--accent-purple);
+  --new-badge-bg: var(--accent-purple-bg);
+  --hypothesis-badge-border: var(--accent-amber);
+  --concordant-color: var(--accent-cyan);
+  --concordant-bg: var(--accent-cyan-bg);
+
+  /* ── Backward-Compatible Aliases (기존 style.css 호환) ── */
+  --bg-base: var(--nsclc-bg-primary);
+  --bg-card: var(--nsclc-bg-card);
+  --text-primary: var(--nsclc-text-primary);
+  --text-secondary: var(--nsclc-text-secondary);
+  --text-tertiary: var(--nsclc-text-tertiary);
+  --border: var(--nsclc-border);
+}
+
+/* ── v2.2 Page Background ── */
+body {
+  background-color: var(--nsclc-bg-primary) !important;
+  color: var(--nsclc-text-primary) !important;
+}
+
+/* ── Home v2 Card Grid ── */
+.home-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.home-card {
+  background: var(--nsclc-bg-card);
+  border-radius: 12px;
+  padding: 18px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  position: relative;
+}
+
+.home-card:hover {
+  border-color: var(--nsclc-border-strong);
+}
+
+.home-card-default {
+  border: 0.5px solid var(--nsclc-border);
+}
+
+.home-card-new {
+  border: 2px solid var(--accent-purple);
+}
+
+.home-card .new-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent-purple-bg);
+  color: var(--accent-purple);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* ── About Row ── */
+.about-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px 0;
+  border-top: 0.5px solid var(--nsclc-border);
+  font-size: 11px;
+}
+
+.about-row a {
+  color: var(--accent-blue);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.about-row a:hover {
+  text-decoration: underline;
+}
+
+/* ── Warning Badge ── */
+.warning-badge {
+  border-left: 3px solid var(--accent-amber);
+  background: var(--accent-amber-bg);
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-top: 16px;
+}
+
+.warning-badge p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--accent-amber);
+  line-height: 1.5;
+}
+
+/* ── Input Box (purple border) ── */
+.input-box-purple {
+  background: var(--nsclc-bg-card);
+  border: 0.5px solid var(--accent-purple);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.input-box-purple .input-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--accent-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+/* ── Metric Cards ── */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.metric-card {
+  background: var(--nsclc-bg-card);
+  border: 0.5px solid var(--nsclc-border);
+  border-radius: 8px;
+  padding: 14px;
+  position: relative;
+}
+
+.metric-card .model-badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: var(--accent-purple-bg);
+  color: var(--accent-purple);
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.metric-card .metric-label {
+  font-size: 11px;
+  color: var(--nsclc-text-secondary);
+  margin-bottom: 4px;
+}
+
+.metric-card .metric-value {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.metric-card .metric-hint {
+  font-size: 10px;
+  color: var(--nsclc-text-tertiary);
+  margin-top: 2px;
+}
+
+/* ── Mode Toggle ── */
+.mode-toggle {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: var(--nsclc-bg-card);
+  padding: 4px;
+  border-radius: 8px;
+  border: 0.5px solid var(--nsclc-border);
+}
+
+.mode-toggle button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 0.5px solid var(--nsclc-border);
+  background: var(--nsclc-bg-elevated);
+  color: var(--nsclc-text-secondary);
+}
+
+.mode-toggle button.active {
+  background: var(--accent-purple-bg);
+  color: var(--accent-purple);
+  border-color: var(--accent-purple);
+  font-weight: 500;
+}
+
+/* ── Mutation Chips ── */
+.mutation-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--accent-purple-bg);
+  color: var(--accent-purple);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.mutation-chip .chip-remove {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.mutation-chip .chip-remove:hover {
+  opacity: 1;
+}
+
+.mutation-chip-add {
+  display: inline-flex;
+  align-items: center;
+  background: var(--nsclc-bg-elevated);
+  color: var(--nsclc-text-tertiary);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 0.5px dashed var(--nsclc-border);
+  cursor: pointer;
+}
+
+.mutation-chip-add:hover {
+  border-color: var(--nsclc-border-strong);
+  color: var(--nsclc-text-secondary);
+}
+
+/* ── 4-Source Verification ── */
+.source-badge {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.source-badge-prism { background: var(--accent-blue-bg); color: var(--accent-blue); }
+.source-badge-model { background: var(--accent-purple-bg); color: var(--accent-purple); }
+.source-badge-gdsc { background: var(--accent-cyan-bg); color: var(--accent-cyan); }
+.source-badge-zscore { background: var(--accent-amber-bg); color: var(--accent-amber); }
+
+/* ── Concordance Badge ── */
+.concordance-badge {
+  padding: 8px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.concordance-concordant {
+  background: var(--accent-cyan-bg);
+  color: var(--accent-cyan);
+}
+
+.concordance-partial {
+  background: var(--accent-amber-bg);
+  color: var(--accent-amber);
+}
+
+.concordance-discordant {
+  background: var(--accent-coral-bg);
+  color: var(--accent-coral);
+}
+
+/* ── Viz 2-Column Layout ── */
+.viz-2col {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 12px;
+}
+
+.viz-panel {
+  background: var(--nsclc-bg-card);
+  border: 0.5px solid var(--nsclc-border);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+/* ── Hypothesis Badge (permanent) ── */
+.hypothesis-badge {
+  background: var(--accent-amber-bg);
+  color: var(--accent-amber);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+
+/* ── Dropdown Text Visibility Fix (P0) ── */
+.Select-value-label,
+.Select-value .Select-value-label,
+.VirtualizedSelectFocusedOption,
+.VirtualizedSelectOption,
+.Select-placeholder,
+.Select-control .Select-input > input,
+.Select--single > .Select-control .Select-value .Select-value-label {
+  color: var(--nsclc-text-primary) !important;
+}
+
+.Select-placeholder {
+  color: var(--nsclc-text-secondary) !important;
+  opacity: 1 !important;
+}
+
+.Select-menu-outer,
+.VirtualizedSelectMenu {
+  background: var(--nsclc-bg-elevated) !important;
+  border: 1px solid var(--nsclc-border) !important;
+}
+
+.VirtualizedSelectOption {
+  background: var(--nsclc-bg-elevated) !important;
+  color: var(--nsclc-text-primary) !important;
+}
+
+.VirtualizedSelectFocusedOption {
+  background: var(--nsclc-border) !important;
+  color: var(--nsclc-text-primary) !important;
+}
+
+.Select-control {
+  background: var(--nsclc-bg-elevated) !important;
+  border-color: var(--nsclc-border) !important;
+}
+
+.Select-arrow-zone .Select-arrow {
+  border-top-color: var(--nsclc-text-secondary) !important;
+}
+
+/* Dash dcc.Dropdown specific overrides */
+.dash-dropdown .Select-value-label {
+  color: var(--nsclc-text-primary) !important;
+}
+
+.dash-dropdown .Select-control {
+  background-color: var(--nsclc-bg-elevated) !important;
+  border-color: var(--nsclc-border) !important;
+}
+
+.dash-dropdown .Select-menu-outer {
+  background-color: var(--nsclc-bg-elevated) !important;
+}
+
+.dash-dropdown .VirtualizedSelectOption {
+  color: var(--nsclc-text-primary) !important;
+}
+
+
+/* ── Dropdown Placeholder Visibility (round 2 fix) ── */
+.dash-dropdown .Select-placeholder,
+.dash-dropdown .Select--single .Select-placeholder,
+.Select__placeholder,
+.Select--single > .Select-control .Select-placeholder,
+[class*="placeholder"],
+[class$="-placeholder"] {
+  color: #a0a8b8 !important;
+  opacity: 1 !important;
+}
+
+/* Ensure input text in dropdown search is visible */
+.Select-input > input,
+.Select-control .Select-input > input,
+.dash-dropdown input::placeholder,
+.Select-input > input::placeholder {
+  color: var(--nsclc-text-secondary) !important;
+  opacity: 1 !important;
+}

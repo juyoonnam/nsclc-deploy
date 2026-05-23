@@ -1,0 +1,39 @@
+# NSCLC Insight Engine — Supervisor (FastAPI + Strands + Bedrock)
+#
+# Build:  docker build -f Dockerfile.supervisor -t nsclc-supervisor:latest .
+# Run:    docker compose up supervisor
+
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libxrender1 \
+    libxext6 \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PORT=8000 \
+    LOG_LEVEL=info
+
+WORKDIR /app
+
+COPY supervisor/requirements.supervisor.txt /app/requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r /app/requirements.txt
+
+COPY supervisor/ /app/supervisor/
+COPY lambdas/    /app/lambdas/
+
+ENV PYTHONPATH=/app/supervisor:/app/lambdas
+
+WORKDIR /app/supervisor
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)" || exit 1
+
+# worker=1 — supervisor stateful
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1", "--log-level", "info"]

@@ -1,0 +1,60 @@
+# NSCLC Insight Engine — docker-compose
+#
+# 사용:
+#   cp .env.example .env
+#   docker compose build
+#   docker compose up -d
+#   docker compose logs -f
+#
+# 종료:  docker compose down
+
+services:
+  supervisor:
+    build:
+      context: .
+      dockerfile: Dockerfile.supervisor
+    image: nsclc-supervisor:latest
+    container_name: nsclc-supervisor
+    restart: unless-stopped
+    expose:
+      - "8000"
+    # 외부 디버그 노출 (선택) — 운영 시 주석
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - .env
+    environment:
+      - SUPERVISOR_LOCAL_MODE=false
+      - DATA_MODE=s3
+      - LOCAL_ONLY_LAMBDAS=drug_library_lambda
+      - PORT=8000
+      - LOG_LEVEL=info
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    image: nsclc-ui:latest
+    container_name: nsclc-ui
+    restart: unless-stopped
+    ports:
+      - "8050:8050"
+    env_file:
+      - .env
+    environment:
+      - SUPERVISOR_URL=http://supervisor:8000
+      - PORT=8050
+      - LOG_LEVEL=info
+    depends_on:
+      supervisor:
+        condition: service_healthy
+
+networks:
+  default:
+    name: nsclc-net

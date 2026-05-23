@@ -1,0 +1,4849 @@
+{
+  "version": "e6-2026-05-06",
+  "stats": {
+    "n_pathways": 3,
+    "n_targets": 21,
+    "n_drugs": 400,
+    "total": 424
+  },
+  "entries": [
+    {
+      "id": "hsa05223",
+      "type": "pathway",
+      "label": "NSCLC (Non-small cell lung cancer)",
+      "synonyms": [
+        "hsa05223",
+        "NSCLC (Non-small cell lung cancer)"
+      ]
+    },
+    {
+      "id": "hsa04010",
+      "type": "pathway",
+      "label": "MAPK signaling pathway",
+      "synonyms": [
+        "hsa04010",
+        "MAPK signaling pathway"
+      ]
+    },
+    {
+      "id": "hsa04151",
+      "type": "pathway",
+      "label": "PI3K-Akt signaling pathway",
+      "synonyms": [
+        "hsa04151",
+        "PI3K-Akt signaling pathway"
+      ]
+    },
+    {
+      "id": "EGFR",
+      "type": "target",
+      "label": "EGFR",
+      "synonyms": [
+        "EGFR"
+      ]
+    },
+    {
+      "id": "KRAS",
+      "type": "target",
+      "label": "KRAS",
+      "synonyms": [
+        "KRAS"
+      ]
+    },
+    {
+      "id": "ALK",
+      "type": "target",
+      "label": "ALK",
+      "synonyms": [
+        "ALK"
+      ]
+    },
+    {
+      "id": "ROS1",
+      "type": "target",
+      "label": "ROS1",
+      "synonyms": [
+        "ROS1"
+      ]
+    },
+    {
+      "id": "MET",
+      "type": "target",
+      "label": "MET",
+      "synonyms": [
+        "MET"
+      ]
+    },
+    {
+      "id": "BRAF",
+      "type": "target",
+      "label": "BRAF",
+      "synonyms": [
+        "BRAF"
+      ]
+    },
+    {
+      "id": "RET",
+      "type": "target",
+      "label": "RET",
+      "synonyms": [
+        "RET"
+      ]
+    },
+    {
+      "id": "NTRK1",
+      "type": "target",
+      "label": "NTRK1",
+      "synonyms": [
+        "NTRK1"
+      ]
+    },
+    {
+      "id": "ERBB2",
+      "type": "target",
+      "label": "ERBB2",
+      "synonyms": [
+        "ERBB2"
+      ]
+    },
+    {
+      "id": "ARAF",
+      "type": "target",
+      "label": "ARAF",
+      "synonyms": [
+        "ARAF"
+      ]
+    },
+    {
+      "id": "RAF1",
+      "type": "target",
+      "label": "RAF1",
+      "synonyms": [
+        "RAF1"
+      ]
+    },
+    {
+      "id": "MAP2K1",
+      "type": "target",
+      "label": "MAP2K1",
+      "synonyms": [
+        "MAP2K1"
+      ]
+    },
+    {
+      "id": "MAP2K2",
+      "type": "target",
+      "label": "MAP2K2",
+      "synonyms": [
+        "MAP2K2"
+      ]
+    },
+    {
+      "id": "PIK3CA",
+      "type": "target",
+      "label": "PIK3CA",
+      "synonyms": [
+        "PIK3CA"
+      ]
+    },
+    {
+      "id": "CDK4",
+      "type": "target",
+      "label": "CDK4",
+      "synonyms": [
+        "CDK4"
+      ]
+    },
+    {
+      "id": "CDK6",
+      "type": "target",
+      "label": "CDK6",
+      "synonyms": [
+        "CDK6"
+      ]
+    },
+    {
+      "id": "HRAS",
+      "type": "target",
+      "label": "HRAS",
+      "synonyms": [
+        "HRAS"
+      ]
+    },
+    {
+      "id": "KIF5A",
+      "type": "target",
+      "label": "KIF5A",
+      "synonyms": [
+        "KIF5A"
+      ]
+    },
+    {
+      "id": "RRAS2",
+      "type": "target",
+      "label": "RRAS2",
+      "synonyms": [
+        "RRAS2"
+      ]
+    },
+    {
+      "id": "CSF1R",
+      "type": "target",
+      "label": "CSF1R",
+      "synonyms": [
+        "CSF1R"
+      ]
+    },
+    {
+      "id": "CDK2",
+      "type": "target",
+      "label": "CDK2",
+      "synonyms": [
+        "CDK2"
+      ]
+    },
+    {
+      "id": "CHEMBL553",
+      "type": "drug",
+      "label": "ERLOTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL553",
+        "ERLOTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1079742",
+      "type": "drug",
+      "label": "ERLOTINIB HYDROCHLORIDE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1079742",
+        "ERLOTINIB HYDROCHLORIDE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4535757",
+      "type": "drug",
+      "label": "SOTORASIB",
+      "primary_target": "KRAS",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL4535757",
+        "SOTORASIB",
+        "KRAS inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4650319",
+      "type": "drug",
+      "label": "MOBOCERTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL4650319",
+        "MOBOCERTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3353410",
+      "type": "drug",
+      "label": "OSIMERTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3353410",
+        "OSIMERTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2403108",
+      "type": "drug",
+      "label": "CERITINIB",
+      "primary_target": "ALK",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL2403108",
+        "CERITINIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1009",
+      "type": "drug",
+      "label": "LEVODOPA",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1009",
+        "LEVODOPA",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL404849",
+      "type": "drug",
+      "label": "SULOCTIDIL",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL404849",
+        "SULOCTIDIL",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL98",
+      "type": "drug",
+      "label": "VORINOSTAT",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL98",
+        "VORINOSTAT",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL459",
+      "type": "drug",
+      "label": "METHYLDOPA",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL459",
+        "METHYLDOPA",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4559134",
+      "type": "drug",
+      "label": "SELPERCATINIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL4559134",
+        "SELPERCATINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL554",
+      "type": "drug",
+      "label": "LAPATINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL554",
+        "LAPATINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3545311",
+      "type": "drug",
+      "label": "BRIGATINIB",
+      "primary_target": "ALK",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3545311",
+        "BRIGATINIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL24944",
+      "type": "drug",
+      "label": "TRIBROMSALAN",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL24944",
+        "TRIBROMSALAN",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2105712",
+      "type": "drug",
+      "label": "AFATINIB DIMALEATE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL2105712",
+        "AFATINIB DIMALEATE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1448",
+      "type": "drug",
+      "label": "NICLOSAMIDE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1448",
+        "NICLOSAMIDE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1173655",
+      "type": "drug",
+      "label": "AFATINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1173655",
+        "AFATINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3301612",
+      "type": "drug",
+      "label": "ENCORAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3301612",
+        "ENCORAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4594350",
+      "type": "drug",
+      "label": "ADAGRASIB",
+      "primary_target": "KRAS",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL4594350",
+        "ADAGRASIB",
+        "KRAS inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL535",
+      "type": "drug",
+      "label": "SUNITINIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL535",
+        "SUNITINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL939",
+      "type": "drug",
+      "label": "GEFITINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL939",
+        "GEFITINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2103868",
+      "type": "drug",
+      "label": "CABOZANTINIB S-MALATE",
+      "primary_target": "MET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL2103868",
+        "CABOZANTINIB S-MALATE",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2105717",
+      "type": "drug",
+      "label": "CABOZANTINIB",
+      "primary_target": "MET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL2105717",
+        "CABOZANTINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2028663",
+      "type": "drug",
+      "label": "DABRAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL2028663",
+        "DABRAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3889654",
+      "type": "drug",
+      "label": "LAROTRECTINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3889654",
+        "LAROTRECTINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3989939",
+      "type": "drug",
+      "label": "LAROTRECTINIB SULFATE",
+      "primary_target": "NTRK1",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3989939",
+        "LAROTRECTINIB SULFATE",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL601719",
+      "type": "drug",
+      "label": "CRIZOTINIB",
+      "primary_target": "MET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL601719",
+        "CRIZOTINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2110732",
+      "type": "drug",
+      "label": "DACOMITINIB ANHYDROUS",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL2110732",
+        "DACOMITINIB ANHYDROUS",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2105719",
+      "type": "drug",
+      "label": "DACOMITINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL2105719",
+        "DACOMITINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1738797",
+      "type": "drug",
+      "label": "ALECTINIB",
+      "primary_target": "ALK",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1738797",
+        "ALECTINIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3301622",
+      "type": "drug",
+      "label": "GILTERITINIB",
+      "primary_target": "ALK",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3301622",
+        "GILTERITINIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1983268",
+      "type": "drug",
+      "label": "ENTRECTINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1983268",
+        "ENTRECTINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL180022",
+      "type": "drug",
+      "label": "NERATINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL180022",
+        "NERATINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL58",
+      "type": "drug",
+      "label": "MITOXANTRONE",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL58",
+        "MITOXANTRONE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4298138",
+      "type": "drug",
+      "label": "REPOTRECTINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL4298138",
+        "REPOTRECTINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1946170",
+      "type": "drug",
+      "label": "REGORAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1946170",
+        "REGORAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1336",
+      "type": "drug",
+      "label": "SORAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1336",
+        "SORAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3286830",
+      "type": "drug",
+      "label": "LORLATINIB",
+      "primary_target": "ALK",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3286830",
+        "LORLATINIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3188267",
+      "type": "drug",
+      "label": "CAPMATINIB",
+      "primary_target": "MET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3188267",
+        "CAPMATINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1873475",
+      "type": "drug",
+      "label": "IBRUTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1873475",
+        "IBRUTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1229517",
+      "type": "drug",
+      "label": "VEMURAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1229517",
+        "VEMURAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL445",
+      "type": "drug",
+      "label": "NORTRIPTYLINE",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL445",
+        "NORTRIPTYLINE",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL629",
+      "type": "drug",
+      "label": "AMITRIPTYLINE",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL629",
+        "AMITRIPTYLINE",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4582651",
+      "type": "drug",
+      "label": "PRALSETINIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL4582651",
+        "PRALSETINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3936761",
+      "type": "drug",
+      "label": "ZANUBRUTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3936761",
+        "ZANUBRUTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1287853",
+      "type": "drug",
+      "label": "FEDRATINIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1287853",
+        "FEDRATINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL808",
+      "type": "drug",
+      "label": "ECONAZOLE",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL808",
+        "ECONAZOLE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3348923",
+      "type": "drug",
+      "label": "TOVORAFENIB",
+      "primary_target": "RAF1",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3348923",
+        "TOVORAFENIB",
+        "RAF1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1421",
+      "type": "drug",
+      "label": "DASATINIB ANHYDROUS",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1421",
+        "DASATINIB ANHYDROUS",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4113131",
+      "type": "drug",
+      "label": "ENSARTINIB",
+      "primary_target": "ALK",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL4113131",
+        "ENSARTINIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1852688",
+      "type": "drug",
+      "label": "INFIGRATINIB",
+      "primary_target": "MET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1852688",
+        "INFIGRATINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1834657",
+      "type": "drug",
+      "label": "INFIGRATINIB PHOSPHATE",
+      "primary_target": "MET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1834657",
+        "INFIGRATINIB PHOSPHATE",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5416410",
+      "type": "drug",
+      "label": "DASATINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL5416410",
+        "DASATINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL83",
+      "type": "drug",
+      "label": "TAMOXIFEN",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL83",
+        "TAMOXIFEN",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1171837",
+      "type": "drug",
+      "label": "PONATINIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1171837",
+        "PONATINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL91",
+      "type": "drug",
+      "label": "MICONAZOLE",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL91",
+        "MICONAZOLE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3622821",
+      "type": "drug",
+      "label": "UPADACITINIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3622821",
+        "UPADACITINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL288441",
+      "type": "drug",
+      "label": "BOSUTINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL288441",
+        "BOSUTINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL479",
+      "type": "drug",
+      "label": "THIORIDAZINE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL479",
+        "THIORIDAZINE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL926",
+      "type": "drug",
+      "label": "DOBUTAMINE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL926",
+        "DOBUTAMINE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL787",
+      "type": "drug",
+      "label": "MONTELUKAST",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL787",
+        "MONTELUKAST",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL496",
+      "type": "drug",
+      "label": "HEXACHLOROPHENE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL496",
+        "HEXACHLOROPHENE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL584",
+      "type": "drug",
+      "label": "NELFINAVIR",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL584",
+        "NELFINAVIR",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL75880",
+      "type": "drug",
+      "label": "PERHEXILINE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL75880",
+        "PERHEXILINE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL726",
+      "type": "drug",
+      "label": "FLUPHENAZINE",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL726",
+        "FLUPHENAZINE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL669",
+      "type": "drug",
+      "label": "CYCLOBENZAPRINE",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL669",
+        "CYCLOBENZAPRINE",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3402762",
+      "type": "drug",
+      "label": "TEPOTINIB",
+      "primary_target": "MET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3402762",
+        "TEPOTINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL502835",
+      "type": "drug",
+      "label": "NINTEDANIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL502835",
+        "NINTEDANIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL633",
+      "type": "drug",
+      "label": "AMIODARONE",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL633",
+        "AMIODARONE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL71",
+      "type": "drug",
+      "label": "CHLORPROMAZINE",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL71",
+        "CHLORPROMAZINE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL608533",
+      "type": "drug",
+      "label": "MIDOSTAURIN",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL608533",
+        "MIDOSTAURIN",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL64894",
+      "type": "drug",
+      "label": "GENTIAN VIOLET",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL64894",
+        "GENTIAN VIOLET",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3707348",
+      "type": "drug",
+      "label": "ACALABRUTINIB",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3707348",
+        "ACALABRUTINIB",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4558324",
+      "type": "drug",
+      "label": "LAZERTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL4558324",
+        "LAZERTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL290106",
+      "type": "drug",
+      "label": "BITHIONOL",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL290106",
+        "BITHIONOL",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL428647",
+      "type": "drug",
+      "label": "PACLITAXEL",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL428647",
+        "PACLITAXEL",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3989868",
+      "type": "drug",
+      "label": "TUCATINIB",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3989868",
+        "TUCATINIB",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL104",
+      "type": "drug",
+      "label": "CLOTRIMAZOLE",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL104",
+        "CLOTRIMAZOLE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2146883",
+      "type": "drug",
+      "label": "COBIMETINIB",
+      "primary_target": "MAP2K1",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL2146883",
+        "COBIMETINIB",
+        "MAP2K1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL17157",
+      "type": "drug",
+      "label": "TERFENADINE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL17157",
+        "TERFENADINE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1289601",
+      "type": "drug",
+      "label": "LENVATINIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1289601",
+        "LENVATINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1289494",
+      "type": "drug",
+      "label": "TIVOZANIB",
+      "primary_target": "MET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1289494",
+        "TIVOZANIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL53463",
+      "type": "drug",
+      "label": "DOXORUBICIN",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL53463",
+        "DOXORUBICIN",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL603",
+      "type": "drug",
+      "label": "ZAFIRLUKAST",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL603",
+        "ZAFIRLUKAST",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL941",
+      "type": "drug",
+      "label": "IMATINIB",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL941",
+        "IMATINIB",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3786343",
+      "type": "drug",
+      "label": "OLMUTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3786343",
+        "OLMUTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL576982",
+      "type": "drug",
+      "label": "QUIZARTINIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL576982",
+        "QUIZARTINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3301610",
+      "type": "drug",
+      "label": "ABEMACICLIB",
+      "primary_target": "CDK4",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL3301610",
+        "ABEMACICLIB",
+        "CDK4 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL24828",
+      "type": "drug",
+      "label": "VANDETANIB",
+      "primary_target": "RET",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL24828",
+        "VANDETANIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1200558",
+      "type": "drug",
+      "label": "BACITRACIN",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1200558",
+        "BACITRACIN",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1201179",
+      "type": "drug",
+      "label": "LAPATINIB DITOSYLATE",
+      "primary_target": "ERBB2",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1201179",
+        "LAPATINIB DITOSYLATE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL305660",
+      "type": "drug",
+      "label": "EBASTINE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL305660",
+        "EBASTINE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL298734",
+      "type": "drug",
+      "label": "LONAFARNIB",
+      "primary_target": "KRAS",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL298734",
+        "LONAFARNIB",
+        "KRAS inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL296419",
+      "type": "drug",
+      "label": "ASTEMIZOLE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL296419",
+        "ASTEMIZOLE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1200679",
+      "type": "drug",
+      "label": "ZINC CHLORIDE",
+      "primary_target": "EGFR",
+      "max_phase": 4,
+      "synonyms": [
+        "CHEMBL1200679",
+        "ZINC CHLORIDE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3545154",
+      "type": "drug",
+      "label": "POZIOTINIB",
+      "primary_target": "ERBB2",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3545154",
+        "POZIOTINIB",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3545308",
+      "type": "drug",
+      "label": "ROCILETINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3545308",
+        "ROCILETINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL50",
+      "type": "drug",
+      "label": "QUERCETIN",
+      "primary_target": "MET",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL50",
+        "QUERCETIN",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4583691",
+      "type": "drug",
+      "label": "NAPORAFENIB",
+      "primary_target": "RAF1",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL4583691",
+        "NAPORAFENIB",
+        "RAF1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL276711",
+      "type": "drug",
+      "label": "SEMAXANIB",
+      "primary_target": "RET",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL276711",
+        "SEMAXANIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL545315",
+      "type": "drug",
+      "label": "CANERTINIB DIHYDROCHLORIDE",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL545315",
+        "CANERTINIB DIHYDROCHLORIDE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL31965",
+      "type": "drug",
+      "label": "CANERTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL31965",
+        "CANERTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3544983",
+      "type": "drug",
+      "label": "TESEVATINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3544983",
+        "TESEVATINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4761468",
+      "type": "drug",
+      "label": "AUMOLERTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL4761468",
+        "AUMOLERTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3334567",
+      "type": "drug",
+      "label": "SAVOLITINIB",
+      "primary_target": "MET",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3334567",
+        "SAVOLITINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5077861",
+      "type": "drug",
+      "label": "OPNURASIB",
+      "primary_target": "KRAS",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL5077861",
+        "OPNURASIB",
+        "KRAS inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4297865",
+      "type": "drug",
+      "label": "ABIVERTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL4297865",
+        "ABIVERTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2087361",
+      "type": "drug",
+      "label": "ICOTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL2087361",
+        "ICOTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL627",
+      "type": "drug",
+      "label": "AMITRIPTYLINOXIDE",
+      "primary_target": "RET",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL627",
+        "AMITRIPTYLINOXIDE",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL954",
+      "type": "drug",
+      "label": "ENCLOMIPHENE",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL954",
+        "ENCLOMIPHENE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL428690",
+      "type": "drug",
+      "label": "ALVOCIDIB",
+      "primary_target": "CDK4",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL428690",
+        "ALVOCIDIB",
+        "CDK4 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL297453",
+      "type": "drug",
+      "label": "EPIGALOCATECHIN GALLATE",
+      "primary_target": "MET",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL297453",
+        "EPIGALOCATECHIN GALLATE",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3264002",
+      "type": "drug",
+      "label": "AVUTOMETINIB",
+      "primary_target": "MAP2K1",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3264002",
+        "AVUTOMETINIB",
+        "MAP2K1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3137331",
+      "type": "drug",
+      "label": "DEFACTINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3137331",
+        "DEFACTINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL109480",
+      "type": "drug",
+      "label": "TANESPIMYCIN",
+      "primary_target": "ERBB2",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL109480",
+        "TANESPIMYCIN",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL223360",
+      "type": "drug",
+      "label": "LINIFANIB",
+      "primary_target": "RET",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL223360",
+        "LINIFANIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4650281",
+      "type": "drug",
+      "label": "CLN-081",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL4650281",
+        "CLN-081",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL140",
+      "type": "drug",
+      "label": "CURCUMIN",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL140",
+        "CURCUMIN",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4650321",
+      "type": "drug",
+      "label": "ORELABRUTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL4650321",
+        "ORELABRUTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4650323",
+      "type": "drug",
+      "label": "TOLEBRUTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL4650323",
+        "TOLEBRUTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3678958",
+      "type": "drug",
+      "label": "RUSERONTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3678958",
+        "RUSERONTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3989926",
+      "type": "drug",
+      "label": "SITRAVATINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3989926",
+        "SITRAVATINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3265032",
+      "type": "drug",
+      "label": "ENTOSPLETINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3265032",
+        "ENTOSPLETINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL572881",
+      "type": "drug",
+      "label": "MOTESANIB",
+      "primary_target": "RET",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL572881",
+        "MOTESANIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1630578",
+      "type": "drug",
+      "label": "TIRILAZAD",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL1630578",
+        "TIRILAZAD",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL101253",
+      "type": "drug",
+      "label": "VATALANIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL101253",
+        "VATALANIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL217092",
+      "type": "drug",
+      "label": "SARACATINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL217092",
+        "SARACATINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3647420",
+      "type": "drug",
+      "label": "PYROTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3647420",
+        "PYROTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3663929",
+      "type": "drug",
+      "label": "NAQUOTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL3663929",
+        "NAQUOTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1016",
+      "type": "drug",
+      "label": "CANDESARTAN",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL1016",
+        "CANDESARTAN",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2103882",
+      "type": "drug",
+      "label": "TIVANTINIB",
+      "primary_target": "MET",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL2103882",
+        "TIVANTINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL48802",
+      "type": "drug",
+      "label": "SULFORAPHANE",
+      "primary_target": "EGFR",
+      "max_phase": 3,
+      "synonyms": [
+        "CHEMBL48802",
+        "SULFORAPHANE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL492399",
+      "type": "drug",
+      "label": "VERUBULIN",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL492399",
+        "VERUBULIN",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3301625",
+      "type": "drug",
+      "label": "SPEBRUTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3301625",
+        "SPEBRUTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL607707",
+      "type": "drug",
+      "label": "PELITINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL607707",
+        "PELITINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2408045",
+      "type": "drug",
+      "label": "SAPITINIB",
+      "primary_target": "ERBB2",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL2408045",
+        "SAPITINIB",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5800160",
+      "type": "drug",
+      "label": "BRIMARAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5800160",
+        "BRIMARAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5095256",
+      "type": "drug",
+      "label": "TINLORAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5095256",
+        "TINLORAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1947204",
+      "type": "drug",
+      "label": "ALLITINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL1947204",
+        "ALLITINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3984441",
+      "type": "drug",
+      "label": "NINGETINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3984441",
+        "NINGETINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5095236",
+      "type": "drug",
+      "label": "DIVARASIB",
+      "primary_target": "KRAS",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5095236",
+        "DIVARASIB",
+        "KRAS inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2029988",
+      "type": "drug",
+      "label": "CEP-32496",
+      "primary_target": "BRAF",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL2029988",
+        "CEP-32496",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3545027",
+      "type": "drug",
+      "label": "XL-281",
+      "primary_target": "BRAF",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3545027",
+        "XL-281",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5314412",
+      "type": "drug",
+      "label": "ZOTIZALKIB",
+      "primary_target": "ALK",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5314412",
+        "ZOTIZALKIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3673452",
+      "type": "drug",
+      "label": "GZ-389988",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3673452",
+        "GZ-389988",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL483321",
+      "type": "drug",
+      "label": "CP-724714",
+      "primary_target": "ERBB2",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL483321",
+        "CP-724714",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3989970",
+      "type": "drug",
+      "label": "MAVELERTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3989970",
+        "MAVELERTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL460702",
+      "type": "drug",
+      "label": "BMS-777607",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL460702",
+        "BMS-777607",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL496102",
+      "type": "drug",
+      "label": "AMG-208",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL496102",
+        "AMG-208",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5095063",
+      "type": "drug",
+      "label": "ENVONALKIB",
+      "primary_target": "ALK",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5095063",
+        "ENVONALKIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4297627",
+      "type": "drug",
+      "label": "SELITRECTINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4297627",
+        "SELITRECTINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3977543",
+      "type": "drug",
+      "label": "BELVARAFENIB",
+      "primary_target": "RAF1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3977543",
+        "BELVARAFENIB",
+        "RAF1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5095068",
+      "type": "drug",
+      "label": "IRUPLINALKIB",
+      "primary_target": "ALK",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5095068",
+        "IRUPLINALKIB",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3786098",
+      "type": "drug",
+      "label": "PF-06459988",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3786098",
+        "PF-06459988",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3623290",
+      "type": "drug",
+      "label": "AZD-3759",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3623290",
+        "AZD-3759",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5095099",
+      "type": "drug",
+      "label": "EXARAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5095099",
+        "EXARAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL558752",
+      "type": "drug",
+      "label": "RAF-265",
+      "primary_target": "BRAF",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL558752",
+        "RAF-265",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5095169",
+      "type": "drug",
+      "label": "TIGOZERTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5095169",
+        "TIGOZERTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3818247",
+      "type": "drug",
+      "label": "DALMELITINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3818247",
+        "DALMELITINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL44",
+      "type": "drug",
+      "label": "GENISTEIN",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL44",
+        "GENISTEIN",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5095061",
+      "type": "drug",
+      "label": "ELZOVANTINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5095061",
+        "ELZOVANTINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL587723",
+      "type": "drug",
+      "label": "AEE-788",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL587723",
+        "AEE-788",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3785909",
+      "type": "drug",
+      "label": "AMG-337",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3785909",
+        "AMG-337",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL513909",
+      "type": "drug",
+      "label": "BI-2536",
+      "primary_target": "ALK",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL513909",
+        "BI-2536",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4114766",
+      "type": "drug",
+      "label": "ATUZABRUTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4114766",
+        "ATUZABRUTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4209157",
+      "type": "drug",
+      "label": "LIFIRAFENIB",
+      "primary_target": "BRAF",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4209157",
+        "LIFIRAFENIB",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4461070",
+      "type": "drug",
+      "label": "SAR-125844",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4461070",
+        "SAR-125844",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1230609",
+      "type": "drug",
+      "label": "FORETINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL1230609",
+        "FORETINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL402548",
+      "type": "drug",
+      "label": "DANUSERTIB",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL402548",
+        "DANUSERTIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL200102",
+      "type": "drug",
+      "label": "PU-H71",
+      "primary_target": "ERBB2",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL200102",
+        "PU-H71",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3787344",
+      "type": "drug",
+      "label": "NAZARTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3787344",
+        "NAZARTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3039525",
+      "type": "drug",
+      "label": "GOLVATINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3039525",
+        "GOLVATINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4650443",
+      "type": "drug",
+      "label": "VEBRELTINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4650443",
+        "VEBRELTINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL507361",
+      "type": "drug",
+      "label": "MIRDAMETINIB",
+      "primary_target": "MAP2K1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL507361",
+        "MIRDAMETINIB",
+        "MAP2K1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4080062",
+      "type": "drug",
+      "label": "BFH-772",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4080062",
+        "BFH-772",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3989914",
+      "type": "drug",
+      "label": "GLESATINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3989914",
+        "GLESATINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1980297",
+      "type": "drug",
+      "label": "ILORASERTIB",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL1980297",
+        "ILORASERTIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL575448",
+      "type": "drug",
+      "label": "BMS-754807",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL575448",
+        "BMS-754807",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL564829",
+      "type": "drug",
+      "label": "MILCICLIB",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL564829",
+        "MILCICLIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL521851",
+      "type": "drug",
+      "label": "PICTILISIB",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL521851",
+        "PICTILISIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3545307",
+      "type": "drug",
+      "label": "MERESTINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3545307",
+        "MERESTINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL258940",
+      "type": "drug",
+      "label": "FALNIDAMOL",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL258940",
+        "FALNIDAMOL",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL86754",
+      "type": "drug",
+      "label": "IODOQUINOL",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL86754",
+        "IODOQUINOL",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL221753",
+      "type": "drug",
+      "label": "BENZETHONIUM CHLORIDE",
+      "primary_target": "ERBB2",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL221753",
+        "BENZETHONIUM CHLORIDE",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3545365",
+      "type": "drug",
+      "label": "ALTIRATINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3545365",
+        "ALTIRATINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2010872",
+      "type": "drug",
+      "label": "CEP-11981",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL2010872",
+        "CEP-11981",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3950590",
+      "type": "drug",
+      "label": "VABAMETKIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3950590",
+        "VABAMETKIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL6246",
+      "type": "drug",
+      "label": "ELLAGIC ACID",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL6246",
+        "ELLAGIC ACID",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL103667",
+      "type": "drug",
+      "label": "DORAMAPIMOD",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL103667",
+        "DORAMAPIMOD",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5314497",
+      "type": "drug",
+      "label": "ZIDESAMTINIB",
+      "primary_target": "ROS1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL5314497",
+        "ZIDESAMTINIB",
+        "ROS1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1738757",
+      "type": "drug",
+      "label": "REBASTINIB",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL1738757",
+        "REBASTINIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL268501",
+      "type": "drug",
+      "label": "PROQUAZONE",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL268501",
+        "PROQUAZONE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4594400",
+      "type": "drug",
+      "label": "GUMARONTINIB",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4594400",
+        "GUMARONTINIB",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4297640",
+      "type": "drug",
+      "label": "VECABRUTINIB",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4297640",
+        "VECABRUTINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3979920",
+      "type": "drug",
+      "label": "MIVAVOTINIB",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3979920",
+        "MIVAVOTINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL253969",
+      "type": "drug",
+      "label": "OSI-632",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL253969",
+        "OSI-632",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL495727",
+      "type": "drug",
+      "label": "AT-9283",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL495727",
+        "AT-9283",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3408947",
+      "type": "drug",
+      "label": "OCIFISERTIB",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3408947",
+        "OCIFISERTIB",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4297674",
+      "type": "drug",
+      "label": "BRANEBRUTINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4297674",
+        "BRANEBRUTINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL7002",
+      "type": "drug",
+      "label": "CIGLITAZONE",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL7002",
+        "CIGLITAZONE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1822792",
+      "type": "drug",
+      "label": "MK-2461",
+      "primary_target": "MET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL1822792",
+        "MK-2461",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1950289",
+      "type": "drug",
+      "label": "TANZISERTIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL1950289",
+        "TANZISERTIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4116008",
+      "type": "drug",
+      "label": "CERDULATINIB",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL4116008",
+        "CERDULATINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2103842",
+      "type": "drug",
+      "label": "VARLITINIB",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL2103842",
+        "VARLITINIB",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1231124",
+      "type": "drug",
+      "label": "AZD-1480",
+      "primary_target": "NTRK1",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL1231124",
+        "AZD-1480",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1614707",
+      "type": "drug",
+      "label": "MUBRITINIB",
+      "primary_target": "ERBB2",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL1614707",
+        "MUBRITINIB",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL482968",
+      "type": "drug",
+      "label": "ENMD-2076",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL482968",
+        "ENMD-2076",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL475251",
+      "type": "drug",
+      "label": "R-406",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL475251",
+        "R-406",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL12131",
+      "type": "drug",
+      "label": "CLOSANTEL",
+      "primary_target": "EGFR",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL12131",
+        "CLOSANTEL",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3809489",
+      "type": "drug",
+      "label": "BEMCENTINIB",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3809489",
+        "BEMCENTINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3115681",
+      "type": "drug",
+      "label": "NARAZACICLIB",
+      "primary_target": "RET",
+      "max_phase": 2,
+      "synonyms": [
+        "CHEMBL3115681",
+        "NARAZACICLIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL405130",
+      "type": "drug",
+      "label": "WHI-P131",
+      "primary_target": "RET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL405130",
+        "WHI-P131",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL598797",
+      "type": "drug",
+      "label": "CUDC-101",
+      "primary_target": "EGFR",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL598797",
+        "CUDC-101",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4858364",
+      "type": "drug",
+      "label": "MRTX-1133",
+      "primary_target": "KRAS",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL4858364",
+        "MRTX-1133",
+        "KRAS inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1614725",
+      "type": "drug",
+      "label": "TAK-285",
+      "primary_target": "ERBB2",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL1614725",
+        "TAK-285",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL178654",
+      "type": "drug",
+      "label": "HKI-357",
+      "primary_target": "ERBB2",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL178654",
+        "HKI-357",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL6060997",
+      "type": "drug",
+      "label": "PF-07265807",
+      "primary_target": "MET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL6060997",
+        "PF-07265807",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4212531",
+      "type": "drug",
+      "label": "PF-06273340",
+      "primary_target": "NTRK1",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL4212531",
+        "PF-06273340",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL49120",
+      "type": "drug",
+      "label": "PD-0166285",
+      "primary_target": "EGFR",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL49120",
+        "PD-0166285",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3577124",
+      "type": "drug",
+      "label": "LY-3009120",
+      "primary_target": "BRAF",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL3577124",
+        "LY-3009120",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5831360",
+      "type": "drug",
+      "label": "CCT-3833",
+      "primary_target": "BRAF",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL5831360",
+        "CCT-3833",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2001019",
+      "type": "drug",
+      "label": "PF-04217903",
+      "primary_target": "MET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL2001019",
+        "PF-04217903",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3892052",
+      "type": "drug",
+      "label": "ONO-7579",
+      "primary_target": "NTRK1",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL3892052",
+        "ONO-7579",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3659497",
+      "type": "drug",
+      "label": "AZD-7451",
+      "primary_target": "NTRK1",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL3659497",
+        "AZD-7451",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2133806",
+      "type": "drug",
+      "label": "JNJ-38877605",
+      "primary_target": "MET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL2133806",
+        "JNJ-38877605",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL295316",
+      "type": "drug",
+      "label": "PLUMBAGIN",
+      "primary_target": "ERBB2",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL295316",
+        "PLUMBAGIN",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3764045",
+      "type": "drug",
+      "label": "TAS-115",
+      "primary_target": "MET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL3764045",
+        "TAS-115",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2323775",
+      "type": "drug",
+      "label": "MK-8033",
+      "primary_target": "MET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL2323775",
+        "MK-8033",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL258805",
+      "type": "drug",
+      "label": "SU-9516",
+      "primary_target": "RET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL258805",
+        "SU-9516",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2143592",
+      "type": "drug",
+      "label": "BMS-794833",
+      "primary_target": "MET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL2143592",
+        "BMS-794833",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3545360",
+      "type": "drug",
+      "label": "ASP-3026",
+      "primary_target": "ALK",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL3545360",
+        "ASP-3026",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2180604",
+      "type": "drug",
+      "label": "TAK-593",
+      "primary_target": "RET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL2180604",
+        "TAK-593",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2138625",
+      "type": "drug",
+      "label": "AV-412 FREE BASE",
+      "primary_target": "EGFR",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL2138625",
+        "AV-412 FREE BASE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1236107",
+      "type": "drug",
+      "label": "SGX-523",
+      "primary_target": "MET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL1236107",
+        "SGX-523",
+        "MET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2180602",
+      "type": "drug",
+      "label": "TAFETINIB",
+      "primary_target": "RET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL2180602",
+        "TAFETINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5095497",
+      "type": "drug",
+      "label": "ZETELETINIB",
+      "primary_target": "RET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL5095497",
+        "ZETELETINIB",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3355009",
+      "type": "drug",
+      "label": "GSK-3179106",
+      "primary_target": "RET",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL3355009",
+        "GSK-3179106",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4212692",
+      "type": "drug",
+      "label": "XP-102",
+      "primary_target": "BRAF",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL4212692",
+        "XP-102",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL281872",
+      "type": "drug",
+      "label": "ZD-4190 FREE BASE",
+      "primary_target": "EGFR",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL281872",
+        "ZD-4190 FREE BASE",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1645462",
+      "type": "drug",
+      "label": "AC-480",
+      "primary_target": "EGFR",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL1645462",
+        "AC-480",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3951811",
+      "type": "drug",
+      "label": "CEP-37440",
+      "primary_target": "ALK",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL3951811",
+        "CEP-37440",
+        "ALK inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL351706",
+      "type": "drug",
+      "label": "BMS-214662",
+      "primary_target": "KRAS",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL351706",
+        "BMS-214662",
+        "KRAS inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3128043",
+      "type": "drug",
+      "label": "PF-03758309",
+      "primary_target": "NTRK1",
+      "max_phase": 1,
+      "synonyms": [
+        "CHEMBL3128043",
+        "PF-03758309",
+        "NTRK1 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93734",
+      "type": "drug",
+      "label": "CHEMBL93734",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93734",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814871",
+      "type": "drug",
+      "label": "CHEMBL3814871",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814871",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814834",
+      "type": "drug",
+      "label": "CHEMBL3814834",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814834",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL442754",
+      "type": "drug",
+      "label": "CHEMBL442754",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL442754",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL441083",
+      "type": "drug",
+      "label": "CHEMBL441083",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL441083",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2347231",
+      "type": "drug",
+      "label": "CHEMBL2347231",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL2347231",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3815093",
+      "type": "drug",
+      "label": "CHEMBL3815093",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3815093",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL210444",
+      "type": "drug",
+      "label": "CHEMBL210444",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL210444",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL517130",
+      "type": "drug",
+      "label": "CHEMBL517130",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL517130",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4084847",
+      "type": "drug",
+      "label": "CHEMBL4084847",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4084847",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3815074",
+      "type": "drug",
+      "label": "CHEMBL3815074",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3815074",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814998",
+      "type": "drug",
+      "label": "CHEMBL3814998",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814998",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL433205",
+      "type": "drug",
+      "label": "CHEMBL433205",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL433205",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL181617",
+      "type": "drug",
+      "label": "CHEMBL181617",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL181617",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3930316",
+      "type": "drug",
+      "label": "CHEMBL3930316",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3930316",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL440727",
+      "type": "drug",
+      "label": "CHEMBL440727",
+      "primary_target": "RET",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL440727",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814727",
+      "type": "drug",
+      "label": "CHEMBL3814727",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814727",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL437197",
+      "type": "drug",
+      "label": "CHEMBL437197",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL437197",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL437879",
+      "type": "drug",
+      "label": "CHEMBL437879",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL437879",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL57759",
+      "type": "drug",
+      "label": "CHEMBL57759",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL57759",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93966",
+      "type": "drug",
+      "label": "CHEMBL93966",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93966",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814685",
+      "type": "drug",
+      "label": "CHEMBL3814685",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814685",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814211",
+      "type": "drug",
+      "label": "CHEMBL3814211",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814211",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3813948",
+      "type": "drug",
+      "label": "CHEMBL3813948",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3813948",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3221557",
+      "type": "drug",
+      "label": "CHEMBL3221557",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3221557",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3950549",
+      "type": "drug",
+      "label": "CHEMBL3950549",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3950549",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814097",
+      "type": "drug",
+      "label": "CHEMBL3814097",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814097",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3221558",
+      "type": "drug",
+      "label": "CHEMBL3221558",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3221558",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL524132",
+      "type": "drug",
+      "label": "CHEMBL524132",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL524132",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3221560",
+      "type": "drug",
+      "label": "CHEMBL3221560",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3221560",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL94062",
+      "type": "drug",
+      "label": "CHEMBL94062",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL94062",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814121",
+      "type": "drug",
+      "label": "CHEMBL3814121",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814121",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3221561",
+      "type": "drug",
+      "label": "CHEMBL3221561",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3221561",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814179",
+      "type": "drug",
+      "label": "CHEMBL3814179",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814179",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL52197",
+      "type": "drug",
+      "label": "CHEMBL52197",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL52197",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL596736",
+      "type": "drug",
+      "label": "CHEMBL596736",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL596736",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL596754",
+      "type": "drug",
+      "label": "CHEMBL596754",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL596754",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL324371",
+      "type": "drug",
+      "label": "CHEMBL324371",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL324371",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL596755",
+      "type": "drug",
+      "label": "CHEMBL596755",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL596755",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814257",
+      "type": "drug",
+      "label": "CHEMBL3814257",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814257",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL6028594",
+      "type": "drug",
+      "label": "CHEMBL6028594",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL6028594",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5206697",
+      "type": "drug",
+      "label": "CHEMBL5206697",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5206697",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814442",
+      "type": "drug",
+      "label": "CHEMBL3814442",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814442",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL94061",
+      "type": "drug",
+      "label": "CHEMBL94061",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL94061",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL443523",
+      "type": "drug",
+      "label": "CHEMBL443523",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL443523",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL333082",
+      "type": "drug",
+      "label": "CHEMBL333082",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL333082",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814447",
+      "type": "drug",
+      "label": "CHEMBL3814447",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814447",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3814635",
+      "type": "drug",
+      "label": "CHEMBL3814635",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3814635",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93783",
+      "type": "drug",
+      "label": "CHEMBL93783",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93783",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL210502",
+      "type": "drug",
+      "label": "CHEMBL210502",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL210502",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL52015",
+      "type": "drug",
+      "label": "CHEMBL52015",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL52015",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL382073",
+      "type": "drug",
+      "label": "CHEMBL382073",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL382073",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL210378",
+      "type": "drug",
+      "label": "CHEMBL210378",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL210378",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4435699",
+      "type": "drug",
+      "label": "CHEMBL4435699",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4435699",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL329161",
+      "type": "drug",
+      "label": "CHEMBL329161",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL329161",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93295",
+      "type": "drug",
+      "label": "CHEMBL93295",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93295",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL57990",
+      "type": "drug",
+      "label": "CHEMBL57990",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL57990",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93302",
+      "type": "drug",
+      "label": "CHEMBL93302",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93302",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4449681",
+      "type": "drug",
+      "label": "CHEMBL4449681",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4449681",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93049",
+      "type": "drug",
+      "label": "CHEMBL93049",
+      "primary_target": "ERBB2",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93049",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93032",
+      "type": "drug",
+      "label": "CHEMBL93032",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93032",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL92985",
+      "type": "drug",
+      "label": "CHEMBL92985",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL92985",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5181469",
+      "type": "drug",
+      "label": "CHEMBL5181469",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5181469",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3671493",
+      "type": "drug",
+      "label": "CHEMBL3671493",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3671493",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL330224",
+      "type": "drug",
+      "label": "CHEMBL330224",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL330224",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL444724",
+      "type": "drug",
+      "label": "CHEMBL444724",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL444724",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL592713",
+      "type": "drug",
+      "label": "CHEMBL592713",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL592713",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL2424799",
+      "type": "drug",
+      "label": "CHEMBL2424799",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL2424799",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL188762",
+      "type": "drug",
+      "label": "CHEMBL188762",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL188762",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL329183",
+      "type": "drug",
+      "label": "CHEMBL329183",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL329183",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL209818",
+      "type": "drug",
+      "label": "CHEMBL209818",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL209818",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL189779",
+      "type": "drug",
+      "label": "CHEMBL189779",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL189779",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL592617",
+      "type": "drug",
+      "label": "CHEMBL592617",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL592617",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93284",
+      "type": "drug",
+      "label": "CHEMBL93284",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93284",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1221700",
+      "type": "drug",
+      "label": "CHEMBL1221700",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL1221700",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL235851",
+      "type": "drug",
+      "label": "CHEMBL235851",
+      "primary_target": "RET",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL235851",
+        "RET inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL517907",
+      "type": "drug",
+      "label": "CHEMBL517907",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL517907",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL29641",
+      "type": "drug",
+      "label": "CHEMBL29641",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL29641",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3883534",
+      "type": "drug",
+      "label": "CHEMBL3883534",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3883534",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93181",
+      "type": "drug",
+      "label": "CHEMBL93181",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93181",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL329642",
+      "type": "drug",
+      "label": "CHEMBL329642",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL329642",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL329856",
+      "type": "drug",
+      "label": "CHEMBL329856",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL329856",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4765122",
+      "type": "drug",
+      "label": "CHEMBL4765122",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4765122",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL1080815",
+      "type": "drug",
+      "label": "CHEMBL1080815",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL1080815",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL382823",
+      "type": "drug",
+      "label": "CHEMBL382823",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL382823",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4450824",
+      "type": "drug",
+      "label": "CHEMBL4450824",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4450824",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL297968",
+      "type": "drug",
+      "label": "CHEMBL297968",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL297968",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328955",
+      "type": "drug",
+      "label": "CHEMBL328955",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328955",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL299893",
+      "type": "drug",
+      "label": "CHEMBL299893",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL299893",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93635",
+      "type": "drug",
+      "label": "CHEMBL93635",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93635",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3909900",
+      "type": "drug",
+      "label": "CHEMBL3909900",
+      "primary_target": "ERBB2",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3909900",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4439974",
+      "type": "drug",
+      "label": "CHEMBL4439974",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4439974",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3909214",
+      "type": "drug",
+      "label": "CHEMBL3909214",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3909214",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL327838",
+      "type": "drug",
+      "label": "CHEMBL327838",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL327838",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL327307",
+      "type": "drug",
+      "label": "CHEMBL327307",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL327307",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL294395",
+      "type": "drug",
+      "label": "CHEMBL294395",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL294395",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL304929",
+      "type": "drug",
+      "label": "CHEMBL304929",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL304929",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL57892",
+      "type": "drug",
+      "label": "CHEMBL57892",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL57892",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL190651",
+      "type": "drug",
+      "label": "CHEMBL190651",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL190651",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93544",
+      "type": "drug",
+      "label": "CHEMBL93544",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93544",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3911763",
+      "type": "drug",
+      "label": "CHEMBL3911763",
+      "primary_target": "BRAF",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3911763",
+        "BRAF inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL329672",
+      "type": "drug",
+      "label": "CHEMBL329672",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL329672",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93545",
+      "type": "drug",
+      "label": "CHEMBL93545",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93545",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL242541",
+      "type": "drug",
+      "label": "CHEMBL242541",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL242541",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3912598",
+      "type": "drug",
+      "label": "CHEMBL3912598",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3912598",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328106",
+      "type": "drug",
+      "label": "CHEMBL328106",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328106",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328216",
+      "type": "drug",
+      "label": "CHEMBL328216",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328216",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328704",
+      "type": "drug",
+      "label": "CHEMBL328704",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328704",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL301018",
+      "type": "drug",
+      "label": "CHEMBL301018",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL301018",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3898444",
+      "type": "drug",
+      "label": "CHEMBL3898444",
+      "primary_target": "ERBB2",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3898444",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328691",
+      "type": "drug",
+      "label": "CHEMBL328691",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328691",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93461",
+      "type": "drug",
+      "label": "CHEMBL93461",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93461",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3901144",
+      "type": "drug",
+      "label": "CHEMBL3901144",
+      "primary_target": "ERBB2",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3901144",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL190094",
+      "type": "drug",
+      "label": "CHEMBL190094",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL190094",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3901210",
+      "type": "drug",
+      "label": "CHEMBL3901210",
+      "primary_target": "ERBB2",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3901210",
+        "ERBB2 inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328295",
+      "type": "drug",
+      "label": "CHEMBL328295",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328295",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4440618",
+      "type": "drug",
+      "label": "CHEMBL4440618",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4440618",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL93464",
+      "type": "drug",
+      "label": "CHEMBL93464",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL93464",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4443188",
+      "type": "drug",
+      "label": "CHEMBL4443188",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4443188",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL242131",
+      "type": "drug",
+      "label": "CHEMBL242131",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL242131",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL190567",
+      "type": "drug",
+      "label": "CHEMBL190567",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL190567",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328245",
+      "type": "drug",
+      "label": "CHEMBL328245",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328245",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328244",
+      "type": "drug",
+      "label": "CHEMBL328244",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328244",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL328879",
+      "type": "drug",
+      "label": "CHEMBL328879",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL328879",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3219507",
+      "type": "drug",
+      "label": "CHEMBL3219507",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3219507",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL94191",
+      "type": "drug",
+      "label": "CHEMBL94191",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL94191",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL140561",
+      "type": "drug",
+      "label": "CHEMBL140561",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL140561",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5633067",
+      "type": "drug",
+      "label": "CHEMBL5633067",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5633067",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5632830",
+      "type": "drug",
+      "label": "CHEMBL5632830",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5632830",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5632632",
+      "type": "drug",
+      "label": "CHEMBL5632632",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5632632",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5632582",
+      "type": "drug",
+      "label": "CHEMBL5632582",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5632582",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5632548",
+      "type": "drug",
+      "label": "CHEMBL5632548",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5632548",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL543661",
+      "type": "drug",
+      "label": "CHEMBL543661",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL543661",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL543669",
+      "type": "drug",
+      "label": "CHEMBL543669",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL543669",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL543904",
+      "type": "drug",
+      "label": "CHEMBL543904",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL543904",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5632485",
+      "type": "drug",
+      "label": "CHEMBL5632485",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5632485",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5632295",
+      "type": "drug",
+      "label": "CHEMBL5632295",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5632295",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5632007",
+      "type": "drug",
+      "label": "CHEMBL5632007",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5632007",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5631951",
+      "type": "drug",
+      "label": "CHEMBL5631951",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5631951",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5631902",
+      "type": "drug",
+      "label": "CHEMBL5631902",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5631902",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5631882",
+      "type": "drug",
+      "label": "CHEMBL5631882",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5631882",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4098587",
+      "type": "drug",
+      "label": "CHEMBL4098587",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4098587",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5631782",
+      "type": "drug",
+      "label": "CHEMBL5631782",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5631782",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5631574",
+      "type": "drug",
+      "label": "CHEMBL5631574",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5631574",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL4097795",
+      "type": "drug",
+      "label": "CHEMBL4097795",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL4097795",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL544833",
+      "type": "drug",
+      "label": "CHEMBL544833",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL544833",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5633094",
+      "type": "drug",
+      "label": "CHEMBL5633094",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5633094",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5633106",
+      "type": "drug",
+      "label": "CHEMBL5633106",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5633106",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL5633759",
+      "type": "drug",
+      "label": "CHEMBL5633759",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL5633759",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL3133902",
+      "type": "drug",
+      "label": "CHEMBL3133902",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL3133902",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL542484",
+      "type": "drug",
+      "label": "CHEMBL542484",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL542484",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL571809",
+      "type": "drug",
+      "label": "CHEMBL571809",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL571809",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL570918",
+      "type": "drug",
+      "label": "CHEMBL570918",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL570918",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL56936",
+      "type": "drug",
+      "label": "CHEMBL56936",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL56936",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL56912",
+      "type": "drug",
+      "label": "CHEMBL56912",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL56912",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL542729",
+      "type": "drug",
+      "label": "CHEMBL542729",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL542729",
+        "EGFR inhibitor"
+      ]
+    },
+    {
+      "id": "CHEMBL542733",
+      "type": "drug",
+      "label": "CHEMBL542733",
+      "primary_target": "EGFR",
+      "max_phase": null,
+      "synonyms": [
+        "CHEMBL542733",
+        "EGFR inhibitor"
+      ]
+    }
+  ]
+}

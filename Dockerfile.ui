@@ -1,0 +1,31 @@
+# NSCLC Insight Engine — UI (Dash)
+#
+# Build:  docker build -f Dockerfile.ui -t nsclc-ui:latest .
+# Run:    docker compose up ui
+
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PORT=8050 \
+    LOG_LEVEL=info
+
+WORKDIR /app
+
+COPY nsclc_ui/requirements.ui.txt /app/requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r /app/requirements.txt
+
+COPY nsclc_ui/ /app/nsclc_ui/
+
+WORKDIR /app
+
+EXPOSE 8050
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8050/', timeout=3)" || exit 1
+
+# Dash app 실행 — ui/ 디렉토리를 모듈로 인식하기 위해 PYTHONPATH 설정
+ENV PYTHONPATH=/app
+CMD ["python", "-m", "nsclc_ui.app"]
