@@ -49,7 +49,7 @@ from tool_schemas import TOOL_REGISTRY  # noqa: E402
 
 # ===== 로깅 =====
 logging.basicConfig(
-    level=os.environ.get("LOG_LEVEL", "INFO"),
+    level=os.environ.get("LOG_LEVEL", "INFO").upper(),
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
 )
 log = logging.getLogger("nsclc-server")
