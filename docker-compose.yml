@@ -54,6 +54,9 @@ services:
     depends_on:
       supervisor:
         condition: service_healthy
+    volumes:
+      - /home/ec2-user/nsclc/hostdata/data:/app/data:ro
+      - /home/ec2-user/nsclc/hostdata/agentcore:/app/agentcore:ro
 
 networks:
   default:
