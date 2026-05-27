@@ -785,7 +785,9 @@ class NSCLCSupervisor:
             for chunk in self._invoke_with_bedrock_converse_stream(
                 model_query, tool_invoker, selected_model
             ):
-                if chunk.get("type") == "text_chunk":
+                if chunk.get("type") == "replace_text":
+                    accumulated_text = chunk.get("text", "")
+                elif chunk.get("type") == "text_chunk":
                     accumulated_text += chunk["text"]
                 if chunk.get("type") == "turn_end":
                     n_turns = chunk.get("turn", n_turns)
@@ -852,7 +854,13 @@ class NSCLCSupervisor:
         agent = Agent(model=model, system_prompt=self.system_prompt, tools=ALL_TOOLS)
         return str(agent(query))
 
-    def _build_converse_request(self, messages: list, selected_model: str) -> dict:
+    def _build_converse_request(
+        self,
+        messages: list,
+        selected_model: str,
+        *,
+        include_tools: bool = True,
+    ) -> dict:
         # ★ v4.1: Haiku 전용 prompt augmentation
         active_prompt = self.system_prompt
         if "haiku" in (selected_model or "").lower():
@@ -866,26 +874,25 @@ class NSCLCSupervisor:
         else:
             system_blocks = [{"text": active_prompt}]
 
-        tool_specs = [
-            {"toolSpec": {
-                "name": schema.name,
-                "description": schema.description,
-                "inputSchema": {"json": schema.input_schema},
-            }}
-            for schema in TOOL_REGISTRY.values()
-        ]
-        if self.enable_prompt_caching:
-            tool_config = {"tools": tool_specs + [{"cachePoint": {"type": "default"}}]}
-        else:
-            tool_config = {"tools": tool_specs}
-
         request = {
             "modelId": selected_model or self.model_id,  # ★ v4
             "system": system_blocks,
             "messages": messages,
-            "toolConfig": tool_config,
             "inferenceConfig": {"maxTokens": 6144, "temperature": 0.2},
         }
+        if include_tools:
+            tool_specs = [
+                {"toolSpec": {
+                    "name": schema.name,
+                    "description": schema.description,
+                    "inputSchema": {"json": schema.input_schema},
+                }}
+                for schema in TOOL_REGISTRY.values()
+            ]
+            if self.enable_prompt_caching:
+                request["toolConfig"] = {"tools": tool_specs + [{"cachePoint": {"type": "default"}}]}
+            else:
+                request["toolConfig"] = {"tools": tool_specs}
         if self.guardrail_id:
             request["guardrailConfig"] = {
                 "guardrailIdentifier": self.guardrail_id,
@@ -893,6 +900,71 @@ class NSCLCSupervisor:
                 "trace": "enabled",
             }
         return request
+
+    def _rewrite_guardrail_intervention(
+        self,
+        client,
+        messages: list,
+        selected_model: str,
+        draft_text: str,
+    ) -> str:
+        rewrite_prompt = (
+            "이전 초안은 임상 지시처럼 보이는 표현 때문에 중단되었다. "
+            "이미 수집된 도구 결과와 인용만 사용해 한국어 연구용 근거 요약으로 다시 작성한다.\n"
+            "요구사항:\n"
+            "- 처방, 투여 지시, 환자별 치료 결정 문장을 쓰지 않는다.\n"
+            "- '권고한다' 대신 '근거상 옵션', '임상적으로 검토되는 후보'라고 쓴다.\n"
+            "- 용량/복용법/부작용 관리 섹션은 사용자가 직접 묻지 않았으면 생략한다.\n"
+            "- 수치, 모델 지표, PRISM/OOF, PMID/FDA/ESMO 출처는 보존한다.\n"
+            "- 1) 핵심 결론 2) 문헌/가이드라인 근거 3) 모델/세포주 근거 4) 한계 순서로 1400자 이내."
+        )
+        original_question = ""
+        if messages and messages[0].get("content"):
+            original_question = messages[0]["content"][0].get("text", "")
+        rewrite_messages = [{
+            "role": "user",
+            "content": [{
+                "text": (
+                    f"{rewrite_prompt}\n\n"
+                    f"[Original question]\n{original_question[:1200]}\n\n"
+                    f"[Interrupted draft]\n{(draft_text or '')[:6000]}"
+                )
+            }],
+        }]
+        try:
+            request = self._build_converse_request(
+                rewrite_messages,
+                selected_model,
+                include_tools=False,
+            )
+            response = client.converse(**request)
+            content = response.get("output", {}).get("message", {}).get("content", [])
+            text = "".join(block.get("text", "") for block in content if "text" in block).strip()
+            stop_reason = response.get("stopReason", "")
+            log.info(
+                "bedrock_stream guardrail_rewrite_complete stop_reason=%s text_chars=%d",
+                stop_reason,
+                len(text),
+            )
+            if text and stop_reason != "guardrail_intervened":
+                return text
+        except Exception:
+            log.exception("bedrock_stream guardrail_rewrite_failed")
+
+        fallback = (draft_text or "").replace("[Guardrail Intervened]", "").strip()
+        marker = "NSCLC Insight Engine은"
+        if marker in fallback:
+            fallback = fallback.split(marker, 1)[0].strip()
+        if fallback:
+            return (
+                f"{fallback}\n\n"
+                "본 내용은 연구 참고용 근거 요약이며, 실제 임상 판단은 전문 의료인의 검토가 필요합니다."
+            )
+        return (
+            "연구 참고용 근거 요약을 생성하는 중 일부 임상 지시성 표현이 제한되었습니다. "
+            "수집된 도구 결과는 우측 Evidence / Tool Trace에서 확인할 수 있으며, "
+            "실제 임상 판단은 전문 의료인의 검토가 필요합니다."
+        )
 
     def _invoke_with_bedrock_converse(
         self,
@@ -1193,8 +1265,17 @@ class NSCLCSupervisor:
                         })
                 messages.append({"role": "user", "content": tool_results})
             elif stop_reason == "guardrail_intervened":
-                yield {"type": "text_chunk",
-                       "text": "\n\n[Guardrail Intervened]"}
+                draft_text = "".join(
+                    block.get("text", "") for block in assistant_content if "text" in block
+                )
+                rewrite_text = self._rewrite_guardrail_intervention(
+                    client,
+                    messages,
+                    selected_model,
+                    draft_text,
+                )
+                yield {"type": "replace_text", "text": ""}
+                yield {"type": "text_chunk", "text": rewrite_text}
                 return
             else:
                 log.info("bedrock_stream stop_other turn=%d stop_reason=%s", turn_no, stop_reason)

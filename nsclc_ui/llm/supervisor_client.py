@@ -421,6 +421,8 @@ def chunks_to_store_updates(
         ctype = ch.get("type")
         if ctype == "text_chunk":
             text += ch.get("text", "")
+        elif ctype == "replace_text":
+            text = ch.get("text", "")
         elif ctype == "tool_start":
             entry = {
                 "step": len(tools) + 1,
