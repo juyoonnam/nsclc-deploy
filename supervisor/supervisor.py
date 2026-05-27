@@ -98,6 +98,17 @@ _SIMPLE_SHORT_KEYWORDS = [
     "shap", "metadata", "정보", "기전만", "mechanism only",
 ]
 
+_PUBMED_TOOL_NAMES = {"search_pubmed", "extract_paper_evidence"}
+_PUBMED_QUERY_HINTS = (
+    "pubmed", "pmid", "논문", "문헌", "paper", "papers", "literature",
+    "abstract", "초록", "evidence paper",
+)
+
+
+def _allow_pubmed_tools(query: str) -> bool:
+    q = (query or "").lower()
+    return any(hint in q for hint in _PUBMED_QUERY_HINTS)
+
 
 def _classify_query_complexity(query: str) -> str:
     """Query 복잡도 분류. Returns 'simple' or 'complex'.
@@ -682,14 +693,16 @@ class NSCLCSupervisor:
         # ★ v4: hybrid 모델 선택
         selected_model, complexity = self._select_model_for_query(query)
         model_query = self._frame_query_for_guardrails(query)
+        allow_pubmed_tools = _allow_pubmed_tools(query)
         _log(f"ROUTING: query → {complexity} → {selected_model}")
         log.info(
-            "supervisor_invoke start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s",
+            "supervisor_invoke start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s pubmed_enabled=%s",
             _diag_timestamp(),
             len(query),
             len(model_query),
             selected_model,
             complexity,
+            allow_pubmed_tools,
         )
 
         token = _TOOL_INVOKER.set(tool_invoker)
@@ -703,13 +716,15 @@ class NSCLCSupervisor:
                     backend = "strands"
                 else:
                     response_text, n_turns = self._invoke_with_bedrock_converse(
-                        model_query, tool_invoker, selected_model
+                        model_query, tool_invoker, selected_model,
+                        allow_pubmed_tools=allow_pubmed_tools,
                     )
             except Exception as e:
                 _log(f"Primary backend failed: {type(e).__name__}: {e}")
                 try:
                     response_text, n_turns = self._invoke_with_bedrock_converse(
-                        model_query, tool_invoker, selected_model
+                        model_query, tool_invoker, selected_model,
+                        allow_pubmed_tools=allow_pubmed_tools,
                     )
                     backend = "bedrock_converse_fallback"
                 except Exception as e2:
@@ -763,6 +778,7 @@ class NSCLCSupervisor:
         # ★ v4: hybrid 모델 선택
         selected_model, complexity = self._select_model_for_query(query)
         model_query = self._frame_query_for_guardrails(query)
+        allow_pubmed_tools = _allow_pubmed_tools(query)
         _log(f"ROUTING: query → {complexity} → {selected_model}")
 
         token = _TOOL_INVOKER.set(tool_invoker)
@@ -770,20 +786,32 @@ class NSCLCSupervisor:
         try:
             # 라우팅 정보를 첫 chunk로 yield
             log.info(
-                "supervisor_stream start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s",
+                "supervisor_stream start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s pubmed_enabled=%s",
                 _diag_timestamp(),
                 len(query),
                 len(model_query),
                 selected_model,
                 complexity,
+                allow_pubmed_tools,
             )
-            yield {"type": "routing", "model": selected_model, "complexity": complexity}
-            log.info("supervisor_stream routing_emitted model=%s complexity=%s", selected_model, complexity)
+            yield {
+                "type": "routing",
+                "model": selected_model,
+                "complexity": complexity,
+                "pubmed_enabled": allow_pubmed_tools,
+            }
+            log.info(
+                "supervisor_stream routing_emitted model=%s complexity=%s pubmed_enabled=%s",
+                selected_model,
+                complexity,
+                allow_pubmed_tools,
+            )
 
             accumulated_text = ""
             n_turns = 0
             for chunk in self._invoke_with_bedrock_converse_stream(
-                model_query, tool_invoker, selected_model
+                model_query, tool_invoker, selected_model,
+                allow_pubmed_tools=allow_pubmed_tools,
             ):
                 if chunk.get("type") == "replace_text":
                     accumulated_text = chunk.get("text", "")
@@ -860,6 +888,7 @@ class NSCLCSupervisor:
         selected_model: str,
         *,
         include_tools: bool = True,
+        allow_pubmed_tools: bool = False,
     ) -> dict:
         # ★ v4.1: Haiku 전용 prompt augmentation
         active_prompt = self.system_prompt
@@ -888,7 +917,13 @@ class NSCLCSupervisor:
                     "inputSchema": {"json": schema.input_schema},
                 }}
                 for schema in TOOL_REGISTRY.values()
+                if allow_pubmed_tools or schema.name not in _PUBMED_TOOL_NAMES
             ]
+            log.info(
+                "bedrock_converse tool_config tools=%d pubmed_enabled=%s",
+                len(tool_specs),
+                allow_pubmed_tools,
+            )
             if self.enable_prompt_caching:
                 request["toolConfig"] = {"tools": tool_specs + [{"cachePoint": {"type": "default"}}]}
             else:
@@ -971,6 +1006,8 @@ class NSCLCSupervisor:
         query: str,
         tool_invoker: ToolInvoker,
         selected_model: str,
+        *,
+        allow_pubmed_tools: bool = False,
     ) -> tuple[str, int]:
         import boto3
         client = boto3.client("bedrock-runtime", region_name=self.region)
@@ -980,7 +1017,11 @@ class NSCLCSupervisor:
             turn_no = turn + 1
             turn_start = time.time()
             turn_started_at = _diag_timestamp()
-            request = self._build_converse_request(messages, selected_model)
+            request = self._build_converse_request(
+                messages,
+                selected_model,
+                allow_pubmed_tools=allow_pubmed_tools,
+            )
             log.info(
                 "bedrock_converse turn_start turn=%d started_at=%s model=%s messages=%d",
                 turn_no,
@@ -999,7 +1040,11 @@ class NSCLCSupervisor:
                         f"{type(e).__name__}: {e}",
                     )
                     self.enable_prompt_caching = False
-                    request = self._build_converse_request(messages, selected_model)
+                    request = self._build_converse_request(
+                        messages,
+                        selected_model,
+                        allow_pubmed_tools=allow_pubmed_tools,
+                    )
                     response = client.converse(**request)
                 else:
                     log.exception("bedrock_converse turn_error turn=%d", turn_no)
@@ -1084,6 +1129,8 @@ class NSCLCSupervisor:
         query: str,
         tool_invoker: ToolInvoker,
         selected_model: str,
+        *,
+        allow_pubmed_tools: bool = False,
     ) -> Iterator[dict]:
         import boto3
         client = boto3.client("bedrock-runtime", region_name=self.region)
@@ -1093,7 +1140,11 @@ class NSCLCSupervisor:
             turn_no = turn + 1
             turn_start = time.time()
             turn_started_at = _diag_timestamp()
-            request = self._build_converse_request(messages, selected_model)
+            request = self._build_converse_request(
+                messages,
+                selected_model,
+                allow_pubmed_tools=allow_pubmed_tools,
+            )
             log.info(
                 "bedrock_stream turn_start turn=%d started_at=%s model=%s messages=%d",
                 turn_no,
@@ -1111,7 +1162,11 @@ class NSCLCSupervisor:
                         f"{type(e).__name__}: {e}",
                     )
                     self.enable_prompt_caching = False
-                    request = self._build_converse_request(messages, selected_model)
+                    request = self._build_converse_request(
+                        messages,
+                        selected_model,
+                        allow_pubmed_tools=allow_pubmed_tools,
+                    )
                     stream_response = client.converse_stream(**request)
                 else:
                     log.exception("bedrock_stream turn_error turn=%d", turn_no)
