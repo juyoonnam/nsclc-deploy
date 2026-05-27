@@ -84,28 +84,17 @@ def layout(**kwargs):
             html.Div(
                 className="nsclc-home-shell",
                 children=[
-                    # Col 1 — 48px icon rail
-                    html.Div(
-                        className="nsclc-rail",
-                        children=[
-                            html.Div(
-                                "💬",
-                                className="rail-button active",
-                                title="NSCLC Insight Assistant",
-                            ),
-                        ],
-                    ),
-                    # Col 2 — scenario sidebar
+                    # Col 1 — scenario sidebar
                     html.Div(
                         className="scenario-shell",
                         children=scenario_accordion(),
                     ),
-                    # Col 3 — chat assistant
+                    # Col 2 — chat assistant
                     html.Div(
                         className="chat-shell",
                         children=_chat_area(),
                     ),
-                    # Col 4 — evidence (tool trace + top findings)
+                    # Col 3 — evidence (tool trace + top findings)
                     html.Div(
                         className="evidence-shell",
                         children=tool_trace_panel(),

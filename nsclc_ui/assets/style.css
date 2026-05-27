@@ -4627,7 +4627,7 @@ a:hover .mantine-Text-root {
  * ============================================================ */
 .nsclc-home-shell {
   display: grid;
-  grid-template-columns: var(--nsclc-rail-width) minmax(260px, 330px) minmax(620px, 1fr) minmax(300px, 380px);
+  grid-template-columns: minmax(300px, 380px) minmax(620px, 1fr) minmax(300px, 380px);
   gap: 0;
   /* header(64) + app-shell paddingTop(8) + paddingBottom(24) 보정.
      app.py outer container가 padding 적용하므로 vh 풀로 잡지 않고 자연 높이 사용. */
@@ -4639,37 +4639,7 @@ a:hover .mantine-Text-root {
   border: 1px solid var(--nsclc-border-subtle);
 }
 
-/* Rail (48px, 좌측) */
-.nsclc-rail {
-  width: var(--nsclc-rail-width);
-  border-right: 1px solid var(--nsclc-border-subtle);
-  background: #050914;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 14px 0;
-  gap: 10px;
-}
-
-.rail-button {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--nsclc-radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #93a4bd;
-  border: 1px solid transparent;
-  background: transparent;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.rail-button.active {
-  background: linear-gradient(180deg, rgba(60, 52, 137, 0.95), rgba(38, 45, 105, 0.95));
-  color: #ffffff;
-  border-color: rgba(124, 92, 255, 0.35);
-}
+/* Rail (48px, 좌측) — v3.1에서 제거됨. 룰 삭제로 dead CSS 정리. */
 
 /* ============================================================
  * Scenario panel (좌측)
@@ -4809,18 +4779,11 @@ a:hover .mantine-Text-root {
 }
 
 /* ============================================================
- * 좁은 폭 (1366 미만)에서 기능은 유지하되 수직 스택으로 fallback
+ * 좁은 폭 (1180 미만)에서 기능은 유지하되 단일 컬럼 스택으로 fallback
  * — 데스크톱 1600px 이상이 메인. 모바일 우선순위 아님.
  * ============================================================ */
 @media (max-width: 1180px) {
   .nsclc-home-shell {
-    grid-template-columns: var(--nsclc-rail-width) 1fr;
-  }
-  .nsclc-home-shell > .scenario-shell,
-  .nsclc-home-shell > .evidence-shell {
-    grid-column: 2;
-  }
-  .nsclc-home-shell > .chat-shell {
-    grid-column: 2;
+    grid-template-columns: 1fr;
   }
 }
