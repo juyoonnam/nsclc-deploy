@@ -29,6 +29,8 @@ import logging
 import os
 import sys
 import time
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict
 from pathlib import Path
 from typing import AsyncIterator
@@ -177,10 +179,24 @@ async def invoke_stream(req: InvokeRequest):
         chunk_count = 0
         last_ctype = ""
         saw_text = False
+        loop = asyncio.get_running_loop()
+        executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix=f"sse-{req_id[:8]}")
+        end_of_stream = object()
+
+        def next_chunk(iterator):
+            try:
+                return next(iterator)
+            except StopIteration:
+                return end_of_stream
+
         try:
             sup = get_supervisor()
-            # supervisor.invoke_stream은 sync generator. async wrapper.
-            for chunk in sup.invoke_stream(query):
+            # supervisor.invoke_stream is a sync generator backed by blocking boto3 calls.
+            stream_iter = sup.invoke_stream(query)
+            while True:
+                chunk = await loop.run_in_executor(executor, next_chunk, stream_iter)
+                if chunk is end_of_stream:
+                    break
                 ctype = chunk.get("type", "message")
                 chunk_count += 1
                 last_ctype = ctype
@@ -206,6 +222,7 @@ async def invoke_stream(req: InvokeRequest):
                     "event": ctype,
                     "data": json.dumps(chunk, ensure_ascii=False, default=str),
                 }
+                await asyncio.sleep(0)
                 if ctype in ("done", "error"):
                     log.info(
                         "invoke_stream terminal_emitted type=%s chunks=%d req_id=%s elapsed_sec=%.3f",
@@ -234,6 +251,7 @@ async def invoke_stream(req: InvokeRequest):
                 len(query),
                 time.time() - request_start,
             )
+            executor.shutdown(wait=False)
 
     return EventSourceResponse(event_generator())
 
