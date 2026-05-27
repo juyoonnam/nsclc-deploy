@@ -35,7 +35,13 @@ def tool_trace_panel() -> dmc.Paper:
         radius="md",
         p="md",
         withBorder=True,
-        style={"minHeight": "640px", "maxHeight": "780px", "overflowY": "auto"},
+        className="tool-trace-card",
+        style={
+            "minHeight": "640px",
+            "maxHeight": "780px",
+            "overflowY": "auto",
+            "background": "rgba(7, 16, 29, 0.96)",
+        },
         children=[
             dmc.Stack(
                 gap="md",
@@ -44,13 +50,16 @@ def tool_trace_panel() -> dmc.Paper:
                     dmc.Group(
                         gap="xs",
                         align="center",
+                        className="panel-header-row",
                         children=[
                             html.Span("✨", style={"fontSize": "18px"}),
-                            dmc.Text("추적 근거", fw=500, size="sm"),
+                            dmc.Text("추적 근거", fw=700, size="sm",
+                                     className="panel-title"),
                             dmc.Text(
                                 "(Evidence / Tool Trace)",
                                 size="xs",
                                 c="dimmed",
+                                className="panel-subtitle",
                             ),
                         ],
                     ),
