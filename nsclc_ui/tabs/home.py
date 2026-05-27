@@ -491,6 +491,12 @@ def _render_thread(history: list, streaming: dict | None) -> list:
 # Callbacks
 # ════════════════════════════════════════════════════════════
 
+def _single_turn_user_history(history: list | None) -> list:
+    """Keep only the most recent user message for demo-stable single-turn chat."""
+    users = [m for m in list(history or []) if m.get("role") == "user"]
+    return users[-1:] if users else []
+
+
 @callback(
     Output("chat-history-store", "data", allow_duplicate=True),
     Output("streaming-job-store", "data", allow_duplicate=True),
@@ -520,29 +526,13 @@ def on_submit_or_scenario(submit_clicks, scenario_clicks, input_value,
 
     from nsclc_ui.llm.supervisor_client import (
         cleanup_job,
-        is_job_stale,
         start_streaming_invoke,
     )
 
-    # 이미 streaming 중이면 새 query 무시. 단 stale job은 정리하고 새 query를 허용.
-    if current_streaming and current_streaming.get("active"):
-        active_job_id = current_streaming.get("job_id", "")
-        if active_job_id and is_job_stale(active_job_id):
-            log.warning(
-                "stream submit cleanup stale active_job=%s trigger=%s",
-                active_job_id,
-                trig,
-            )
-            cleanup_job(active_job_id)
-        else:
-            log.info(
-                "stream submit ignored active_job=%s trigger=%s",
-                active_job_id,
-                trig,
-            )
-            return (no_update, no_update, no_update, no_update,
-                    no_update, no_update, no_update)
-
+    previous_job_id = (current_streaming or {}).get("job_id", "")
+    if previous_job_id:
+        log.info("single-turn reset cleanup previous_job=%s trigger=%s", previous_job_id, trig)
+        cleanup_job(previous_job_id)
 
     query = None
     qid_full = no_update
@@ -574,8 +564,7 @@ def on_submit_or_scenario(submit_clicks, scenario_clicks, input_value,
         return (no_update, no_update, no_update, no_update,
                 no_update, no_update, no_update)
 
-    history = list(history or [])
-    history.append({"role": "user", "content": query})
+    history = [{"role": "user", "content": query}]
 
     start_info = start_streaming_invoke(query)
     job_id = start_info.get("job_id", "")
@@ -638,10 +627,46 @@ def on_interval_poll(n, streaming, history):
         chunks_to_store_updates,
         build_findings_from_text,
         build_stats_from_tools,
+        get_job_result,
+        is_job_done,
     )
 
     chunks = poll_streaming_chunks(job_id)
     if not chunks:
+        if is_job_done(job_id):
+            final_result = get_job_result(job_id) or {}
+            final_text = final_result.get("text") or streaming.get("text") or "(응답 완료)"
+            tools = streaming.get("tools", [])
+            violations = final_result.get("violations", [])
+            new_streaming = {
+                **streaming,
+                "active": False,
+                "text": final_text,
+                "tools": tools,
+            }
+            tool_trace = {
+                "tools": tools,
+                "findings": build_findings_from_text(final_text),
+                "stats": build_stats_from_tools(tools, has_violations=bool(violations)),
+            }
+            history = _single_turn_user_history(history)
+            history.append({
+                "role": "assistant",
+                "content": final_text,
+                "meta": {
+                    "backend": final_result.get("backend", "bedrock_converse_stream"),
+                    "latency_sec": final_result.get("latency_sec", 0),
+                    "n_tools": len(tools),
+                    "violations": violations,
+                },
+            })
+            log.info(
+                "stream poll terminal fallback job_id=%s text_len=%d tools=%d",
+                job_id,
+                len(final_text),
+                len(tools),
+            )
+            return history, new_streaming, tool_trace, True, False
         return no_update, no_update, no_update, no_update, no_update
     log.info(
         "stream poll job_id=%s chunks=%d types=%s",
@@ -687,7 +712,7 @@ def on_interval_poll(n, streaming, history):
             latency = final_result.get("latency_sec", 0)
             backend = final_result.get("backend", "bedrock_converse_stream")
 
-            history = list(history or [])
+            history = _single_turn_user_history(history)
             history.append({
                 "role": "assistant",
                 "content": final_text,
@@ -706,7 +731,7 @@ def on_interval_poll(n, streaming, history):
                 updates["tools"], has_violations=bool(violations)
             )
         elif updates.get("error"):
-            history = list(history or [])
+            history = _single_turn_user_history(history)
             history.append({
                 "role": "assistant",
                 "content": f"❌ {updates['error']}",
@@ -714,7 +739,7 @@ def on_interval_poll(n, streaming, history):
                          "n_tools": 0, "violations": []},
             })
         else:
-            history = list(history or [])
+            history = _single_turn_user_history(history)
             history.append({
                 "role": "assistant",
                 "content": updates["text"] or "(응답 없음)",
