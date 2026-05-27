@@ -81,31 +81,41 @@ def layout(**kwargs):
     return dmc.Stack(
         gap="sm",
         children=[
-            _hero(),
-            dmc.Grid(
-                gutter="md",
+            html.Div(
+                className="nsclc-home-shell",
                 children=[
-                    dmc.GridCol(
-                        span={"base": 12, "md": 3},
+                    # Col 1 — 48px icon rail
+                    html.Div(
+                        className="nsclc-rail",
+                        children=[
+                            html.Div(
+                                "💬",
+                                className="rail-button active",
+                                title="NSCLC Insight Assistant",
+                            ),
+                        ],
+                    ),
+                    # Col 2 — scenario sidebar
+                    html.Div(
+                        className="scenario-shell",
                         children=scenario_accordion(),
                     ),
-                    dmc.GridCol(
-                        span={"base": 12, "md": 6},
+                    # Col 3 — chat assistant
+                    html.Div(
+                        className="chat-shell",
                         children=_chat_area(),
                     ),
-                    dmc.GridCol(
-                        span={"base": 12, "md": 3},
+                    # Col 4 — evidence (tool trace + top findings)
+                    html.Div(
+                        className="evidence-shell",
                         children=tool_trace_panel(),
                     ),
                 ],
             ),
-            dmc.Text(
+            html.Div(
                 "본 응답은 연구 참고용이며, 임상적 판단 및 처방 결정의 책임은 전문 의료인에게 있습니다. "
                 "모든 응답은 22개 MCP 도구가 산출한 정량 근거에 기반합니다.",
-                size="xs",
-                c="dimmed",
-                ta="center",
-                mt="md",
+                className="nsclc-disclaimer",
             ),
             # Stores
             dcc.Store(id="chat-history-store", data=[]),
@@ -152,6 +162,9 @@ def _pathway_popup_modal() -> dmc.Modal:
 
 
 def _hero() -> dmc.Group:
+    """v3.0: 더 이상 layout에서 호출되지 않음. status 배지는 header.py로 이전.
+    함수 본체는 backwards-compat을 위해 보존 (외부 import 가능성 차단용 dead code).
+    """
     return dmc.Group(
         justify="space-between",
         align="center",
@@ -184,53 +197,77 @@ def _hero() -> dmc.Group:
 
 def _chat_area() -> dmc.Paper:
     return dmc.Paper(
-        radius="md",
-        p="md",
-        withBorder=True,
-        style={"minHeight": "640px", "display": "flex", "flexDirection": "column"},
+        radius=0,
+        p=0,
+        withBorder=False,
+        style={
+            "minHeight": "0",
+            "height": "100%",
+            "display": "flex",
+            "flexDirection": "column",
+            "background": "transparent",
+            "border": "0",
+        },
         children=[
             html.Div(
-                id="chat-thread",
-                style={
-                    "flex": "1",
-                    "overflowY": "auto",
-                    "minHeight": "500px",
-                    "maxHeight": "640px",
-                    "marginBottom": "12px",
-                    "padding": "4px",
-                },
-                children=[_initial_welcome()],
-            ),
-            dmc.Stack(
-                gap="xs",
+                className="chat-title-row",
                 children=[
-                    dmc.Textarea(
-                        id="chat-input",
-                        placeholder="NSCLC 인사이트를 위해 무엇이든 물어보세요...",
-                        autosize=True,
-                        minRows=2,
-                        maxRows=6,
-                    ),
-                    dmc.Group(
-                        justify="flex-end",
-                        children=[
-                            dmc.Group(
-                                gap="xs",
-                                children=[
-                                    dmc.Text("⏎ Enter로 전송", size="xs", c="dimmed"),
-                                    dmc.Button(
-                                        "전송",
-                                        id="chat-submit-btn",
-                                        rightSection=html.Span("➤"),
-                                        variant="gradient",
-                                        gradient={"from": "violet", "to": "blue"},
-                                        size="sm",
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
+                    html.Span("NSCLC Insight Assistant", className="chat-title"),
+                    html.Span("AI · Evidence-grounded", className="chat-ai-badge"),
                 ],
+            ),
+            html.Div(
+                "답을 주는 AI가 아니라 사용자의 판단을 강화하는 플랫폼",
+                className="chat-subtitle",
+            ),
+            html.Div(
+                className="chat-thread-wrap",
+                children=html.Div(
+                    id="chat-thread",
+                    style={
+                        "flex": "1",
+                        "overflowY": "auto",
+                        "minHeight": "500px",
+                        "maxHeight": "640px",
+                        "marginBottom": "0",
+                        "padding": "4px 4px 12px 4px",
+                    },
+                    children=[_initial_welcome()],
+                ),
+            ),
+            html.Div(
+                className="chat-input-wrap",
+                children=dmc.Stack(
+                    gap="xs",
+                    children=[
+                        dmc.Textarea(
+                            id="chat-input",
+                            placeholder="NSCLC 인사이트를 위해 무엇이든 물어보세요...",
+                            autosize=True,
+                            minRows=2,
+                            maxRows=6,
+                        ),
+                        dmc.Group(
+                            justify="flex-end",
+                            children=[
+                                dmc.Group(
+                                    gap="xs",
+                                    children=[
+                                        dmc.Text("⏎ Enter로 전송", size="xs", c="dimmed"),
+                                        dmc.Button(
+                                            "전송",
+                                            id="chat-submit-btn",
+                                            rightSection=html.Span("➤"),
+                                            variant="gradient",
+                                            gradient={"from": "violet", "to": "blue"},
+                                            size="sm",
+                                        ),
+                                    ],
+                                ),
+                            ],
+                        ),
+                    ],
+                ),
             ),
         ],
     )
@@ -242,7 +279,7 @@ def _chat_area() -> dmc.Paper:
 
 def _initial_welcome() -> html.Div:
     return _assistant_bubble_text(children=[
-        dmc.Text("안녕하세요! NSCLC Insight Engine 입니다.", fw=500, size="sm"),
+        dmc.Text("안녕하세요! NSCLC Insight Assistant 입니다.", fw=500, size="sm"),
         dmc.Text(
             "좌측 카테고리에서 ⭐ 표시된 시나리오를 선택하거나 자유롭게 질문해보세요.",
             size="sm",
