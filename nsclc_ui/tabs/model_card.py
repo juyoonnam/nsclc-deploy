@@ -1,11 +1,11 @@
 """
-Model Card — 3 모델 정직 공개.
+Model Card — 3 Models.
 
 - Champion E6 (frozen, classification): 임상 적합성 binary
 - A v3 (regression): PRISM cell-line lfc
 - B (hybrid transfer): TCGA → CCLE cosine sim + target-aware tier ranking
 
-§1.4 약점 먼저 원칙으로 약점 섹션 각 카드에 포함.
+Limitations 섹션을 각 카드에 명시.
 """
 
 import json
@@ -71,7 +71,7 @@ def _model_card(title, applied_badge_color, applied_text, kpis, technical, weakn
             dmc.SimpleGrid(cols=4, spacing="xs", children=kpis),
             dmc.Text("Technical", size="xs", fw=500, c="dimmed", mt=10, mb=2),
             dmc.Text(technical, size="xs", ff="monospace", c="dimmed", mb=10),
-            dmc.Text("§1.4 정직 공개 — 알려진 약점", size="xs", fw=500,
+            dmc.Text("Limitations", size="xs", fw=500,
                      style={"color": "#F0997B"}, mb=4),
             dmc.Stack([
                 dmc.Text(f"• {w}", size="xs", c="dimmed", lh=1.5)
@@ -107,7 +107,7 @@ _card_e6 = _model_card(
         "Phase A KNN imputation: external compound 5.8% preservation — 외부 SMILES 직접 적용 불가",
         "Mordred 1,613 descriptors → −21.9% degradation (information dilution, 재시도 X)",
         "BindingDB pIC50 보강 fail (97% ChEMBL overlap, 동일 source 효과)",
-        "PR-AUC 0.1253 < 목표 0.30 — Pre PR-AUC 0.10 정직 공개로 신뢰 얻은 패턴 유지",
+        "PR-AUC 0.1253 < 목표 0.30 — Pre PR-AUC 0.10과 동일 잣대로 보고",
     ],
 )
 
@@ -187,9 +187,9 @@ _card_b = _model_card(
 
 _narrative = dmc.Paper(
     children=[
-        dmc.Text("📝 발표 narrative — §1.4 약점 먼저 원칙", size="sm", fw=500, mb=8),
+        dmc.Text("📝 발표 narrative — Limitations 원칙", size="sm", fw=500, mb=8),
         dmc.Text(
-            "Pre 단계에서 PR-AUC 0.0972 (목표 0.30 미달) 정직 공개 → 발표 신뢰 얻음. "
+            "Pre 단계에서 PR-AUC 0.0972 (목표 0.30 미달)를 동일 잣대로 보고함. "
             "Final도 같은 원칙. STRICT/RELAXED 두 metric 동시 공개. "
             "v4 ablation으로 cell baseline vs compound novelty 신호 분리 확인. "
             "B 모델에서 pure transfer 한계 발견 → tier 도입.",
@@ -245,12 +245,11 @@ _data_sources = dmc.Paper(
 
 layout = dmc.Stack([
     dmc.Group([
-        dmc.Title("Model Card — 3 모델 정직 공개", order=3, c=COLORS["text_primary"]),
-        dmc.Badge("Final · D-10", color="grape", variant="filled"),
+        dmc.Title("Model Card — 3 Models", order=3, c=COLORS["text_primary"]),
     ], gap=8),
     dmc.Text(
         "Champion (분류) + A regression (정량) + B hybrid (환자 ranking) 3 모델. "
-        "scaffold-split 평가 + §1.4 약점 정직 공개.",
+        "scaffold-split 평가 · Limitations 명시.",
         size="sm", c="dimmed",
     ),
     _card_e6,

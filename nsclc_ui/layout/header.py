@@ -19,7 +19,7 @@ _MAIN_TABS: list = []
 _ABOUT_ITEMS = [
     (("약물 라이브러리", "Drug Library"), "/library"),
     (("모델 카드", "Model Card"), "/model-card"),
-    (("GitHub", "GitHub"), "https://github.com/juyoonnam/nsclc-insight-engine"),
+    (("GitHub", "GitHub"), "https://github.com/juyoonnam/nsclc-deploy"),
 ]
 
 
