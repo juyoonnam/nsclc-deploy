@@ -22,6 +22,7 @@ Guardrail: 19ys87squ5mz (Version 6)
 from __future__ import annotations
 
 import json
+import logging
 import os
 import re
 import sys
@@ -46,11 +47,29 @@ except ImportError:
 
 
 VERBOSE = os.environ.get("NSCLC_VERBOSE", "0") == "1"
+log = logging.getLogger("nsclc-supervisor")
 
 
 def _log(msg: str):
+    log.info(msg)
     if VERBOSE:
         print(f"[supervisor] {msg}", flush=True)
+
+
+def _diag_timestamp() -> str:
+    now = time.time()
+    return time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(now)) + f".{int((now % 1) * 1000):03d}Z"
+
+
+def _summarize_for_log(value: Any, max_chars: int = 1200) -> str:
+    try:
+        text = json.dumps(value, ensure_ascii=False, sort_keys=True, default=str)
+    except Exception:
+        text = str(value)
+    if len(text) <= max_chars:
+        return text
+    omitted = len(text) - max_chars
+    return f"{text[:max_chars]}...[truncated {omitted} chars]"
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -394,12 +413,31 @@ class ToolInvoker:
         if tool_name == "match_patient_drugs":
             params = _adapt_match_patient_drugs_params(params)
 
+        call_start = time.time()
+        started_at = _diag_timestamp()
+        log.info(
+            "tool_call start tool=%s started_at=%s params=%s",
+            tool_name,
+            started_at,
+            _summarize_for_log(params),
+        )
+
         # dedup
         cache_key = self._dedup_key(tool_name, params)
         if cache_key in self._dedup_cache:
             self.n_dedup_hits += 1
             _log(f"DEDUP HIT: {tool_name}")
             cached = self._dedup_cache[cache_key]
+            log.info(
+                "tool_call end tool=%s started_at=%s ended_at=%s elapsed_sec=%.3f "
+                "success=%s dedup_hit=True error=%s",
+                tool_name,
+                started_at,
+                _diag_timestamp(),
+                time.time() - call_start,
+                "error" not in cached if isinstance(cached, dict) else True,
+                _summarize_for_log(cached.get("error", "")) if isinstance(cached, dict) else "",
+            )
             self.call_log.append({
                 "tool": tool_name, "lambda": "dedup_cache",
                 "params": params, "elapsed_sec": 0.0,
@@ -428,10 +466,28 @@ class ToolInvoker:
                     "policy_rejected": "POLICY_REJECT_EXTERNAL",
                 })
                 self._dedup_cache[cache_key] = err
+                log.info(
+                    "tool_call end tool=%s lambda=policy started_at=%s ended_at=%s "
+                    "elapsed_sec=%.3f success=False dedup_hit=False error=%s",
+                    tool_name,
+                    started_at,
+                    _diag_timestamp(),
+                    time.time() - call_start,
+                    _summarize_for_log(err["error"]),
+                )
                 return err
 
         schema = TOOL_REGISTRY.get(tool_name)
         if not schema:
+            log.info(
+                "tool_call end tool=%s started_at=%s ended_at=%s elapsed_sec=%.3f "
+                "success=False dedup_hit=False error=%s",
+                tool_name,
+                started_at,
+                _diag_timestamp(),
+                time.time() - call_start,
+                _summarize_for_log({"code": "UNKNOWN_TOOL", "message": f"Unknown tool: {tool_name}"}),
+            )
             return {"error": {"code": "UNKNOWN_TOOL", "message": f"Unknown tool: {tool_name}"}}
 
         lambda_name = schema.lambda_name
@@ -466,6 +522,19 @@ class ToolInvoker:
         if tool_name == "check_in_library" and "result" in result:
             self._in_library_cache[cache_key] = result["result"].get("in_library", False)
 
+        log.info(
+            "tool_call end tool=%s lambda=%s mode=%s started_at=%s ended_at=%s "
+            "elapsed_sec=%.3f success=%s dedup_hit=False result_size_chars=%d error=%s",
+            tool_name,
+            lambda_name,
+            "local" if use_local else "remote",
+            started_at,
+            _diag_timestamp(),
+            elapsed,
+            "error" not in result,
+            result_size,
+            _summarize_for_log(result.get("error", "")) if isinstance(result, dict) else "",
+        )
         _log(f"TOOL: {tool_name} → {'OK' if 'error' not in result else 'ERR'} in {elapsed:.2f}s")
         return result
 
@@ -592,6 +661,13 @@ class NSCLCSupervisor:
         # ★ v4: hybrid 모델 선택
         selected_model, complexity = self._select_model_for_query(query)
         _log(f"ROUTING: query → {complexity} → {selected_model}")
+        log.info(
+            "supervisor_invoke start started_at=%s query_len=%d model=%s complexity=%s",
+            _diag_timestamp(),
+            len(query),
+            selected_model,
+            complexity,
+        )
 
         token = _TOOL_INVOKER.set(tool_invoker)
 
@@ -620,6 +696,16 @@ class NSCLCSupervisor:
             latency = time.time() - start_time
             tools_called = tool_invoker.get_tools_called()
             call_log = tool_invoker.get_call_log()
+            log.info(
+                "supervisor_invoke complete ended_at=%s elapsed_sec=%.3f backend=%s "
+                "turns=%d tools=%d dedup_hits=%d",
+                _diag_timestamp(),
+                latency,
+                backend,
+                n_turns,
+                len(tools_called),
+                tool_invoker.n_dedup_hits,
+            )
 
             # ★ v4.1: Haiku 응답 후처리
             if "haiku" in selected_model.lower():
@@ -659,7 +745,15 @@ class NSCLCSupervisor:
 
         try:
             # 라우팅 정보를 첫 chunk로 yield
+            log.info(
+                "supervisor_stream start started_at=%s query_len=%d model=%s complexity=%s",
+                _diag_timestamp(),
+                len(query),
+                selected_model,
+                complexity,
+            )
             yield {"type": "routing", "model": selected_model, "complexity": complexity}
+            log.info("supervisor_stream routing_emitted model=%s complexity=%s", selected_model, complexity)
 
             accumulated_text = ""
             n_turns = 0
@@ -675,6 +769,16 @@ class NSCLCSupervisor:
             latency = time.time() - start_time
             tools_called = tool_invoker.get_tools_called()
             call_log = tool_invoker.get_call_log()
+            log.info(
+                "supervisor_stream generation_complete ended_at=%s elapsed_sec=%.3f "
+                "accumulated_chars=%d turns=%d tools=%d dedup_hits=%d",
+                _diag_timestamp(),
+                latency,
+                len(accumulated_text),
+                n_turns,
+                len(tools_called),
+                tool_invoker.n_dedup_hits,
+            )
 
             # ★ v4.1: Haiku 응답 후처리
             if "haiku" in selected_model.lower():
@@ -686,6 +790,12 @@ class NSCLCSupervisor:
 
             violations = self._check_policy_violations(accumulated_text, tools_called)
 
+            log.info(
+                "supervisor_stream done_event_emit ended_at=%s elapsed_sec=%.3f response_chars=%d",
+                _diag_timestamp(),
+                latency,
+                len(accumulated_text),
+            )
             yield {
                 "type": "done",
                 "response": {
@@ -701,9 +811,12 @@ class NSCLCSupervisor:
                     "complexity": complexity,
                 },
             }
+            log.info("supervisor_stream done_event_emitted elapsed_sec=%.3f", time.time() - start_time)
         except Exception as e:
+            log.exception("supervisor_stream error_event_emit")
             yield {"type": "error", "message": f"{type(e).__name__}: {e}"}
         finally:
+            log.info("supervisor_stream exit elapsed_sec=%.3f", time.time() - start_time)
             _TOOL_INVOKER.reset(token)
 
     def _invoke_with_strands(self, query: str, selected_model: str) -> str:
@@ -767,16 +880,32 @@ class NSCLCSupervisor:
         messages = [{"role": "user", "content": [{"text": query}]}]
 
         for turn in range(self.max_turns):
+            turn_no = turn + 1
+            turn_start = time.time()
+            turn_started_at = _diag_timestamp()
             request = self._build_converse_request(messages, selected_model)
+            log.info(
+                "bedrock_converse turn_start turn=%d started_at=%s model=%s messages=%d",
+                turn_no,
+                turn_started_at,
+                selected_model,
+                len(messages),
+            )
             try:
                 response = client.converse(**request)
             except Exception as e:
                 if "cachePoint" in str(e) and self.enable_prompt_caching:
                     _log("Prompt caching unsupported — disabling")
+                    log.info(
+                        "bedrock_converse cache_retry turn=%d error=%s",
+                        turn_no,
+                        f"{type(e).__name__}: {e}",
+                    )
                     self.enable_prompt_caching = False
                     request = self._build_converse_request(messages, selected_model)
                     response = client.converse(**request)
                 else:
+                    log.exception("bedrock_converse turn_error turn=%d", turn_no)
                     raise
 
             output = response["output"]["message"]
@@ -784,10 +913,30 @@ class NSCLCSupervisor:
             stop_reason = response.get("stopReason", "end_turn")
 
             n_tool_use = len([b for b in output["content"] if "toolUse" in b])
-            _log(f"TURN {turn+1}: stop_reason={stop_reason}, tool_uses={n_tool_use}")
+            text_parts = [b["text"] for b in output["content"] if "text" in b]
+            text_chars = sum(len(t) for t in text_parts)
+            log.info(
+                "bedrock_converse turn_response turn=%d ended_at=%s elapsed_sec=%.3f "
+                "stop_reason=%s tool_use_count=%d text_blocks=%d text_chars=%d",
+                turn_no,
+                _diag_timestamp(),
+                time.time() - turn_start,
+                stop_reason,
+                n_tool_use,
+                len(text_parts),
+                text_chars,
+            )
+            _log(f"TURN {turn_no}: stop_reason={stop_reason}, tool_uses={n_tool_use}")
 
             if stop_reason == "end_turn":
-                text_parts = [b["text"] for b in output["content"] if "text" in b]
+                log.info(
+                    "bedrock_converse text_generation_complete turn=%d started_at=%s "
+                    "ended_at=%s text_chars=%d",
+                    turn_no,
+                    turn_started_at,
+                    _diag_timestamp(),
+                    text_chars,
+                )
                 return "\n".join(text_parts), turn + 1
 
             elif stop_reason == "tool_use":
@@ -795,6 +944,14 @@ class NSCLCSupervisor:
                 for block in output["content"]:
                     if "toolUse" in block:
                         tu = block["toolUse"]
+                        log.info(
+                            "bedrock_converse tool_use_received turn=%d tool_use_id=%s "
+                            "tool=%s input=%s",
+                            turn_no,
+                            tu.get("toolUseId", ""),
+                            tu.get("name", ""),
+                            _summarize_for_log(tu.get("input", {})),
+                        )
                         result = tool_invoker.invoke(tu["name"], tu.get("input", {}))
                         tool_results.append({
                             "toolResult": {
@@ -805,14 +962,24 @@ class NSCLCSupervisor:
                 messages.append({"role": "user", "content": tool_results})
 
             elif stop_reason == "guardrail_intervened":
-                text_parts = [b["text"] for b in output["content"] if "text" in b]
                 blocked = "\n".join(text_parts) if text_parts else "안전 정책 차단"
+                log.info(
+                    "bedrock_converse guardrail_intervened turn=%d text_chars=%d",
+                    turn_no,
+                    len(blocked),
+                )
                 return f"[Guardrail Intervened]\n{blocked}", turn + 1
 
             else:
-                text_parts = [b["text"] for b in output["content"] if "text" in b]
+                log.info(
+                    "bedrock_converse stop_other turn=%d stop_reason=%s text_chars=%d",
+                    turn_no,
+                    stop_reason,
+                    text_chars,
+                )
                 return ("\n".join(text_parts) if text_parts else "(응답 없음)", turn + 1)
 
+        log.info("bedrock_converse max_turns_exceeded max_turns=%d", self.max_turns)
         return "(최대 턴 수 초과)", self.max_turns
 
     def _invoke_with_bedrock_converse_stream(
@@ -826,15 +993,31 @@ class NSCLCSupervisor:
         messages = [{"role": "user", "content": [{"text": query}]}]
 
         for turn in range(self.max_turns):
+            turn_no = turn + 1
+            turn_start = time.time()
+            turn_started_at = _diag_timestamp()
             request = self._build_converse_request(messages, selected_model)
+            log.info(
+                "bedrock_stream turn_start turn=%d started_at=%s model=%s messages=%d",
+                turn_no,
+                turn_started_at,
+                selected_model,
+                len(messages),
+            )
             try:
                 stream_response = client.converse_stream(**request)
             except Exception as e:
                 if "cachePoint" in str(e) and self.enable_prompt_caching:
+                    log.info(
+                        "bedrock_stream cache_retry turn=%d error=%s",
+                        turn_no,
+                        f"{type(e).__name__}: {e}",
+                    )
                     self.enable_prompt_caching = False
                     request = self._build_converse_request(messages, selected_model)
                     stream_response = client.converse_stream(**request)
                 else:
+                    log.exception("bedrock_stream turn_error turn=%d", turn_no)
                     raise
 
             assistant_content: list = []
@@ -842,23 +1025,52 @@ class NSCLCSupervisor:
             current_tool_use: dict | None = None
             current_tool_input_json = ""
             stop_reason = "end_turn"
+            event_count = 0
+            text_started_at = ""
+            text_chars = 0
+            text_delta_count = 0
+            tool_use_count = 0
 
             for event in stream_response.get("stream", []):
+                event_count += 1
                 if "messageStart" in event:
+                    log.info(
+                        "bedrock_stream message_start turn=%d role=%s timestamp=%s",
+                        turn_no,
+                        event["messageStart"].get("role", ""),
+                        _diag_timestamp(),
+                    )
                     continue
                 elif "contentBlockStart" in event:
                     start = event["contentBlockStart"]["start"]
                     if "toolUse" in start:
+                        tool_use_count += 1
                         current_tool_use = {
                             "toolUseId": start["toolUse"]["toolUseId"],
                             "name": start["toolUse"]["name"],
                         }
                         current_tool_input_json = ""
+                        log.info(
+                            "bedrock_stream tool_use_start turn=%d index=%d tool_use_id=%s tool=%s",
+                            turn_no,
+                            tool_use_count,
+                            current_tool_use["toolUseId"],
+                            current_tool_use["name"],
+                        )
                         yield {"type": "tool_start",
                                "tool": current_tool_use["name"], "params": {}}
                 elif "contentBlockDelta" in event:
                     delta = event["contentBlockDelta"]["delta"]
                     if "text" in delta:
+                        if not text_started_at:
+                            text_started_at = _diag_timestamp()
+                            log.info(
+                                "bedrock_stream text_start turn=%d started_at=%s",
+                                turn_no,
+                                text_started_at,
+                            )
+                        text_delta_count += 1
+                        text_chars += len(delta["text"])
                         current_text += delta["text"]
                         yield {"type": "text_chunk", "text": delta["text"]}
                     elif "toolUse" in delta and current_tool_use is not None:
@@ -871,20 +1083,68 @@ class NSCLCSupervisor:
                             tool_input = {}
                         current_tool_use["input"] = tool_input
                         assistant_content.append({"toolUse": current_tool_use})
+                        log.info(
+                            "bedrock_stream tool_use_received turn=%d tool_use_id=%s "
+                            "tool=%s input=%s",
+                            turn_no,
+                            current_tool_use["toolUseId"],
+                            current_tool_use["name"],
+                            _summarize_for_log(tool_input),
+                        )
                         current_tool_use = None
                         current_tool_input_json = ""
                     elif current_text:
+                        log.info(
+                            "bedrock_stream text_block_stop turn=%d block_chars=%d",
+                            turn_no,
+                            len(current_text),
+                        )
                         assistant_content.append({"text": current_text})
                         current_text = ""
                 elif "messageStop" in event:
                     stop_reason = event["messageStop"].get("stopReason", "end_turn")
+                    log.info(
+                        "bedrock_stream message_stop turn=%d stop_reason=%s timestamp=%s",
+                        turn_no,
+                        stop_reason,
+                        _diag_timestamp(),
+                    )
+                elif "metadata" in event:
+                    log.info(
+                        "bedrock_stream metadata turn=%d data=%s",
+                        turn_no,
+                        _summarize_for_log(event["metadata"]),
+                    )
 
             messages.append({"role": "assistant", "content": assistant_content})
-            _log(f"STREAM TURN {turn+1}: stop_reason={stop_reason}")
+            if text_started_at:
+                log.info(
+                    "bedrock_stream text_end turn=%d started_at=%s ended_at=%s "
+                    "text_chars=%d text_delta_count=%d",
+                    turn_no,
+                    text_started_at,
+                    _diag_timestamp(),
+                    text_chars,
+                    text_delta_count,
+                )
+            log.info(
+                "bedrock_stream turn_end turn=%d ended_at=%s elapsed_sec=%.3f "
+                "stop_reason=%s tool_use_count=%d text_chars=%d events=%d assistant_blocks=%d",
+                turn_no,
+                _diag_timestamp(),
+                time.time() - turn_start,
+                stop_reason,
+                tool_use_count,
+                text_chars,
+                event_count,
+                len(assistant_content),
+            )
+            _log(f"STREAM TURN {turn_no}: stop_reason={stop_reason}")
 
-            yield {"type": "turn_end", "turn": turn + 1, "stop_reason": stop_reason}
+            yield {"type": "turn_end", "turn": turn_no, "stop_reason": stop_reason}
 
             if stop_reason == "end_turn":
+                log.info("bedrock_stream generation_complete turn=%d stop_reason=end_turn", turn_no)
                 return
             elif stop_reason == "tool_use":
                 tool_results = []
@@ -912,7 +1172,10 @@ class NSCLCSupervisor:
                        "text": "\n\n[Guardrail Intervened]"}
                 return
             else:
+                log.info("bedrock_stream stop_other turn=%d stop_reason=%s", turn_no, stop_reason)
                 return
+
+        log.info("bedrock_stream max_turns_exceeded max_turns=%d", self.max_turns)
 
     def _build_provenance_footer(self, call_log: list[dict]) -> str:
         successful = [e for e in call_log if e["success"] and not e.get("dedup_hit")]

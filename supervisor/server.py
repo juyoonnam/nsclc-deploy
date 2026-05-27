@@ -28,6 +28,7 @@ import json
 import logging
 import os
 import sys
+import time
 from dataclasses import asdict
 from pathlib import Path
 from typing import AsyncIterator
@@ -136,12 +137,24 @@ def invoke(req: InvokeRequest):
     query = (req.query or "").strip()
     if not query:
         raise HTTPException(status_code=400, detail="empty query")
+    request_start = time.time()
+    req_id = f"{int(request_start * 1000)}-{id(req):x}"
+    log.info("invoke request start req_id=%s query_len=%d", req_id, len(query))
     try:
         sup = get_supervisor()
         resp = sup.invoke(query)
+        log.info(
+            "invoke request complete req_id=%s elapsed_sec=%.3f backend=%s turns=%s tools=%d dedup_hits=%s",
+            req_id,
+            time.time() - request_start,
+            resp.backend,
+            resp.n_turns,
+            len(resp.tools_called),
+            resp.n_dedup_hits,
+        )
         return asdict(resp)
     except Exception as e:
-        log.exception("invoke failed")
+        log.exception("invoke failed req_id=%s elapsed_sec=%.3f", req_id, time.time() - request_start)
         raise HTTPException(status_code=500, detail=f"{type(e).__name__}: {e}")
 
 
@@ -156,21 +169,55 @@ async def invoke_stream(req: InvokeRequest):
     query = (req.query or "").strip()
     if not query:
         raise HTTPException(status_code=400, detail="empty query")
+    request_start = time.time()
+    req_id = f"{int(request_start * 1000)}-{id(req):x}"
+    log.info("invoke_stream request start req_id=%s query_len=%d", req_id, len(query))
 
     async def event_generator() -> AsyncIterator[dict]:
+        chunk_count = 0
+        last_ctype = ""
+        saw_text = False
         try:
             sup = get_supervisor()
             # supervisor.invoke_stream은 sync generator. async wrapper.
             for chunk in sup.invoke_stream(query):
                 ctype = chunk.get("type", "message")
+                chunk_count += 1
+                last_ctype = ctype
+                if ctype != "text_chunk" or not saw_text:
+                    log.info(
+                        "invoke_stream chunk type=%s count=%d req_id=%s query_len=%d",
+                        ctype,
+                        chunk_count,
+                        req_id,
+                        len(query),
+                    )
+                if ctype == "text_chunk":
+                    saw_text = True
+                if ctype in ("done", "error"):
+                    log.info(
+                        "invoke_stream terminal_emit type=%s chunks=%d req_id=%s elapsed_sec=%.3f",
+                        ctype,
+                        chunk_count,
+                        req_id,
+                        time.time() - request_start,
+                    )
                 yield {
                     "event": ctype,
                     "data": json.dumps(chunk, ensure_ascii=False, default=str),
                 }
                 if ctype in ("done", "error"):
+                    log.info(
+                        "invoke_stream terminal_emitted type=%s chunks=%d req_id=%s elapsed_sec=%.3f",
+                        ctype,
+                        chunk_count,
+                        req_id,
+                        time.time() - request_start,
+                    )
                     break
         except Exception as e:
-            log.exception("invoke_stream failed")
+            log.exception("invoke_stream failed req_id=%s elapsed_sec=%.3f", req_id, time.time() - request_start)
+            last_ctype = "error"
             yield {
                 "event": "error",
                 "data": json.dumps(
@@ -178,6 +225,15 @@ async def invoke_stream(req: InvokeRequest):
                     ensure_ascii=False,
                 ),
             }
+        finally:
+            log.info(
+                "invoke_stream generator exit chunks=%d last=%s req_id=%s query_len=%d elapsed_sec=%.3f",
+                chunk_count,
+                last_ctype,
+                req_id,
+                len(query),
+                time.time() - request_start,
+            )
 
     return EventSourceResponse(event_generator())
 
