@@ -297,7 +297,7 @@ def poll_streaming_chunks(job_id: str) -> list[dict]:
     with _JOBS_LOCK:
         job = _ACTIVE_JOBS.get(job_id)
     if not job:
-        return []
+        return [{"type": "error", "message": "stream job disappeared before completion"}]
 
     if is_job_stale(job_id):
         _mark_job_error(
@@ -317,6 +317,29 @@ def poll_streaming_chunks(job_id: str) -> list[dict]:
             chunks.append(q.get_nowait())
         except queue.Empty:
             break
+    if chunks:
+        return chunks
+
+    status = job.get("status")
+    if status == "done":
+        result = job.get("result") or {}
+        return [{
+            "type": "done",
+            "response": {
+                "text": result.get("text", ""),
+                "policy_violations": result.get("violations", []),
+                "backend": result.get("backend", "bedrock_converse_stream"),
+                "latency_sec": result.get("latency_sec", 0),
+                "model_used": result.get("model_used", ""),
+                "complexity": result.get("complexity", ""),
+            },
+        }]
+    if status == "error":
+        result = job.get("result") or {}
+        return [{
+            "type": "error",
+            "message": result.get("error") or "stream ended with error",
+        }]
     return chunks
 
 
