@@ -147,20 +147,33 @@ def scenario_accordion() -> dmc.Paper:
         )
 
     return dmc.Paper(
-        radius="md",
-        p="sm",
-        withBorder=True,
-        style={"minHeight": "640px", "maxHeight": "780px", "overflowY": "auto"},
+        radius=0,
+        p=0,
+        withBorder=False,
+        className="scenario-panel-paper",
+        style={
+            "minHeight": "640px",
+            "maxHeight": "780px",
+            "overflowY": "auto",
+            "background": "transparent",
+            "border": "0",
+            "padding": "16px",
+        },
         children=[
             dmc.Stack(
                 gap="xs",
                 children=[
+                    html.Div(
+                        "시나리오",
+                        className="scenario-panel-title",
+                    ),
                     dmc.TextInput(
                         id="scenario-search",
                         placeholder="추천 질문 검색...",
                         leftSection=html.Span("🔍"),
                         rightSection=dmc.Kbd("⌘K"),
                         size="sm",
+                        className="scenario-search",
                     ),
                     dmc.Group(
                         justify="space-between",
