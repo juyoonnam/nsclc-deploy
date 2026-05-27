@@ -49,7 +49,7 @@ def scenario_accordion() -> dmc.Paper:
             is_demo_path = qid_full in demo_path
 
             label_text = q["text"]
-            prefix = "⭐ " if is_stable else "• "
+            prefix = "• "
 
             btn_style = {
                 "padding": "6px 10px",
@@ -62,14 +62,8 @@ def scenario_accordion() -> dmc.Paper:
                 "transition": "background 0.15s ease, color 0.15s ease",
             }
             class_names = ["scenario-btn"]
-            if is_demo_path:
-                btn_style.update({
-                    "color": "var(--mantine-color-violet-3)",
-                    "borderLeft": "2px solid var(--mantine-color-violet-5)",
-                    "paddingLeft": "8px",
-                    "background": "rgba(124, 58, 237, 0.05)",
-                })
-                class_names.append("scenario-btn-demo-path")
+            # Demo-path 강조(별표 + violet text/border/배경) 제거됨.
+            # is_demo_path 변수는 향후 다른 용도를 위해 계산만 유지.
 
             questions_buttons.append(
                 dmc.UnstyledButton(
