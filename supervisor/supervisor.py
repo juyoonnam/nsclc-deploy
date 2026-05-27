@@ -1256,6 +1256,9 @@ class NSCLCSupervisor:
                             "tool": tu["name"],
                             "success": "error" not in result,
                             "elapsed": elapsed,
+                            "input": tu.get("input", {}),
+                            "output": result if "error" not in result else None,
+                            "error": result.get("error") if isinstance(result, dict) else None,
                         }
                         tool_results.append({
                             "toolResult": {

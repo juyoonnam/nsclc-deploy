@@ -338,6 +338,18 @@ def poll_streaming_chunks(job_id: str) -> list[dict]:
             "type": "done",
             "response": {
                 "text": result.get("text", ""),
+                "call_log": [
+                    {
+                        "tool": t.get("tool"),
+                        "success": t.get("status") == "완료",
+                        "elapsed_sec": t.get("elapsed_sec"),
+                        "input": t.get("input"),
+                        "output": t.get("output"),
+                        "error": t.get("error"),
+                        "policy_rejected": t.get("policy_rejected"),
+                    }
+                    for t in result.get("tools", [])
+                ],
                 "policy_violations": result.get("violations", []),
                 "backend": result.get("backend", "bedrock_converse_stream"),
                 "latency_sec": result.get("latency_sec", 0),
@@ -466,6 +478,9 @@ def chunks_to_store_updates(
         elif ctype == "done":
             done = True
             final_result = ch.get("response")
+            call_log = (final_result or {}).get("call_log", []) if isinstance(final_result, dict) else []
+            if call_log:
+                tools = _build_tools(call_log)
         elif ctype == "error":
             error = ch.get("message", "Unknown error")
             done = True

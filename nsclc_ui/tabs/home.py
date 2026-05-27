@@ -32,6 +32,11 @@ from nsclc_ui.components.tool_trace_panel import (
 
 log = logging.getLogger(__name__)
 
+PATHWAY_POPUP_MODAL_ID = "home-pathway-popup-modal"
+PATHWAY_POPUP_FRAME_ID = "home-pathway-popup-frame"
+PATHWAY_POPUP_TITLE_ID = "home-pathway-popup-title"
+PATHWAY_POPUP_CHIP_TYPE = "home-pathway-popup-chip"
+
 dash.register_page(
     __name__,
     path="/",
@@ -117,7 +122,31 @@ def layout(**kwargs):
                 disabled=True,
                 n_intervals=0,
             ),
+            _pathway_popup_modal(),
         ],
+    )
+
+
+def _pathway_popup_modal() -> dmc.Modal:
+    return dmc.Modal(
+        id=PATHWAY_POPUP_MODAL_ID,
+        title=html.Span("Pathway Map", id=PATHWAY_POPUP_TITLE_ID),
+        opened=False,
+        size="95%",
+        zIndex=2500,
+        centered=True,
+        children=html.Iframe(
+            id=PATHWAY_POPUP_FRAME_ID,
+            src="",
+            title="NSCLC Pathway Map",
+            style={
+                "width": "100%",
+                "height": "78vh",
+                "border": "1px solid var(--nsclc-border, #2a3140)",
+                "borderRadius": "8px",
+                "background": "#050914",
+            },
+        ),
     )
 
 
@@ -300,11 +329,13 @@ def _pathway_link_block(text: str) -> html.Div | None:
     if not genes:
         return None
     chips = [
-        html.A(
+        html.Button(
             children=[html.Span("🧬", style={"marginRight": "4px"}), gene],
-            href=_pathway_link_for(gene),
+            id={"type": PATHWAY_POPUP_CHIP_TYPE, "gene": gene},
+            n_clicks=0,
+            type="button",
             className="chat-pathway-chip",
-            title=f"Pathway Map에서 {gene} 보기",
+            title=f"Pathway Map 팝업에서 {gene} 보기",
         )
         for gene in genes
     ]
@@ -316,6 +347,25 @@ def _pathway_link_block(text: str) -> html.Div | None:
             *chips,
         ],
     )
+
+
+@callback(
+    Output(PATHWAY_POPUP_MODAL_ID, "opened"),
+    Output(PATHWAY_POPUP_FRAME_ID, "src"),
+    Output(PATHWAY_POPUP_TITLE_ID, "children"),
+    Input({"type": PATHWAY_POPUP_CHIP_TYPE, "gene": ALL}, "n_clicks"),
+    prevent_initial_call=True,
+)
+def open_pathway_popup(n_clicks_list):
+    if not n_clicks_list or not any((n or 0) for n in n_clicks_list):
+        return no_update, no_update, no_update
+    triggered = ctx.triggered_id
+    if not isinstance(triggered, dict):
+        return no_update, no_update, no_update
+    gene = str(triggered.get("gene") or "").upper()
+    if gene not in _PATHWAY_GENES:
+        return no_update, no_update, no_update
+    return True, f"/pathway?focus={gene}&popup=1", f"경로에서 보기: {gene}"
 
 
 def _tool_progress_label(tool_name: str, status: str) -> tuple[str, str]:
