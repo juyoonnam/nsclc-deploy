@@ -12,7 +12,7 @@ from pathlib import Path
 import yaml
 
 import dash_mantine_components as dmc
-from dash import html
+from dash import html, clientside_callback, Input, Output
 
 # scenarios.yaml 경로:
 # __file__ = .../final/nsclc_ui/components/scenario_accordion.py
@@ -58,8 +58,10 @@ def scenario_accordion() -> dmc.Paper:
                 "width": "100%",
                 "textAlign": "left",
                 "lineHeight": "1.4",
-                "transition": "background 0.15s",
+                "cursor": "pointer",
+                "transition": "background 0.15s ease, color 0.15s ease",
             }
+            class_names = ["scenario-btn"]
             if is_demo_path:
                 btn_style.update({
                     "color": "var(--mantine-color-violet-3)",
@@ -67,11 +69,13 @@ def scenario_accordion() -> dmc.Paper:
                     "paddingLeft": "8px",
                     "background": "rgba(124, 58, 237, 0.05)",
                 })
+                class_names.append("scenario-btn-demo-path")
 
             questions_buttons.append(
                 dmc.UnstyledButton(
                     prefix + label_text,
                     id={"type": "scenario-btn", "index": qid_full},
+                    className=" ".join(class_names),
                     style=btn_style,
                 )
             )
@@ -143,7 +147,50 @@ def scenario_accordion() -> dmc.Paper:
                             "panel": {"padding": "4px 8px 8px"},
                         },
                     ),
+                    # 검색 필터 클라이언트사이드 hook 용 hidden output
+                    html.Div(id="scenario-search-sync", style={"display": "none"}),
                 ],
             ),
         ],
     )
+
+
+# ---------------------------------------------------------------------------
+# Clientside filter — search input → hide non-matching scenarios
+# ---------------------------------------------------------------------------
+clientside_callback(
+    """
+    function(query) {
+        const q = (query || "").toString().trim().toLowerCase();
+        const root = document.getElementById("scenario-accordion-root");
+        if (!root) { return ""; }
+        const items = root.querySelectorAll(".mantine-Accordion-item");
+        let firstMatchOpened = false;
+        items.forEach(function(item) {
+            const ctrl = item.querySelector(".mantine-Accordion-control");
+            const catLabel = (ctrl ? ctrl.textContent : "").toLowerCase();
+            const buttons = item.querySelectorAll(".scenario-btn");
+            let visibleCount = 0;
+            buttons.forEach(function(btn) {
+                const txt = (btn.textContent || "").toLowerCase();
+                const match = !q || txt.indexOf(q) !== -1 || catLabel.indexOf(q) !== -1;
+                btn.style.display = match ? "" : "none";
+                if (match) { visibleCount += 1; }
+            });
+            const anyMatch = !q || visibleCount > 0 || catLabel.indexOf(q) !== -1;
+            item.style.display = anyMatch ? "" : "none";
+
+            // 검색 중이고 첫 매치 카테고리는 자동 펼침 (multiple=false 한계 회피)
+            if (q && anyMatch && visibleCount > 0 && !firstMatchOpened) {
+                if (ctrl && ctrl.getAttribute("aria-expanded") === "false") {
+                    ctrl.click();
+                }
+                firstMatchOpened = true;
+            }
+        });
+        return q;
+    }
+    """,
+    Output("scenario-search-sync", "children"),
+    Input("scenario-search", "value"),
+)

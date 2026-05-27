@@ -17,6 +17,7 @@ threading 패턴은 v2 그대로 유지 — Dash callback 인터페이스 동일
 from __future__ import annotations
 
 import json
+import logging
 import os
 import queue
 import re
@@ -25,6 +26,8 @@ import time
 import uuid
 
 import requests
+
+log = logging.getLogger(__name__)
 
 # ════════════════════════════════════════════════════════════
 # 설정
@@ -111,6 +114,7 @@ def start_streaming_invoke(query: str) -> dict:
                 "queue": _seed_queue_from_mock(result),
                 "start_time": time.time(),
             }
+        log.info("stream job seeded mock job_id=%s query_len=%d", job_id, len(query))
         return {"job_id": job_id, "mock": True, "cached": False}
 
     if query in _CACHE:
@@ -123,6 +127,7 @@ def start_streaming_invoke(query: str) -> dict:
                 "queue": _seed_queue_from_cache(result),
                 "start_time": time.time(),
             }
+        log.info("stream job seeded cache job_id=%s query_len=%d", job_id, len(query))
         return {"job_id": job_id, "mock": False, "cached": True}
 
     job_id = str(uuid.uuid4())
@@ -135,9 +140,19 @@ def start_streaming_invoke(query: str) -> dict:
             "start_time": time.time(),
             "query": query,
         }
+    log.info(
+        "stream job created job_id=%s supervisor_url=%s timeout=%.1f query_len=%d",
+        job_id,
+        SUPERVISOR_URL,
+        HTTP_TIMEOUT_STREAM,
+        len(query),
+    )
 
     def worker():
+        chunk_count = 0
+        saw_text = False
         try:
+            log.info("stream worker start job_id=%s", job_id)
             with requests.post(
                 f"{SUPERVISOR_URL}/invoke_stream",
                 json={"query": query},
@@ -145,8 +160,15 @@ def start_streaming_invoke(query: str) -> dict:
                 timeout=HTTP_TIMEOUT_STREAM,
                 headers={"Accept": "text/event-stream"},
             ) as r:
+                log.info("stream worker connected job_id=%s status=%s", job_id, r.status_code)
                 r.raise_for_status()
                 for chunk in _parse_sse_stream(r):
+                    chunk_count += 1
+                    ctype = chunk.get("type", "?")
+                    if ctype != "text_chunk" or not saw_text:
+                        log.info("stream worker chunk job_id=%s type=%s", job_id, ctype)
+                    if ctype == "text_chunk":
+                        saw_text = True
                     q.put(chunk)
                     if chunk.get("type") == "done":
                         response_dict = chunk.get("response", {})
@@ -158,6 +180,7 @@ def start_streaming_invoke(query: str) -> dict:
                                 _ACTIVE_JOBS[job_id]["status"] = "done"
                                 _ACTIVE_JOBS[job_id]["result"] = result
                         _CACHE[query] = result
+                        log.info("stream worker done job_id=%s chunks=%d", job_id, chunk_count)
                         break
                     elif chunk.get("type") == "error":
                         with _JOBS_LOCK:
@@ -170,9 +193,15 @@ def start_streaming_invoke(query: str) -> dict:
                                     "backend": "error",
                                     "error": chunk.get("message"),
                                 }
+                        log.info(
+                            "stream worker error chunk job_id=%s message=%s",
+                            job_id,
+                            chunk.get("message", ""),
+                        )
                         break
         except Exception as e:
             err_msg = f"{type(e).__name__}: {e}"
+            log.exception("stream worker exception job_id=%s", job_id)
             q.put({"type": "error", "message": err_msg})
             with _JOBS_LOCK:
                 if job_id in _ACTIVE_JOBS:
@@ -183,6 +212,15 @@ def start_streaming_invoke(query: str) -> dict:
                         "latency_sec": 0.0, "violations": [],
                         "backend": "error", "error": err_msg,
                     }
+        finally:
+            with _JOBS_LOCK:
+                status = _ACTIVE_JOBS.get(job_id, {}).get("status", "missing")
+            log.info(
+                "stream worker exit job_id=%s status=%s chunks=%d",
+                job_id,
+                status,
+                chunk_count,
+            )
 
     t = threading.Thread(target=worker, daemon=True, name=f"supervisor-http-{job_id[:8]}")
     t.start()
@@ -300,27 +338,42 @@ def chunks_to_store_updates(
         if ctype == "text_chunk":
             text += ch.get("text", "")
         elif ctype == "tool_start":
-            tools.append({
+            entry = {
                 "step": len(tools) + 1,
                 "tool": ch.get("tool", "?"),
                 "status": "진행 중",
                 "detail": "…",
-            })
+                "input": ch.get("input") or ch.get("params") or ch.get("args"),
+                "started_at": time.time(),
+            }
+            tools.append(entry)
         elif ctype == "tool_result":
             tool_name = ch.get("tool", "?")
             success = ch.get("success", False)
             elapsed = ch.get("elapsed", 0)
+            output = ch.get("output") or ch.get("result") or ch.get("response")
+            error_msg = ch.get("error") or ch.get("message")
+            updated = False
             for t in reversed(tools):
                 if t["tool"] == tool_name and t["status"] == "진행 중":
                     t["status"] = "완료" if success else "에러"
                     t["detail"] = f"{elapsed:.2f}s" if success else "lambda exception"
+                    t["elapsed_sec"] = elapsed
+                    if output is not None:
+                        t["output"] = output
+                    if error_msg:
+                        t["error"] = error_msg
+                    updated = True
                     break
-            else:
+            if not updated:
                 tools.append({
                     "step": len(tools) + 1,
                     "tool": tool_name,
                     "status": "완료" if success else "에러",
                     "detail": f"{elapsed:.2f}s",
+                    "elapsed_sec": elapsed,
+                    "output": output,
+                    "error": error_msg,
                 })
         elif ctype == "turn_end":
             pass
@@ -442,7 +495,17 @@ def _build_tools(call_log: list) -> list:
             status, detail = "완료", f"{elapsed:.2f}s"
         else:
             status, detail = "에러", "lambda exception"
-        tools.append({"step": i, "tool": tool_name, "status": status, "detail": detail})
+        tools.append({
+            "step": i,
+            "tool": tool_name,
+            "status": status,
+            "detail": detail,
+            "elapsed_sec": elapsed,
+            "input": entry.get("input") or entry.get("params") or entry.get("args"),
+            "output": entry.get("output") or entry.get("result"),
+            "error": entry.get("error") or entry.get("message"),
+            "policy_rejected": bool(policy_rejected) if policy_rejected else False,
+        })
     return tools
 
 

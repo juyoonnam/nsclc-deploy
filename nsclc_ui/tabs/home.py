@@ -14,6 +14,7 @@ v2.5 기능 유지:
 
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 import yaml
 
@@ -28,6 +29,8 @@ from nsclc_ui.components.tool_trace_panel import (
     render_tool_list,
     tool_trace_panel,
 )
+
+log = logging.getLogger(__name__)
 
 dash.register_page(
     __name__,
@@ -92,8 +95,8 @@ def layout(**kwargs):
                 ],
             ),
             dmc.Text(
-                "AI 답변은 참고용이며 임상적 판단은 전문가의 책임입니다. "
-                "모든 응답은 21개 MCP tool 정량 근거에 박혀있습니다.",
+                "본 응답은 연구 참고용이며, 임상적 판단 및 처방 결정의 책임은 전문 의료인에게 있습니다. "
+                "모든 응답은 22개 MCP 도구가 산출한 정량 근거에 기반합니다.",
                 size="xs",
                 c="dimmed",
                 ta="center",
@@ -127,20 +130,11 @@ def _hero() -> dmc.Group:
             dmc.Stack(
                 gap=0,
                 children=[
-                    dmc.Title(
-                        "NSCLC Insight Engine",
-                        order=3,
-                        style={
-                            "background": "linear-gradient(90deg, #c084fc, #60a5fa)",
-                            "WebkitBackgroundClip": "text",
-                            "WebkitTextFillColor": "transparent",
-                            "backgroundClip": "text",
-                        },
-                    ),
                     dmc.Text(
                         "답을 주는 AI가 아니라 사용자의 판단을 강화하는 플랫폼",
-                        size="xs",
+                        size="sm",
                         c="dimmed",
+                        fw=500,
                     ),
                 ],
             ),
@@ -149,7 +143,7 @@ def _hero() -> dmc.Group:
                 children=[
                     dmc.Badge("Champion E6", color="violet", variant="light", size="sm"),
                     dmc.Badge("PR-AUC 0.1383", color="blue", variant="light", size="sm"),
-                    dmc.Badge("21 MCP Tools", color="teal", variant="light", size="sm"),
+                    dmc.Badge("22 MCP Tools", color="teal", variant="light", size="sm"),
                     dmc.Badge("Model B ✓", color="green", variant="light", size="sm"),
                     dmc.Badge("Streaming ✓", color="grape", variant="light", size="sm"),
                 ],
@@ -188,21 +182,8 @@ def _chat_area() -> dmc.Paper:
                         maxRows=6,
                     ),
                     dmc.Group(
-                        justify="space-between",
+                        justify="flex-end",
                         children=[
-                            dmc.Group(
-                                gap="xs",
-                                children=[
-                                    dmc.ActionIcon(
-                                        html.Span("+", style={"fontSize": "16px"}),
-                                        variant="subtle", color="gray", size="md",
-                                    ),
-                                    dmc.ActionIcon(
-                                        html.Span("🌐"),
-                                        variant="subtle", color="gray", size="md",
-                                    ),
-                                ],
-                            ),
                             dmc.Group(
                                 gap="xs",
                                 children=[
@@ -263,8 +244,139 @@ def _assistant_bubble_text(children: list) -> html.Div:
     )
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Pathway link helper — 응답에서 약물/타겟 언급 감지 → 경로 보기 버튼
+# ─────────────────────────────────────────────────────────────────────────────
+
+# NSCLC champion targets + 자주 언급되는 단백질
+_PATHWAY_GENES = {
+    "EGFR", "ERBB2", "HER2", "KRAS", "ALK", "ROS1", "BRAF", "MET",
+    "RET", "NTRK1", "NTRK2", "NTRK3", "PIK3CA", "AKT1", "MTOR",
+    "TP53", "STK11", "KEAP1", "NFE2L2", "CDKN2A", "RB1", "MYC",
+    "JAK2", "STAT3", "PTEN", "MAP2K1", "BRCA1", "BRCA2", "PARP1",
+}
+
+# 약물 → 주 타겟 매핑 (응답에 약물 이름만 있을 때 타겟으로 변환)
+_DRUG_TO_TARGET = {
+    "OSIMERTINIB": "EGFR", "ERLOTINIB": "EGFR", "GEFITINIB": "EGFR",
+    "AFATINIB": "EGFR", "DACOMITINIB": "EGFR",
+    "CRIZOTINIB": "ALK", "ALECTINIB": "ALK", "BRIGATINIB": "ALK",
+    "LORLATINIB": "ALK", "CERITINIB": "ALK",
+    "SOTORASIB": "KRAS", "ADAGRASIB": "KRAS",
+    "DABRAFENIB": "BRAF", "TRAMETINIB": "MAP2K1",
+    "OLAPARIB": "PARP1", "NIRAPARIB": "PARP1", "RUCAPARIB": "PARP1",
+    "PEMBROLIZUMAB": "EGFR",  # 대표적으로 EGFR pathway 시작점 사용
+    "TRASTUZUMAB": "ERBB2", "PERTUZUMAB": "ERBB2",
+}
+
+
+def _detect_pathway_genes(text: str) -> list[str]:
+    """응답 텍스트에서 NSCLC pathway 관련 유전자/약물 추출 (대문자 단어 매칭)."""
+    if not text:
+        return []
+    import re
+    # 대문자/숫자로 된 토큰만 추출 (단순 word boundary)
+    tokens = set(re.findall(r"\b[A-Z][A-Z0-9]{1,9}\b", text.upper()))
+    detected: list[str] = []
+    seen: set = set()
+    for t in tokens:
+        if t in _PATHWAY_GENES and t not in seen:
+            detected.append(t)
+            seen.add(t)
+        elif t in _DRUG_TO_TARGET and _DRUG_TO_TARGET[t] not in seen:
+            mapped = _DRUG_TO_TARGET[t]
+            detected.append(mapped)
+            seen.add(mapped)
+    return detected[:5]
+
+
+def _pathway_link_for(gene: str) -> str:
+    # query param은 pathway_map URL handler 추가 시점에 활용. 현재는 그냥 navigate.
+    return f"/pathway?focus={gene}"
+
+
+def _pathway_link_block(text: str) -> html.Div | None:
+    genes = _detect_pathway_genes(text)
+    if not genes:
+        return None
+    chips = [
+        html.A(
+            children=[html.Span("🧬", style={"marginRight": "4px"}), gene],
+            href=_pathway_link_for(gene),
+            className="chat-pathway-chip",
+            title=f"Pathway Map에서 {gene} 보기",
+        )
+        for gene in genes
+    ]
+    return html.Div(
+        className="chat-pathway-link-row",
+        children=[
+            html.Span("🧬", style={"fontSize": "13px"}),
+            html.Span("경로에서 보기:", style={"fontSize": "12px", "color": "var(--nsclc-text-secondary, #a0a8b8)"}),
+            *chips,
+        ],
+    )
+
+
+def _tool_progress_label(tool_name: str, status: str) -> tuple[str, str]:
+    """tool name + status → 사용자 친화적 진행 메시지."""
+    name = (tool_name or "").lower()
+    status_norm = status or ""
+    icon_map = {
+        "search_pubmed": ("📚", "PubMed 문헌 검색"),
+        "search_drugs": ("💊", "약물 검색"),
+        "list_actionable_genes": ("🧬", "actionable 유전자 조회"),
+        "match_patient_drugs": ("🎯", "환자-약물 매칭"),
+        "get_ensemble_probability": ("📊", "ensemble 확률 계산"),
+        "get_shap_explanation": ("🔍", "SHAP 근거 추출"),
+        "compute_tanimoto": ("⚗️", "Tanimoto 유사도 계산"),
+        "check_in_library": ("📦", "라이브러리 매칭 확인"),
+        "get_cell_line_meta": ("🧪", "세포주 메타 조회"),
+        "get_drug_response": ("💉", "약물 반응 조회"),
+    }
+    icon, label = icon_map.get(name, ("🔧", name or "도구"))
+    if status_norm == "진행 중":
+        return icon, f"{label} 호출 중…"
+    if status_norm == "완료":
+        return icon, f"{label} 완료"
+    if status_norm == "에러":
+        return icon, f"{label} 실패"
+    if status_norm == "거부":
+        return icon, f"{label} 정책 거부"
+    return icon, f"{label} ({status_norm})"
+
+
+def _streaming_progress_line(tools: list, has_text: bool) -> html.Div | None:
+    """현재 진행 단계 한 줄 — 도구 호출 또는 응답 생성 단계."""
+    # 가장 최근 in-progress 도구가 있으면 그것 우선
+    latest = None
+    for t in reversed(tools or []):
+        if t.get("status") == "진행 중":
+            latest = t
+            break
+    if latest is None and tools:
+        latest = tools[-1]
+
+    if latest is not None:
+        icon, label = _tool_progress_label(latest.get("tool", ""), latest.get("status", ""))
+    elif has_text:
+        icon, label = "✍️", "응답 생성 중…"
+    else:
+        icon, label = "🤔", "분석 준비 중…"
+
+    return html.Div(
+        className="chat-streaming-progress",
+        children=[
+            dmc.Loader(color="violet", size="xs", type="dots"),
+            html.Span(icon, style={"fontSize": "13px"}),
+            html.Span(label, style={"fontSize": "12px", "color": "var(--nsclc-text-secondary, #a0a8b8)"}),
+        ],
+    )
+
+
 def _assistant_bubble_markdown(text: str, meta: dict | None = None,
-                                streaming: bool = False) -> html.Div:
+                                streaming: bool = False,
+                                streaming_tools: list | None = None) -> html.Div:
     """LLM 응답 Markdown 렌더 + meta badges + streaming indicator."""
     badges = []
     if streaming:
@@ -302,6 +414,12 @@ def _assistant_bubble_markdown(text: str, meta: dict | None = None,
     if badges:
         children.append(dmc.Group(gap="xs", children=badges, mb=4))
 
+    # 스트리밍 중 — 진행 단계 한 줄 표시 (응답 위)
+    if streaming:
+        progress = _streaming_progress_line(streaming_tools or [], bool(text))
+        if progress is not None:
+            children.append(progress)
+
     if not text and streaming:
         children.append(dmc.Loader(color="violet", size="sm", type="dots"))
     else:
@@ -313,6 +431,13 @@ def _assistant_bubble_markdown(text: str, meta: dict | None = None,
                 dangerously_allow_html=False,
             )
         )
+
+    # 응답 완료(non-streaming)에만 경로 링크 행 노출
+    if not streaming and text:
+        path_block = _pathway_link_block(text)
+        if path_block is not None:
+            children.append(path_block)
+
     return _assistant_bubble_text(children=children)
 
 
@@ -356,6 +481,7 @@ def _render_thread(history: list, streaming: dict | None) -> list:
                 meta={"backend": "streaming",
                       "n_tools": len(streaming.get("tools", []))},
                 streaming=True,
+                streaming_tools=streaming.get("tools", []),
             )
         )
     return items
@@ -394,6 +520,11 @@ def on_submit_or_scenario(submit_clicks, scenario_clicks, input_value,
 
     # 이미 streaming 중이면 새 query 무시 (race 방지)
     if current_streaming and current_streaming.get("active"):
+        log.info(
+            "stream submit ignored active_job=%s trigger=%s",
+            current_streaming.get("job_id", ""),
+            trig,
+        )
         return (no_update, no_update, no_update, no_update,
                 no_update, no_update, no_update)
 
@@ -434,6 +565,14 @@ def on_submit_or_scenario(submit_clicks, scenario_clicks, input_value,
 
     start_info = start_streaming_invoke(query)
     job_id = start_info.get("job_id", "")
+    log.info(
+        "stream submit started trigger=%s job_id=%s mock=%s cached=%s query_len=%d",
+        trig,
+        job_id,
+        start_info.get("mock", False),
+        start_info.get("cached", False),
+        len(query),
+    )
 
     streaming = {
         "job_id": job_id,
@@ -477,6 +616,7 @@ def on_interval_poll(n, streaming, history):
 
     job_id = streaming.get("job_id", "")
     if not job_id:
+        log.warning("stream poll missing job_id")
         return no_update, no_update, no_update, True, False
 
     from nsclc_ui.llm.supervisor_client import (
@@ -490,6 +630,12 @@ def on_interval_poll(n, streaming, history):
     chunks = poll_streaming_chunks(job_id)
     if not chunks:
         return no_update, no_update, no_update, no_update, no_update
+    log.info(
+        "stream poll job_id=%s chunks=%d types=%s",
+        job_id,
+        len(chunks),
+        ",".join(str(ch.get("type", "?")) for ch in chunks),
+    )
 
     updates = chunks_to_store_updates(
         chunks,
@@ -511,6 +657,13 @@ def on_interval_poll(n, streaming, history):
 
     # done 처리
     if updates["done"]:
+        log.info(
+            "stream poll done job_id=%s error=%s text_len=%d tools=%d",
+            job_id,
+            updates.get("error") or "",
+            len(updates.get("text", "")),
+            len(updates.get("tools", [])),
+        )
         new_streaming["active"] = False
         final_result = updates.get("final_result")
         if final_result:

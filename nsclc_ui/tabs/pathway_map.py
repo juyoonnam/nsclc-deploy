@@ -4797,3 +4797,36 @@ dash.clientside_callback(
     Output(CHAT_POPUP_ESCAPE_LISTENER_ID, "children"),
     Input(CHAT_POPUP_OPEN_STORE_ID, "data"),
 )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# UI polish — URL ?focus=GENE 진입 시 자동 포커스
+# 메인 채팅에서 "🧬 경로에서 보기" 칩 클릭 → /pathway?focus=EGFR 로 진입.
+# 진입 즉시 entity-search 와 동일 경로로 navigate.
+# ─────────────────────────────────────────────────────────────────────────────
+@callback(
+    Output("briefing-stack-store", "data", allow_duplicate=True),
+    Output("focus-store", "data", allow_duplicate=True),
+    Output(_SIGNOR_SEED_ID, "value", allow_duplicate=True),
+    Output(_VIEW_STATE_STORE_ID, "data", allow_duplicate=True),
+    Input("url", "search"),
+    State("briefing-stack-store", "data"),
+    prevent_initial_call=True,
+)
+def _on_url_focus(search, stack):
+    """URL ?focus=GENE → 해당 노드로 이동."""
+    if not search:
+        return no_update, no_update, no_update, no_update
+    from urllib.parse import parse_qs
+    qs = parse_qs(search.lstrip("?"))
+    gene = (qs.get("focus", [None])[0] or "").strip().upper()
+    if not gene:
+        return no_update, no_update, no_update, no_update
+    # SIGNOR 그래프에 있는지 확인
+    if gene not in _SIGNOR_G.nodes:
+        return no_update, no_update, no_update, no_update
+    typ = "target" if gene in _NSCLC_TARGET_SET else "protein"
+    new_focus = {"id": gene, "type": typ, "_nav": True}
+    new_stack = _push_to_stack(stack, new_focus)
+    seed_value = gene if typ == "target" else no_update
+    return new_stack, new_focus, seed_value, _view_state("cluster", None, new_focus)
