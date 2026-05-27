@@ -60,7 +60,7 @@ categories:
     icon: "👤"
     questions:
       - id: q1
-        text: "Osimertinib의 EGFR L858R/T790M 근거를 허가·가이드라인, 모델 점수, 세포주 반응으로 5줄 요약"
+        text: "Osimertinib의 EGFR L858R/T790M 근거를 허가·가이드라인, 모델 점수, PRISM 세포주 반응으로 5줄 요약"
         stable_demo: true
         tools: [check_in_library, get_drug_metadata, get_oof_prediction, get_ensemble_probability, get_drug_response, search_clinical_knowledge_base]
         expected_keywords:

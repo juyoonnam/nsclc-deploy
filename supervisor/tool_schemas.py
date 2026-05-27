@@ -340,7 +340,7 @@ list_actionable_genes = ToolSchema(
 
 get_drug_response = ToolSchema(
     name="get_drug_response",
-    description="약물-세포주 반응(lfc) 조회. PRISM/GDSC2 소스 선택 가능. lfc < 0 = viability 감소.",
+    description="약물-세포주 반응(lfc) 조회. 현재 PRISM NSCLC 세포주 반응만 지원. lfc < 0 = viability 감소.",
     input_schema={
         "type": "object",
         "properties": {
@@ -354,8 +354,8 @@ get_drug_response = ToolSchema(
             },
             "source": {
                 "type": "string",
-                "description": "데이터 소스",
-                "enum": ["prism", "gdsc2", "both"],
+                "description": "데이터 소스. 현재 prism만 지원.",
+                "enum": ["prism"],
                 "default": "prism",
             },
         },

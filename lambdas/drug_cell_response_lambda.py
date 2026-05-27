@@ -115,6 +115,15 @@ def get_drug_response(
     PRISM lfc < 0 → cytotoxic. 강한 효과 = lfc < -0.5 정도.
     cell_line 입력은 alias 자동 시도 (H1975 → NCIH1975).
     """
+    requested_source = str(source or "prism").lower()
+    source_note = None
+    if requested_source != "prism":
+        source_note = (
+            f"source={requested_source} is not available in this deployment; "
+            "returned PRISM NSCLC response instead."
+        )
+        source = "prism"
+
     target_chembl = None
     if chembl_id:
         target_chembl = normalize_compound_id(chembl_id)
@@ -193,6 +202,7 @@ def get_drug_response(
                 "count": len(responses),
                 "total_available": original_count,
                 "cap_applied": cap_applied,
+                "source_note": source_note,
                 "interpretation": (
                     "PRISM lfc: 음수=cell viability 감소(cytotoxic), 양수=증식. "
                     "강한 효과는 lfc < -0.5 정도."
