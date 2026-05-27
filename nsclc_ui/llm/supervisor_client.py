@@ -418,6 +418,37 @@ def active_jobs_count() -> int:
 # chunk → store updates (v2와 동일)
 # ════════════════════════════════════════════════════════════
 
+def _compact_trace_value(value, *, max_chars: int = 6000, max_list_items: int = 8):
+    """Keep evidence trace useful without making every Dash poll render huge JSON."""
+    if value is None:
+        return None
+    if isinstance(value, str):
+        if len(value) <= max_chars:
+            return value
+        return value[:max_chars] + f"\n...[truncated {len(value) - max_chars} chars]"
+    if isinstance(value, list):
+        compacted = [
+            _compact_trace_value(item, max_chars=max_chars // 2, max_list_items=max_list_items)
+            for item in value[:max_list_items]
+        ]
+        if len(value) > max_list_items:
+            compacted.append({"_truncated_items": len(value) - max_list_items})
+        return compacted
+    if isinstance(value, dict):
+        compacted = {}
+        for idx, (key, item) in enumerate(value.items()):
+            if idx >= max_list_items:
+                compacted["_truncated_keys"] = len(value) - max_list_items
+                break
+            compacted[key] = _compact_trace_value(
+                item,
+                max_chars=max_chars // 2,
+                max_list_items=max_list_items,
+            )
+        return compacted
+    return value
+
+
 def chunks_to_store_updates(
     chunks: list[dict],
     current_text: str,
@@ -456,7 +487,7 @@ def chunks_to_store_updates(
             tool_name = ch.get("tool", "?")
             success = ch.get("success", False)
             elapsed = ch.get("elapsed", 0)
-            output = ch.get("output") or ch.get("result") or ch.get("response")
+            output = _compact_trace_value(ch.get("output") or ch.get("result") or ch.get("response"))
             error_msg = ch.get("error") or ch.get("message")
             updated = False
             for t in reversed(tools):
@@ -487,7 +518,15 @@ def chunks_to_store_updates(
             final_result = ch.get("response")
             call_log = (final_result or {}).get("call_log", []) if isinstance(final_result, dict) else []
             if call_log:
-                tools = _build_tools(call_log)
+                final_tools = _build_tools(call_log)
+                for idx, final_tool in enumerate(final_tools):
+                    if idx >= len(tools):
+                        continue
+                    live_tool = tools[idx]
+                    for field in ("input", "output", "error"):
+                        if final_tool.get(field) is None and live_tool.get(field) is not None:
+                            final_tool[field] = live_tool[field]
+                tools = final_tools
         elif ctype == "error":
             error = ch.get("message", "Unknown error")
             done = True
@@ -611,7 +650,7 @@ def _build_tools(call_log: list) -> list:
             "detail": detail,
             "elapsed_sec": elapsed,
             "input": entry.get("input") or entry.get("params") or entry.get("args"),
-            "output": entry.get("output") or entry.get("result"),
+            "output": _compact_trace_value(entry.get("output") or entry.get("result")),
             "error": entry.get("error") or entry.get("message"),
             "policy_rejected": bool(policy_rejected) if policy_rejected else False,
         })

@@ -4820,7 +4820,7 @@ def _url_focus_outputs(search, stack):
     new_focus = {"id": gene, "type": typ, "_nav": True}
     new_stack = _push_to_stack(stack, new_focus)
     seed_value = gene if typ == "target" else no_update
-    return new_stack, new_focus, seed_value, _view_state("cluster", None, new_focus)
+    return new_stack, new_focus, seed_value, _view_state("ego", gene, new_focus)
 
 
 @callback(

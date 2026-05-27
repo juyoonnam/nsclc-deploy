@@ -275,7 +275,7 @@ def _initial_welcome() -> html.Div:
         ),
         dmc.Text(
             "모든 응답에는 호출된 MCP tool의 정량 근거 (SHAP, in-library, Tanimoto, "
-            "PR-AUC, provenance)가 우측 패널에 박힙니다.",
+            "PR-AUC, provenance)가 우측 패널에 체계적으로 정리됩니다.",
             size="xs",
             c="dimmed",
         ),
@@ -346,11 +346,6 @@ def _detect_pathway_genes(text: str) -> list[str]:
     return detected[:5]
 
 
-def _pathway_link_for(gene: str) -> str:
-    # query param은 pathway_map URL handler 추가 시점에 활용. 현재는 그냥 navigate.
-    return f"/pathway?focus={gene}"
-
-
 def _pathway_link_block(text: str) -> html.Div | None:
     genes = _detect_pathway_genes(text)
     if not genes:
@@ -392,7 +387,25 @@ def open_pathway_popup(n_clicks_list):
     gene = str(triggered.get("gene") or "").upper()
     if gene not in _PATHWAY_GENES:
         return no_update, no_update, no_update
-    return True, f"/pathway?focus={gene}&popup=1", f"경로에서 보기: {gene}"
+    nonce = sum(int(n or 0) for n in (n_clicks_list or []))
+    return True, f"/pathway?focus={gene}&popup=1&open={nonce}", f"경로에서 보기: {gene}"
+
+
+def _normalize_top_level_numbering(text: str) -> str:
+    """Display-only normalization: make top-level numbered sections start at 1."""
+    if not text:
+        return text
+    import re
+    counter = 0
+    pattern = re.compile(r"^(\s{0,3})(#{1,3}\s+)(\d{1,2})\.\s+(.+)$", re.MULTILINE)
+
+    def repl(match):
+        nonlocal counter
+        prefix, hashes, _num, title = match.groups()
+        counter += 1
+        return f"{prefix}{hashes or ''}{counter}. {title}"
+
+    return pattern.sub(repl, text)
 
 
 def _tool_progress_label(tool_name: str, status: str) -> tuple[str, str]:
@@ -508,7 +521,7 @@ def _assistant_bubble_markdown(text: str, meta: dict | None = None,
             )
         )
     else:
-        display_text = text
+        display_text = _normalize_top_level_numbering(text)
         children.append(
             html.Div(
                 className="chat-streaming-answer" if streaming else None,

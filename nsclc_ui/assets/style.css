@@ -4326,17 +4326,16 @@ a:hover .mantine-Text-root {
 .scenario-btn-content {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
   width: 100%;
 }
 .scenario-btn-label {
   flex: 1;
   min-width: 0;
 }
-.scenario-route-badge {
-  flex: 0 0 auto;
-  margin-top: 1px;
+.scenario-search-arrow {
+  color: var(--nsclc-text-tertiary, #778197);
+  font-size: 14px;
+  line-height: 1;
 }
 .scenario-btn:hover {
   background: rgba(124, 58, 237, 0.10) !important;
