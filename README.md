@@ -24,7 +24,7 @@ Supervisor agent가 ML 챔피언 모델(E6, scaffold CV PR-AUC_w 0.1383 ± 0.005
                     6× AWS Lambda   local rdkit    Bedrock
                     (us-east-1)     drug_library   - Sonnet/Haiku
                     + S3 data       (in-process)   - KB (FDA labels)
-                                                   - Guardrail v9
+                                                   - Guardrail v11
 ```
 
 ### 컴포넌트
@@ -39,7 +39,7 @@ Supervisor agent가 ML 챔피언 모델(E6, scaffold CV PR-AUC_w 0.1383 ± 0.005
   - `drug_cell_response`, `drug_library`, `guardrail`, `knowledge_base`,
     `model_inference`, `patient`, `schema_discovery`
 
-- **`ui/`** — Dash 챗봇 + 보조 패널 (Pathway Map, Simulator, Candidate Explorer,
+- **`nsclc_ui/`** — Dash 챗봇 + 보조 패널 (Pathway Map, Simulator, Candidate Explorer,
   Drug Ranking, Model Card).
 
 ---
@@ -53,12 +53,12 @@ Supervisor agent가 ML 챔피언 모델(E6, scaffold CV PR-AUC_w 0.1383 ± 0.005
   Bedrock 호출 권한
 - S3 bucket `say2-5team-use1` (us-east-1) — Parquet 데이터 sync 완료
 - Bedrock Knowledge Base `PHZTHHSMZC` (FDA labels + ESMO PAGA 등 5 PDFs)
-- Bedrock Guardrail `19ys87squ5mz` v9 (Contextual grounding 포함)
+- Bedrock Guardrail `19ys87squ5mz` v11 (Contextual grounding + clinical citations 허용)
 - 6개 AWS Lambda 배포 (`nsclc-*`, tag `project=pre-5team`)
 
 ### EC2
 
-- 인스턴스: t3.large 이상 권장 (4 vCPU / 8 GB RAM), Amazon Linux 2023
+- 인스턴스: t3.xlarge, Amazon Linux 2023
 - Instance profile: `NSCLCSupervisorEC2Profile`
 - Security group: 8050 (Dash UI) 외부 공개, 8000 (supervisor)은 localhost only
 - Docker + docker compose 설치
@@ -104,7 +104,7 @@ docker compose down
 | `BEDROCK_REGION` | `us-east-1` | Bedrock 및 Knowledge Base region |
 | `BEDROCK_KB_ID` | `PHZTHHSMZC` | Knowledge Base ID |
 | `GUARDRAIL_ID` | `19ys87squ5mz` | Bedrock Guardrail ID |
-| `GUARDRAIL_VERSION` | `9` | Guardrail 버전 |
+| `GUARDRAIL_VERSION` | `11` | Guardrail 버전 |
 | `DATA_MODE` | `s3` | `local` 지정 시 `NSCLC_PROJECT_ROOT` 사용 |
 | `S3_DATA_BUCKET` | `say2-5team-use1` | Parquet 데이터 버킷 |
 | `SUPERVISOR_LOCAL_MODE` | `false` | `true` 지정 시 모든 lambda를 local invoke |
@@ -168,9 +168,9 @@ curl -N -X POST http://localhost:8000/invoke_stream \
    dedup 캐시가 stateful이므로, 멀티 워커 확장 시 Redis 등 외부 캐시 도입이
    필요합니다.
 
-3. **신규 화합물 일반화 한계.** STRICT scaffold Spearman 0.18 / RELAXED 0.36.
-   computational chemistry의 알려진 난제이며, 두 지표를 병기하여 정직하게
-   보고합니다.
+3. **Model A v3 (cell-line response regression)의 신규 화합물 일반화 한계.**
+   STRICT scaffold Spearman 0.18 / RELAXED 0.36. computational chemistry의 알려진
+   난제이며, 두 지표를 병기하여 정직하게 보고합니다.
 
 ---
 
