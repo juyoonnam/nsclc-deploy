@@ -26,6 +26,7 @@ import os
 import re
 import sys
 import time
+from contextvars import ContextVar
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterator
@@ -481,7 +482,10 @@ class ToolInvoker:
         self.n_dedup_hits = 0
 
 
-_TOOL_INVOKER: ToolInvoker | None = None
+_TOOL_INVOKER: ContextVar[ToolInvoker | None] = ContextVar(
+    "_TOOL_INVOKER",
+    default=None,
+)
 
 
 def _build_strands_tools():
@@ -490,9 +494,10 @@ def _build_strands_tools():
         def make_tool(tn=tool_name, desc=schema.description):
             @strands_tool
             def _wrapped(**params):
-                if _TOOL_INVOKER is None:
+                tool_invoker = _TOOL_INVOKER.get()
+                if tool_invoker is None:
                     return {"error": "ToolInvoker not initialized"}
-                return _TOOL_INVOKER.invoke(tn, params)
+                return tool_invoker.invoke(tn, params)
             _wrapped.__name__ = tn
             _wrapped.__doc__ = desc
             return _wrapped
@@ -562,9 +567,6 @@ class NSCLCSupervisor:
         self.system_prompt = system_prompt or SYSTEM_PROMPT
         self.enable_prompt_caching = enable_prompt_caching
         self.max_turns = max_turns
-        self.tool_invoker = ToolInvoker(local_mode=local_mode, region=region)
-        # ★ v4: 호출별 active model
-        self._active_model_id = model_id
 
     def _select_model_for_query(self, query: str) -> tuple[str, str]:
         """Returns (model_id, complexity_label).
@@ -584,81 +586,86 @@ class NSCLCSupervisor:
         return self.sonnet_model_id, "complex"
 
     def invoke(self, query: str) -> SupervisorResponse:
-        self.tool_invoker.reset()
+        tool_invoker = ToolInvoker(local_mode=self.local_mode, region=self.region)
         start_time = time.time()
 
         # ★ v4: hybrid 모델 선택
         selected_model, complexity = self._select_model_for_query(query)
-        self._active_model_id = selected_model
         _log(f"ROUTING: query → {complexity} → {selected_model}")
 
-        global _TOOL_INVOKER
-        _TOOL_INVOKER = self.tool_invoker
+        token = _TOOL_INVOKER.set(tool_invoker)
 
         backend = "bedrock_converse"
         n_turns = 0
         try:
-            if os.environ.get("NSCLC_USE_STRANDS", "0") == "1":
-                response_text = self._invoke_with_strands(query)
-                backend = "strands"
-            else:
-                response_text, n_turns = self._invoke_with_bedrock_converse(query)
-        except Exception as e:
-            _log(f"Primary backend failed: {type(e).__name__}: {e}")
             try:
-                response_text, n_turns = self._invoke_with_bedrock_converse(query)
-                backend = "bedrock_converse_fallback"
-            except Exception as e2:
-                response_text = f"❌ Supervisor 호출 실패: {type(e2).__name__}: {e2}"
-                backend = "error"
+                if os.environ.get("NSCLC_USE_STRANDS", "0") == "1":
+                    response_text = self._invoke_with_strands(query, selected_model)
+                    backend = "strands"
+                else:
+                    response_text, n_turns = self._invoke_with_bedrock_converse(
+                        query, tool_invoker, selected_model
+                    )
+            except Exception as e:
+                _log(f"Primary backend failed: {type(e).__name__}: {e}")
+                try:
+                    response_text, n_turns = self._invoke_with_bedrock_converse(
+                        query, tool_invoker, selected_model
+                    )
+                    backend = "bedrock_converse_fallback"
+                except Exception as e2:
+                    response_text = f"❌ Supervisor 호출 실패: {type(e2).__name__}: {e2}"
+                    backend = "error"
 
-        latency = time.time() - start_time
-        tools_called = self.tool_invoker.get_tools_called()
-        call_log = self.tool_invoker.get_call_log()
+            latency = time.time() - start_time
+            tools_called = tool_invoker.get_tools_called()
+            call_log = tool_invoker.get_call_log()
 
-        # ★ v4.1: Haiku 응답 후처리
-        if "haiku" in selected_model.lower():
-            response_text = _post_process_haiku_response(response_text)
+            # ★ v4.1: Haiku 응답 후처리
+            if "haiku" in selected_model.lower():
+                response_text = _post_process_haiku_response(response_text)
 
-        if "🔧" not in response_text:
-            footer = self._build_provenance_footer(call_log)
-            response_text = f"{response_text}\n\n{footer}"
+            if "🔧" not in response_text:
+                footer = self._build_provenance_footer(call_log)
+                response_text = f"{response_text}\n\n{footer}"
 
-        violations = self._check_policy_violations(response_text, tools_called)
+            violations = self._check_policy_violations(response_text, tools_called)
 
-        return SupervisorResponse(
-            text=response_text,
-            tools_called=tools_called,
-            latency_sec=round(latency, 2),
-            provenance=[e for e in call_log if e["success"]],
-            policy_violations=violations,
-            call_log=call_log,
-            backend=backend,
-            n_turns=n_turns,
-            n_dedup_hits=self.tool_invoker.n_dedup_hits,
-            model_used=selected_model,
-            complexity=complexity,
-        )
+            return SupervisorResponse(
+                text=response_text,
+                tools_called=tools_called,
+                latency_sec=round(latency, 2),
+                provenance=[e for e in call_log if e["success"]],
+                policy_violations=violations,
+                call_log=call_log,
+                backend=backend,
+                n_turns=n_turns,
+                n_dedup_hits=tool_invoker.n_dedup_hits,
+                model_used=selected_model,
+                complexity=complexity,
+            )
+        finally:
+            _TOOL_INVOKER.reset(token)
 
     def invoke_stream(self, query: str) -> Iterator[dict]:
-        self.tool_invoker.reset()
+        tool_invoker = ToolInvoker(local_mode=self.local_mode, region=self.region)
         start_time = time.time()
 
         # ★ v4: hybrid 모델 선택
         selected_model, complexity = self._select_model_for_query(query)
-        self._active_model_id = selected_model
         _log(f"ROUTING: query → {complexity} → {selected_model}")
 
-        global _TOOL_INVOKER
-        _TOOL_INVOKER = self.tool_invoker
+        token = _TOOL_INVOKER.set(tool_invoker)
 
-        # 라우팅 정보를 첫 chunk로 yield
-        yield {"type": "routing", "model": selected_model, "complexity": complexity}
-
-        accumulated_text = ""
-        n_turns = 0
         try:
-            for chunk in self._invoke_with_bedrock_converse_stream(query):
+            # 라우팅 정보를 첫 chunk로 yield
+            yield {"type": "routing", "model": selected_model, "complexity": complexity}
+
+            accumulated_text = ""
+            n_turns = 0
+            for chunk in self._invoke_with_bedrock_converse_stream(
+                query, tool_invoker, selected_model
+            ):
                 if chunk.get("type") == "text_chunk":
                     accumulated_text += chunk["text"]
                 if chunk.get("type") == "turn_end":
@@ -666,8 +673,8 @@ class NSCLCSupervisor:
                 yield chunk
 
             latency = time.time() - start_time
-            tools_called = self.tool_invoker.get_tools_called()
-            call_log = self.tool_invoker.get_call_log()
+            tools_called = tool_invoker.get_tools_called()
+            call_log = tool_invoker.get_call_log()
 
             # ★ v4.1: Haiku 응답 후처리
             if "haiku" in selected_model.lower():
@@ -689,30 +696,28 @@ class NSCLCSupervisor:
                     "policy_violations": violations,
                     "backend": "bedrock_converse_stream",
                     "n_turns": n_turns,
-                    "n_dedup_hits": self.tool_invoker.n_dedup_hits,
+                    "n_dedup_hits": tool_invoker.n_dedup_hits,
                     "model_used": selected_model,
                     "complexity": complexity,
                 },
             }
         except Exception as e:
             yield {"type": "error", "message": f"{type(e).__name__}: {e}"}
+        finally:
+            _TOOL_INVOKER.reset(token)
 
-    def _invoke_with_strands(self, query: str) -> str:
+    def _invoke_with_strands(self, query: str, selected_model: str) -> str:
         from strands import Agent
         from strands.models.bedrock import BedrockModel
 
-        global _TOOL_INVOKER
-        _TOOL_INVOKER = ToolInvoker(local_mode=self.local_mode, region=self.region)
-        self.tool_invoker = _TOOL_INVOKER
-
-        model = BedrockModel(model_id=self._active_model_id, region_name=self.region)
+        model = BedrockModel(model_id=selected_model, region_name=self.region)
         agent = Agent(model=model, system_prompt=self.system_prompt, tools=ALL_TOOLS)
         return str(agent(query))
 
-    def _build_converse_request(self, messages: list) -> dict:
+    def _build_converse_request(self, messages: list, selected_model: str) -> dict:
         # ★ v4.1: Haiku 전용 prompt augmentation
         active_prompt = self.system_prompt
-        if "haiku" in (self._active_model_id or "").lower():
+        if "haiku" in (selected_model or "").lower():
             active_prompt = self.system_prompt + HAIKU_EXTRA_INSTRUCTIONS
 
         if self.enable_prompt_caching:
@@ -737,7 +742,7 @@ class NSCLCSupervisor:
             tool_config = {"tools": tool_specs}
 
         request = {
-            "modelId": self._active_model_id or self.model_id,  # ★ v4
+            "modelId": selected_model or self.model_id,  # ★ v4
             "system": system_blocks,
             "messages": messages,
             "toolConfig": tool_config,
@@ -751,20 +756,25 @@ class NSCLCSupervisor:
             }
         return request
 
-    def _invoke_with_bedrock_converse(self, query: str) -> tuple[str, int]:
+    def _invoke_with_bedrock_converse(
+        self,
+        query: str,
+        tool_invoker: ToolInvoker,
+        selected_model: str,
+    ) -> tuple[str, int]:
         import boto3
         client = boto3.client("bedrock-runtime", region_name=self.region)
         messages = [{"role": "user", "content": [{"text": query}]}]
 
         for turn in range(self.max_turns):
-            request = self._build_converse_request(messages)
+            request = self._build_converse_request(messages, selected_model)
             try:
                 response = client.converse(**request)
             except Exception as e:
                 if "cachePoint" in str(e) and self.enable_prompt_caching:
                     _log("Prompt caching unsupported — disabling")
                     self.enable_prompt_caching = False
-                    request = self._build_converse_request(messages)
+                    request = self._build_converse_request(messages, selected_model)
                     response = client.converse(**request)
                 else:
                     raise
@@ -785,7 +795,7 @@ class NSCLCSupervisor:
                 for block in output["content"]:
                     if "toolUse" in block:
                         tu = block["toolUse"]
-                        result = self.tool_invoker.invoke(tu["name"], tu.get("input", {}))
+                        result = tool_invoker.invoke(tu["name"], tu.get("input", {}))
                         tool_results.append({
                             "toolResult": {
                                 "toolUseId": tu["toolUseId"],
@@ -805,19 +815,24 @@ class NSCLCSupervisor:
 
         return "(최대 턴 수 초과)", self.max_turns
 
-    def _invoke_with_bedrock_converse_stream(self, query: str) -> Iterator[dict]:
+    def _invoke_with_bedrock_converse_stream(
+        self,
+        query: str,
+        tool_invoker: ToolInvoker,
+        selected_model: str,
+    ) -> Iterator[dict]:
         import boto3
         client = boto3.client("bedrock-runtime", region_name=self.region)
         messages = [{"role": "user", "content": [{"text": query}]}]
 
         for turn in range(self.max_turns):
-            request = self._build_converse_request(messages)
+            request = self._build_converse_request(messages, selected_model)
             try:
                 stream_response = client.converse_stream(**request)
             except Exception as e:
                 if "cachePoint" in str(e) and self.enable_prompt_caching:
                     self.enable_prompt_caching = False
-                    request = self._build_converse_request(messages)
+                    request = self._build_converse_request(messages, selected_model)
                     stream_response = client.converse_stream(**request)
                 else:
                     raise
@@ -877,7 +892,7 @@ class NSCLCSupervisor:
                     if "toolUse" in block:
                         tu = block["toolUse"]
                         start = time.time()
-                        result = self.tool_invoker.invoke(tu["name"], tu.get("input", {}))
+                        result = tool_invoker.invoke(tu["name"], tu.get("input", {}))
                         elapsed = time.time() - start
                         yield {
                             "type": "tool_result",
