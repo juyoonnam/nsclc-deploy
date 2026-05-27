@@ -122,6 +122,7 @@ def layout(**kwargs):
                 disabled=True,
                 n_intervals=0,
             ),
+            html.Div(id="chat-scroll-sync", style={"display": "none"}),
             _pathway_popup_modal(),
         ],
     )
@@ -471,14 +472,28 @@ def _assistant_bubble_markdown(text: str, meta: dict | None = None,
             children.append(progress)
 
     if not text and streaming:
-        children.append(dmc.Loader(color="violet", size="sm", type="dots"))
-    else:
-        display_text = text + (" ▌" if streaming else "")
         children.append(
-            dcc.Markdown(
-                display_text,
-                style={"fontSize": "13px", "lineHeight": "1.6"},
-                dangerously_allow_html=False,
+            html.Div(
+                className="chat-streaming-answer",
+                children=[
+                    dmc.Loader(color="violet", size="sm", type="dots"),
+                    html.Span("▌", className="chat-streaming-cursor"),
+                ],
+            )
+        )
+    else:
+        display_text = text
+        children.append(
+            html.Div(
+                className="chat-streaming-answer" if streaming else None,
+                children=[
+                    dcc.Markdown(
+                        display_text,
+                        style={"fontSize": "13px", "lineHeight": "1.6"},
+                        dangerously_allow_html=False,
+                    ),
+                    html.Span("▌", className="chat-streaming-cursor") if streaming else None,
+                ],
             )
         )
 
@@ -528,8 +543,12 @@ def _render_thread(history: list, streaming: dict | None) -> list:
         items.append(
             _assistant_bubble_markdown(
                 streaming.get("text", ""),
-                meta={"backend": "streaming",
-                      "n_tools": len(streaming.get("tools", []))},
+                meta={
+                    "backend": streaming.get("backend") or "streaming",
+                    "model_used": streaming.get("model_used", ""),
+                    "complexity": streaming.get("complexity", ""),
+                    "n_tools": len(streaming.get("tools", [])),
+                },
                 streaming=True,
                 streaming_tools=streaming.get("tools", []),
             )
@@ -600,7 +619,7 @@ def on_submit_or_scenario(submit_clicks, scenario_clicks, input_value,
     # 시나리오 버튼 클릭
     elif isinstance(trig, dict) and trig.get("type") == "scenario-btn":
         qid_full = trig.get("index")
-        if not qid_full or not any(scenario_clicks or []):
+        if not qid_full:
             return (no_update, no_update, no_update, no_update,
                     no_update, no_update, no_update)
         text_map = _load_scenario_text_map()
@@ -632,6 +651,9 @@ def on_submit_or_scenario(submit_clicks, scenario_clicks, input_value,
         "active": True if job_id else False,
         "text": "",
         "tools": [],
+        "backend": "streaming",
+        "model_used": "",
+        "complexity": "",
         "mock": start_info.get("mock", False),
         "cached": start_info.get("cached", False),
     }
@@ -685,6 +707,9 @@ def on_interval_poll(n, streaming, history):
     if not chunks:
         if is_job_done(job_id):
             final_result = get_job_result(job_id) or {}
+            if not final_result and streaming.get("active"):
+                log.info("stream poll stale/missing job ignored job_id=%s", job_id)
+                return no_update, no_update, no_update, True, no_update
             final_text = final_result.get("text") or streaming.get("text") or "(응답 완료)"
             tools = streaming.get("tools", [])
             violations = final_result.get("violations", [])
@@ -705,6 +730,8 @@ def on_interval_poll(n, streaming, history):
                 "content": final_text,
                 "meta": {
                     "backend": final_result.get("backend", "bedrock_converse_stream"),
+                    "model_used": final_result.get("model_used", streaming.get("model_used", "")),
+                    "complexity": final_result.get("complexity", streaming.get("complexity", "")),
                     "latency_sec": final_result.get("latency_sec", 0),
                     "n_tools": len(tools),
                     "violations": violations,
@@ -736,6 +763,9 @@ def on_interval_poll(n, streaming, history):
         "text": updates["text"],
         "tools": updates["tools"],
     }
+    routing = updates.get("routing") or {}
+    if routing:
+        new_streaming.update(routing)
 
     tool_trace = {
         "tools": updates["tools"],
@@ -761,6 +791,8 @@ def on_interval_poll(n, streaming, history):
             violations = final_result.get("policy_violations", [])
             latency = final_result.get("latency_sec", 0)
             backend = final_result.get("backend", "bedrock_converse_stream")
+            model_used = final_result.get("model_used", new_streaming.get("model_used", ""))
+            complexity = final_result.get("complexity", new_streaming.get("complexity", ""))
 
             history = _single_turn_user_history(history)
             history.append({
@@ -768,6 +800,8 @@ def on_interval_poll(n, streaming, history):
                 "content": final_text,
                 "meta": {
                     "backend": backend,
+                    "model_used": model_used,
+                    "complexity": complexity,
                     "latency_sec": latency,
                     "n_tools": len(updates["tools"]),
                     "violations": violations,
@@ -813,6 +847,31 @@ def on_interval_poll(n, streaming, history):
 )
 def render_chat_thread(history, streaming):
     return _render_thread(history or [], streaming)
+
+
+dash.clientside_callback(
+    """
+    function(streaming) {
+      const el = document.getElementById("chat-thread");
+      if (!el || !streaming) {
+        return "";
+      }
+      const jobId = streaming.job_id || "";
+      if (jobId && jobId !== window.__nsclcHomeLastJobId) {
+        window.__nsclcHomeLastJobId = jobId;
+        window.setTimeout(function() {
+          const target = document.getElementById("chat-thread");
+          if (target) {
+            target.scrollTop = 0;
+          }
+        }, 0);
+      }
+      return jobId;
+    }
+    """,
+    Output("chat-scroll-sync", "children"),
+    Input("streaming-job-store", "data"),
+)
 
 
 @callback(

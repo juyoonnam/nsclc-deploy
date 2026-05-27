@@ -4323,6 +4323,21 @@ a:hover .mantine-Text-root {
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
+.scenario-btn-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+.scenario-btn-label {
+  flex: 1;
+  min-width: 0;
+}
+.scenario-route-badge {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
 .scenario-btn:hover {
   background: rgba(124, 58, 237, 0.10) !important;
   color: var(--mantine-color-violet-2, #d8c8ff);
@@ -4408,6 +4423,20 @@ a:hover .mantine-Text-root {
 @keyframes chat-progress-fade-in {
   from { opacity: 0; transform: translateY(-2px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+.chat-streaming-answer {
+  position: relative;
+}
+.chat-streaming-answer .chat-streaming-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--mantine-color-violet-3, #c4b5fd);
+  font-weight: 700;
+  animation: chat-cursor-blink 0.9s steps(2, start) infinite;
+}
+@keyframes chat-cursor-blink {
+  0%, 42% { opacity: 1; }
+  43%, 100% { opacity: 0; }
 }
 
 

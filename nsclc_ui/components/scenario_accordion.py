@@ -9,6 +9,7 @@ scenarios.yaml (final/agentcore/scenarios.yaml) 직접 로드.
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import yaml
 
 import dash_mantine_components as dmc
@@ -32,6 +33,30 @@ def _load_scenarios() -> dict:
         return {"categories": [], "demo_path": []}
 
 
+_COMPLEX_HINTS = [
+    "환자", "patient", "tcga-", "l858r", "t790m", "g12c", "v600e",
+    "g719", "c797s", "exon", " vs ", "비교", "추천", "후보",
+    "ranking", "rank", "여러", "몇 가지", "리스트", "1순위",
+    "2순위", "top", "외부", "in-library", "in_library", "tanimoto",
+    "phase a", "scaffold", "그리고 ", "또한", "추가로", "약물들",
+    "drugs",
+]
+
+
+def _route_badge_for_question(text: str) -> tuple[str, str]:
+    """Mirror supervisor's lightweight query routing for scenario labels."""
+    query = text or ""
+    q = query.lower().strip()
+    mutation_combo = bool(re.search(
+        r"(l858r|t790m|g12c|v600e|g719|c797s|exon\s*\d+|t790)\s*[+,&]\s*"
+        r"(l858r|t790m|g12c|v600e|g719|c797s|exon\s*\d+)",
+        q,
+    ))
+    if mutation_combo or any(hint in q for hint in _COMPLEX_HINTS) or len(query) > 80:
+        return "Sonnet", "violet"
+    return "Haiku", "cyan"
+
+
 def scenario_accordion() -> dmc.Paper:
     """좌측 시나리오 카테고리 패널."""
     data = _load_scenarios()
@@ -50,6 +75,7 @@ def scenario_accordion() -> dmc.Paper:
 
             label_text = q["text"]
             prefix = "⭐ " if is_stable else "• "
+            model_label, model_color = _route_badge_for_question(label_text)
 
             btn_style = {
                 "padding": "6px 10px",
@@ -73,8 +99,21 @@ def scenario_accordion() -> dmc.Paper:
 
             questions_buttons.append(
                 dmc.UnstyledButton(
-                    prefix + label_text,
+                    html.Div(
+                        className="scenario-btn-content",
+                        children=[
+                            html.Span(prefix + label_text, className="scenario-btn-label"),
+                            dmc.Badge(
+                                model_label,
+                                color=model_color,
+                                size="xs",
+                                variant="light",
+                                className="scenario-route-badge",
+                            ),
+                        ],
+                    ),
                     id={"type": "scenario-btn", "index": qid_full},
+                    n_clicks=0,
                     className=" ".join(class_names),
                     style=btn_style,
                 )

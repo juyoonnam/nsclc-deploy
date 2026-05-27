@@ -428,10 +428,17 @@ def chunks_to_store_updates(
     done = False
     error = None
     final_result = None
+    routing: dict = {}
 
     for ch in chunks:
         ctype = ch.get("type")
-        if ctype == "text_chunk":
+        if ctype == "routing":
+            routing = {
+                "backend": "bedrock_converse_stream",
+                "model_used": ch.get("model", ""),
+                "complexity": ch.get("complexity", ""),
+            }
+        elif ctype == "text_chunk":
             text += ch.get("text", "")
         elif ctype == "replace_text":
             text = ch.get("text", "")
@@ -491,6 +498,7 @@ def chunks_to_store_updates(
         "done": done,
         "error": error,
         "final_result": final_result,
+        "routing": routing,
     }
 
 
