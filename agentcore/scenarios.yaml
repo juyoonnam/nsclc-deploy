@@ -1,0 +1,293 @@
+# NSCLC Insight Engine - Demo Scenarios
+# Fast demo set: keeps question text on fast structured data paths.
+
+version: "1.2"
+last_updated: "2026-05-28"
+total_questions: 30
+
+# Most impactful live-demo question: star + purple highlight.
+demo_path:
+  - demo_core.q1
+
+categories:
+
+  - id: demo_core
+    order: 1
+    title: "시연 핵심 질문"
+    title_en: "Demo Core"
+    description: "발표 첫 화면에서 가장 안정적으로 임팩트를 주는 질문."
+    icon: "✨"
+    questions:
+      - id: q1
+        text: "Osimertinib의 EGFR L858R/T790M 근거를 허가·가이드라인, 모델 점수, 세포주 반응으로 5줄 요약"
+        stable_demo: true
+        tools: [check_in_library, get_drug_metadata, get_oof_prediction, get_ensemble_probability, get_drug_response, search_clinical_knowledge_base]
+        expected_keywords:
+          - "Osimertinib"
+          - "EGFR"
+          - "T790M"
+          - "0.6238"
+          - "PRISM"
+
+      - id: q2
+        text: "Sotorasib의 KRAS G12C 근거를 허가·가이드라인, 모델 점수, 변이 빈도로 요약"
+        tools: [check_in_library, get_drug_metadata, get_patient_mutation, get_oof_prediction, get_ensemble_probability, search_clinical_knowledge_base]
+        expected_keywords:
+          - "Sotorasib"
+          - "KRAS G12C"
+          - "487"
+          - "202"
+
+      - id: q3
+        text: "TCGA 1,897명에서 actionable mutation 보유 비율과 상위 유전자 5개"
+        tools: [get_patient_mutation, list_actionable_genes]
+        expected_keywords:
+          - "1,897"
+          - "actionable"
+          - "EGFR"
+          - "KRAS"
+
+      - id: q4
+        text: "PR-AUC 0.1383을 발표용으로 의미와 한계까지 4문장 설명"
+        tools: [validate_clinical_claim]
+        expected_keywords:
+          - "0.1383"
+          - "mechanism hypothesis"
+          - "한계"
+
+  - id: drug_library
+    order: 2
+    title: "약물 라이브러리 탐색"
+    title_en: "Drug Library"
+    description: "약물 이름, 타겟, 임상 단계가 바로 나오는 빠른 조회형 질문."
+    icon: "💊"
+    questions:
+      - id: q1
+        text: "NSCLC에서 이미 허가 또는 임상 근거가 있는 EGFR 타겟 약물 목록"
+        tools: [search_drugs, get_drug_metadata]
+        expected_keywords:
+          - "EGFR"
+          - "Osimertinib"
+
+      - id: q2
+        text: "약물 재창출 후보 11개를 내부 등급명 없이 이름·타겟·근거로 정리"
+        tools: [search_drugs, get_drug_metadata]
+        expected_keywords:
+          - "11"
+          - "target"
+
+      - id: q3
+        text: "KRAS를 타겟으로 하는 라이브러리 약물과 임상 단계 요약"
+        tools: [search_drugs, get_drug_metadata]
+        expected_keywords:
+          - "KRAS"
+          - "Sotorasib"
+
+      - id: q4
+        text: "임상 단계가 높은 NSCLC 관련 후보 약물 top 10"
+        tools: [search_drugs, get_drug_metadata]
+        expected_keywords:
+          - "Phase"
+          - "top 10"
+
+      - id: q5
+        text: "Osimertinib이 라이브러리에 포함되는지와 주요 타겟을 확인"
+        tools: [check_in_library, get_drug_metadata]
+        expected_keywords:
+          - "in_library"
+          - "EGFR"
+
+  - id: patient_drug_matching
+    order: 3
+    title: "환자 변이 → 약물 매칭"
+    title_en: "Patient Mutation Matching"
+    description: "환자 변이에서 바로 약물 후보로 이어지는 시연 흐름."
+    icon: "👤"
+    questions:
+      - id: q1
+        text: "EGFR L858R/T790M 환자 프로파일에서 우선 검토 약물 3개"
+        tools: [get_patient_mutation, match_patient_drugs, search_drugs, get_ensemble_probability]
+        expected_keywords:
+          - "EGFR"
+          - "Osimertinib"
+          - "Model B"
+
+      - id: q2
+        text: "KRAS G12C 환자 프로파일에서 우선 검토 약물 3개"
+        tools: [get_patient_mutation, match_patient_drugs, search_drugs, get_ensemble_probability]
+        expected_keywords:
+          - "KRAS"
+          - "G12C"
+          - "Sotorasib"
+
+      - id: q3
+        text: "MET 변이 또는 증폭 환자 프로파일에서 확인할 타겟 약물 3개"
+        tools: [list_actionable_genes, match_patient_drugs, search_drugs]
+        expected_keywords:
+          - "MET"
+          - "target"
+
+      - id: q4
+        text: "ALK 관련 환자 프로파일에서 라이브러리 매칭 후보 3개"
+        tools: [list_actionable_genes, match_patient_drugs, search_drugs]
+        expected_keywords:
+          - "ALK"
+          - "Brigatinib"
+
+  - id: model_trust
+    order: 4
+    title: "모델 해석 / 신뢰도"
+    title_en: "Model Trust"
+    description: "점수, SHAP, 한계를 짧게 설명하는 질문."
+    icon: "🧠"
+    questions:
+      - id: q1
+        text: "Osimertinib의 ensemble probability, OOF, 실제 레이블을 한 표로 정리"
+        tools: [check_in_library, get_oof_prediction, get_ensemble_probability]
+        expected_keywords:
+          - "0.6238"
+          - "y_true"
+          - "OOF"
+
+      - id: q2
+        text: "Imatinib SHAP 상위 근거를 화학·생물·세포주 신호로 나눠 설명"
+        tools: [check_in_library, get_oof_prediction, get_shap_explanation]
+        expected_keywords:
+          - "SHAP"
+          - "pic50"
+          - "morgan"
+
+      - id: q3
+        text: "PR-AUC 0.1383이 무작위 기준보다 나은 이유와 한계"
+        tools: [validate_clinical_claim]
+        expected_keywords:
+          - "0.1383"
+          - "한계"
+
+      - id: q4
+        text: "라이브러리 밖 화합물에는 왜 champion 모델 점수를 직접 주지 않는가"
+        tools: [check_scope, validate_clinical_claim]
+        expected_keywords:
+          - "scope"
+          - "analog"
+          - "mechanism hypothesis"
+
+  - id: cell_line_response
+    order: 5
+    title: "세포주 반응 분석"
+    title_en: "Cell Line Response"
+    description: "PRISM/GDSC와 변이 세포주를 연결하는 정량 검증."
+    icon: "🧫"
+    questions:
+      - id: q1
+        text: "NCIH1975 세포주의 EGFR/PIK3CA/TP53 변이와 Osimertinib 반응"
+        tools: [get_cell_line_meta, get_drug_response]
+        expected_keywords:
+          - "NCIH1975"
+          - "EGFR"
+          - "T790M"
+
+      - id: q2
+        text: "HCC827과 HCC4006의 Osimertinib PRISM LFC 비교"
+        tools: [get_cell_line_meta, get_drug_response]
+        expected_keywords:
+          - "HCC827"
+          - "HCC4006"
+          - "LFC"
+
+      - id: q3
+        text: "PRISM과 GDSC2가 겹치는 약물 수와 일치도 요약"
+        tools: [cross_source_lookup]
+        expected_keywords:
+          - "28"
+          - "Spearman"
+
+      - id: q4
+        text: "NSCLC 세포주에서 Osimertinib 반응이 강한 사례 5개"
+        tools: [get_drug_response, get_cell_line_meta]
+        expected_keywords:
+          - "Osimertinib"
+          - "LFC"
+
+  - id: moa_target
+    order: 6
+    title: "작용기전 / 타겟"
+    title_en: "MoA / Target"
+    description: "타겟과 작용기전 중심의 빠른 설명형 질문."
+    icon: "🎯"
+    questions:
+      - id: q1
+        text: "Osimertinib의 타겟, 작용기전, 라이브러리 포함 여부"
+        tools: [check_in_library, get_drug_metadata]
+        expected_keywords:
+          - "EGFR"
+          - "in_library"
+
+      - id: q2
+        text: "EGFR 경로 약물들을 세대와 타겟별로 정리"
+        tools: [search_drugs, get_drug_metadata]
+        expected_keywords:
+          - "EGFR"
+          - "Osimertinib"
+          - "Gefitinib"
+
+      - id: q3
+        text: "KRAS G12C 억제제의 타겟 선택성을 연구용 요약으로 설명"
+        tools: [get_drug_metadata, search_clinical_knowledge_base]
+        expected_keywords:
+          - "KRAS G12C"
+          - "Sotorasib"
+
+      - id: q4
+        text: "multi-target kinase inhibitor 후보를 타겟 수 기준으로 정리"
+        tools: [search_drugs, get_drug_metadata]
+        expected_keywords:
+          - "kinase"
+          - "target"
+
+  - id: clinical_evidence
+    order: 7
+    title: "허가·가이드라인 근거"
+    title_en: "Clinical Evidence"
+    description: "FDA/ESMO KB를 우선 사용하는 임상 grounding 확인용 질문."
+    icon: "📋"
+    questions:
+      - id: q1
+        text: "ESMO/FDA 기준으로 Osimertinib의 EGFR T790M 근거 요약"
+        tools: [search_clinical_knowledge_base, get_drug_metadata]
+        expected_keywords:
+          - "Osimertinib"
+          - "T790M"
+          - "ESMO"
+          - "FDA"
+
+      - id: q2
+        text: "ESMO/FDA 기준으로 Sotorasib의 KRAS G12C 근거 요약"
+        tools: [search_clinical_knowledge_base, get_drug_metadata]
+        expected_keywords:
+          - "Sotorasib"
+          - "KRAS G12C"
+          - "ESMO"
+          - "FDA"
+
+      - id: q3
+        text: "EGFR 변이 1차 치료 옵션을 허가·가이드라인 근거 중심으로 비교"
+        tools: [search_clinical_knowledge_base, search_drugs]
+        expected_keywords:
+          - "EGFR"
+          - "Osimertinib"
+
+      - id: q4
+        text: "Osimertinib 이후 진행 상황에서 검토되는 근거 옵션 요약"
+        tools: [search_clinical_knowledge_base, search_drugs]
+        expected_keywords:
+          - "Osimertinib"
+          - "Amivantamab"
+
+      - id: q5
+        text: "임상 수치가 포함된 답변에서 어떤 출처를 우선 확인하는지 설명"
+        tools: [validate_clinical_claim, search_clinical_knowledge_base]
+        expected_keywords:
+          - "FDA"
+          - "ESMO"
+          - "source_uri"
