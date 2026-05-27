@@ -36,8 +36,8 @@ SUPERVISOR_URL = os.environ.get("SUPERVISOR_URL", "http://localhost:8000").rstri
 HTTP_TIMEOUT_SYNC = float(os.environ.get("SUPERVISOR_HTTP_TIMEOUT", "300"))  # sync invoke
 HTTP_TIMEOUT_STREAM = float(os.environ.get("SUPERVISOR_STREAM_TIMEOUT", "600"))  # SSE
 STREAM_STALL_TIMEOUT = max(
-    180.0,
-    float(os.environ.get("SUPERVISOR_STREAM_STALL_TIMEOUT", "180")),
+    30.0,
+    float(os.environ.get("SUPERVISOR_STREAM_STALL_TIMEOUT", "60")),
 )
 
 _CACHE: dict = {}
@@ -263,20 +263,27 @@ def _parse_sse_stream(response):
     """
     event_type = None
     data_buf = []
-    for raw in response.iter_lines(decode_unicode=True):
+
+    def emit_buffered_chunk():
+        if not data_buf:
+            return None
+        data_str = "\n".join(data_buf)
+        try:
+            chunk = json.loads(data_str)
+        except json.JSONDecodeError:
+            chunk = {"type": event_type or "raw", "raw": data_str}
+        if "type" not in chunk and event_type:
+            chunk["type"] = event_type
+        return chunk
+
+    for raw in response.iter_lines(chunk_size=1, decode_unicode=True):
         if raw is None:
             continue
         line = raw.rstrip("\r")
         if line == "":
             # event 끝 — chunk emit
-            if data_buf:
-                data_str = "\n".join(data_buf)
-                try:
-                    chunk = json.loads(data_str)
-                except json.JSONDecodeError:
-                    chunk = {"type": event_type or "raw", "raw": data_str}
-                if "type" not in chunk and event_type:
-                    chunk["type"] = event_type
+            chunk = emit_buffered_chunk()
+            if chunk is not None:
                 yield chunk
             event_type = None
             data_buf = []
@@ -289,6 +296,10 @@ def _parse_sse_stream(response):
         elif line.startswith("data:"):
             data_buf.append(line[len("data:"):].lstrip())
         # 기타 필드 (id:, retry:)는 무시
+
+    chunk = emit_buffered_chunk()
+    if chunk is not None:
+        yield chunk
 
 
 def poll_streaming_chunks(job_id: str) -> list[dict]:

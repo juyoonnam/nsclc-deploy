@@ -654,17 +654,40 @@ class NSCLCSupervisor:
             return self.haiku_model_id, "simple"
         return self.sonnet_model_id, "complex"
 
+    def _frame_query_for_guardrails(self, query: str) -> str:
+        """Add a runtime-only safety frame for clinical evidence questions."""
+        query = (query or "").strip()
+        lower = query.lower()
+        clinical_terms = (
+            "nsclc", "환자", "patient", "변이", "mutation", "약물", "drug",
+            "치료", "therapy", "권고", "recommend", "egfr", "kras", "alk",
+        )
+        if not any(term in lower for term in clinical_terms):
+            return query
+        return (
+            f"{query}\n\n"
+            "[Response framing]\n"
+            "- 한국어로 답하되, 연구 참고용 evidence summary로만 작성한다.\n"
+            "- 처방/치료 지시형 문장 대신 '근거상 후보', '임상적으로 검토되는 옵션', "
+            "'전문의 판단 필요' 표현을 사용한다.\n"
+            "- 도구에서 얻은 수치, provenance, PMID/FDA/ESMO citation, 모델 지표는 보존한다.\n"
+            "- FDA label dose 같은 허가사항은 지시가 아니라 문헌/라벨 사실로만 표시한다.\n"
+            "- 표와 섹션을 끝까지 완성하고, guardrail/policy 문구를 본문에 쓰지 않는다."
+        )
+
     def invoke(self, query: str) -> SupervisorResponse:
         tool_invoker = ToolInvoker(local_mode=self.local_mode, region=self.region)
         start_time = time.time()
 
         # ★ v4: hybrid 모델 선택
         selected_model, complexity = self._select_model_for_query(query)
+        model_query = self._frame_query_for_guardrails(query)
         _log(f"ROUTING: query → {complexity} → {selected_model}")
         log.info(
-            "supervisor_invoke start started_at=%s query_len=%d model=%s complexity=%s",
+            "supervisor_invoke start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s",
             _diag_timestamp(),
             len(query),
+            len(model_query),
             selected_model,
             complexity,
         )
@@ -676,17 +699,17 @@ class NSCLCSupervisor:
         try:
             try:
                 if os.environ.get("NSCLC_USE_STRANDS", "0") == "1":
-                    response_text = self._invoke_with_strands(query, selected_model)
+                    response_text = self._invoke_with_strands(model_query, selected_model)
                     backend = "strands"
                 else:
                     response_text, n_turns = self._invoke_with_bedrock_converse(
-                        query, tool_invoker, selected_model
+                        model_query, tool_invoker, selected_model
                     )
             except Exception as e:
                 _log(f"Primary backend failed: {type(e).__name__}: {e}")
                 try:
                     response_text, n_turns = self._invoke_with_bedrock_converse(
-                        query, tool_invoker, selected_model
+                        model_query, tool_invoker, selected_model
                     )
                     backend = "bedrock_converse_fallback"
                 except Exception as e2:
@@ -739,6 +762,7 @@ class NSCLCSupervisor:
 
         # ★ v4: hybrid 모델 선택
         selected_model, complexity = self._select_model_for_query(query)
+        model_query = self._frame_query_for_guardrails(query)
         _log(f"ROUTING: query → {complexity} → {selected_model}")
 
         token = _TOOL_INVOKER.set(tool_invoker)
@@ -746,9 +770,10 @@ class NSCLCSupervisor:
         try:
             # 라우팅 정보를 첫 chunk로 yield
             log.info(
-                "supervisor_stream start started_at=%s query_len=%d model=%s complexity=%s",
+                "supervisor_stream start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s",
                 _diag_timestamp(),
                 len(query),
+                len(model_query),
                 selected_model,
                 complexity,
             )
@@ -758,7 +783,7 @@ class NSCLCSupervisor:
             accumulated_text = ""
             n_turns = 0
             for chunk in self._invoke_with_bedrock_converse_stream(
-                query, tool_invoker, selected_model
+                model_query, tool_invoker, selected_model
             ):
                 if chunk.get("type") == "text_chunk":
                     accumulated_text += chunk["text"]
@@ -859,7 +884,7 @@ class NSCLCSupervisor:
             "system": system_blocks,
             "messages": messages,
             "toolConfig": tool_config,
-            "inferenceConfig": {"maxTokens": 4096, "temperature": 0.3},
+            "inferenceConfig": {"maxTokens": 6144, "temperature": 0.2},
         }
         if self.guardrail_id:
             request["guardrailConfig"] = {
