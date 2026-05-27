@@ -518,15 +518,31 @@ def on_submit_or_scenario(submit_clicks, scenario_clicks, input_value,
         return (no_update, no_update, no_update, no_update,
                 no_update, no_update, no_update)
 
-    # 이미 streaming 중이면 새 query 무시 (race 방지)
+    from nsclc_ui.llm.supervisor_client import (
+        cleanup_job,
+        is_job_stale,
+        start_streaming_invoke,
+    )
+
+    # 이미 streaming 중이면 새 query 무시. 단 stale job은 정리하고 새 query를 허용.
     if current_streaming and current_streaming.get("active"):
-        log.info(
-            "stream submit ignored active_job=%s trigger=%s",
-            current_streaming.get("job_id", ""),
-            trig,
-        )
-        return (no_update, no_update, no_update, no_update,
-                no_update, no_update, no_update)
+        active_job_id = current_streaming.get("job_id", "")
+        if active_job_id and is_job_stale(active_job_id):
+            log.warning(
+                "stream submit cleanup stale active_job=%s trigger=%s",
+                active_job_id,
+                trig,
+            )
+            cleanup_job(active_job_id)
+        else:
+            log.info(
+                "stream submit ignored active_job=%s trigger=%s",
+                active_job_id,
+                trig,
+            )
+            return (no_update, no_update, no_update, no_update,
+                    no_update, no_update, no_update)
+
 
     query = None
     qid_full = no_update
@@ -557,8 +573,6 @@ def on_submit_or_scenario(submit_clicks, scenario_clicks, input_value,
     if not query:
         return (no_update, no_update, no_update, no_update,
                 no_update, no_update, no_update)
-
-    from nsclc_ui.llm.supervisor_client import start_streaming_invoke
 
     history = list(history or [])
     history.append({"role": "user", "content": query})

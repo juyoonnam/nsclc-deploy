@@ -35,12 +35,41 @@ log = logging.getLogger(__name__)
 SUPERVISOR_URL = os.environ.get("SUPERVISOR_URL", "http://localhost:8000").rstrip("/")
 HTTP_TIMEOUT_SYNC = float(os.environ.get("SUPERVISOR_HTTP_TIMEOUT", "300"))  # sync invoke
 HTTP_TIMEOUT_STREAM = float(os.environ.get("SUPERVISOR_STREAM_TIMEOUT", "600"))  # SSE
+STREAM_STALL_TIMEOUT = max(
+    180.0,
+    float(os.environ.get("SUPERVISOR_STREAM_STALL_TIMEOUT", "180")),
+)
 
 _CACHE: dict = {}
 _DEFAULT_GUARDRAIL_VERSION = os.environ.get("NSCLC_GUARDRAIL_VERSION", "9")
 
 _ACTIVE_JOBS: dict[str, dict] = {}
 _JOBS_LOCK = threading.Lock()
+
+
+def _stream_error_result(message: str) -> dict:
+    return {
+        "text": f"❌ Supervisor 실패: `{message}`",
+        "tools": [], "findings": [], "stats": None,
+        "latency_sec": 0.0, "violations": [],
+        "backend": "error", "error": message,
+    }
+
+
+def _mark_job_error(job_id: str, message: str, *, enqueue: bool = True) -> bool:
+    """Mark a running stream job as failed and optionally enqueue an error chunk."""
+    q: queue.Queue | None = None
+    with _JOBS_LOCK:
+        job = _ACTIVE_JOBS.get(job_id)
+        if not job or job.get("status") in ("done", "error"):
+            return False
+        job["status"] = "error"
+        job["result"] = _stream_error_result(message)
+        job["last_event_time"] = time.time()
+        q = job.get("queue")
+    if enqueue and q is not None:
+        q.put({"type": "error", "message": message})
+    return True
 
 
 # ════════════════════════════════════════════════════════════
@@ -138,6 +167,7 @@ def start_streaming_invoke(query: str) -> dict:
             "result": None,
             "queue": q,
             "start_time": time.time(),
+            "last_event_time": time.time(),
             "query": query,
         }
     log.info(
@@ -165,6 +195,9 @@ def start_streaming_invoke(query: str) -> dict:
                 for chunk in _parse_sse_stream(r):
                     chunk_count += 1
                     ctype = chunk.get("type", "?")
+                    with _JOBS_LOCK:
+                        if job_id in _ACTIVE_JOBS:
+                            _ACTIVE_JOBS[job_id]["last_event_time"] = time.time()
                     if ctype != "text_chunk" or not saw_text:
                         log.info("stream worker chunk job_id=%s type=%s", job_id, ctype)
                     if ctype == "text_chunk":
@@ -183,16 +216,11 @@ def start_streaming_invoke(query: str) -> dict:
                         log.info("stream worker done job_id=%s chunks=%d", job_id, chunk_count)
                         break
                     elif chunk.get("type") == "error":
-                        with _JOBS_LOCK:
-                            if job_id in _ACTIVE_JOBS:
-                                _ACTIVE_JOBS[job_id]["status"] = "error"
-                                _ACTIVE_JOBS[job_id]["result"] = {
-                                    "text": f"❌ {chunk.get('message', 'Unknown error')}",
-                                    "tools": [], "findings": [], "stats": None,
-                                    "latency_sec": 0.0, "violations": [],
-                                    "backend": "error",
-                                    "error": chunk.get("message"),
-                                }
+                        _mark_job_error(
+                            job_id,
+                            chunk.get("message", "Unknown error"),
+                            enqueue=False,
+                        )
                         log.info(
                             "stream worker error chunk job_id=%s message=%s",
                             job_id,
@@ -202,19 +230,17 @@ def start_streaming_invoke(query: str) -> dict:
         except Exception as e:
             err_msg = f"{type(e).__name__}: {e}"
             log.exception("stream worker exception job_id=%s", job_id)
-            q.put({"type": "error", "message": err_msg})
-            with _JOBS_LOCK:
-                if job_id in _ACTIVE_JOBS:
-                    _ACTIVE_JOBS[job_id]["status"] = "error"
-                    _ACTIVE_JOBS[job_id]["result"] = {
-                        "text": f"❌ Supervisor 실패: `{err_msg}`",
-                        "tools": [], "findings": [], "stats": None,
-                        "latency_sec": 0.0, "violations": [],
-                        "backend": "error", "error": err_msg,
-                    }
+            _mark_job_error(job_id, err_msg, enqueue=True)
         finally:
             with _JOBS_LOCK:
                 status = _ACTIVE_JOBS.get(job_id, {}).get("status", "missing")
+            if status == "running":
+                _mark_job_error(
+                    job_id,
+                    "stream ended without done/error",
+                    enqueue=True,
+                )
+                status = "error"
             log.info(
                 "stream worker exit job_id=%s status=%s chunks=%d",
                 job_id,
@@ -273,6 +299,17 @@ def poll_streaming_chunks(job_id: str) -> list[dict]:
     if not job:
         return []
 
+    if is_job_stale(job_id):
+        _mark_job_error(
+            job_id,
+            f"stream stalled for >{STREAM_STALL_TIMEOUT:.0f}s",
+            enqueue=True,
+        )
+        with _JOBS_LOCK:
+            job = _ACTIVE_JOBS.get(job_id)
+        if not job:
+            return []
+
     q: queue.Queue = job["queue"]
     chunks = []
     while not q.empty():
@@ -291,6 +328,19 @@ def is_job_done(job_id: str) -> bool:
     if not job:
         return True
     return job["status"] in ("done", "error")
+
+
+def is_job_stale(job_id: str) -> bool:
+    if not job_id:
+        return False
+    with _JOBS_LOCK:
+        job = _ACTIVE_JOBS.get(job_id)
+        if not job:
+            return True
+        if job.get("status") != "running":
+            return False
+        last_event_time = float(job.get("last_event_time") or job.get("start_time") or 0)
+    return (time.time() - last_event_time) > STREAM_STALL_TIMEOUT
 
 
 def get_job_result(job_id: str) -> dict | None:
