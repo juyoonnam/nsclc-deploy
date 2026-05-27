@@ -270,7 +270,7 @@ def _initial_welcome() -> html.Div:
     return _assistant_bubble_text(children=[
         dmc.Text("안녕하세요! NSCLC Insight Assistant 입니다.", fw=500, size="sm"),
         dmc.Text(
-            "좌측 카테고리에서 ⭐ 표시된 시나리오를 선택하거나 자유롭게 질문해보세요.",
+            "좌측 카테고리에서 시나리오를 선택하거나 자유롭게 질문해보세요.",
             size="sm",
         ),
         dmc.Text(
