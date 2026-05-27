@@ -638,7 +638,6 @@ def on_interval_poll(n, streaming, history):
         chunks_to_store_updates,
         build_findings_from_text,
         build_stats_from_tools,
-        cleanup_job,
     )
 
     chunks = poll_streaming_chunks(job_id)
@@ -723,7 +722,9 @@ def on_interval_poll(n, streaming, history):
                          "n_tools": len(updates["tools"])},
             })
 
-        cleanup_job(job_id)
+        # Keep the completed job in memory briefly. Dash interval callbacks can
+        # overlap; deleting immediately lets a stale callback overwrite the
+        # completed response with a false "missing job" state.
         return history, new_streaming, tool_trace, True, False
 
     # 진행 중 — Interval 유지, button disable 계속

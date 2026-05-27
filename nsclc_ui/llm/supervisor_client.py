@@ -308,7 +308,7 @@ def poll_streaming_chunks(job_id: str) -> list[dict]:
     with _JOBS_LOCK:
         job = _ACTIVE_JOBS.get(job_id)
     if not job:
-        return [{"type": "error", "message": "stream job disappeared before completion"}]
+        return []
 
     if is_job_stale(job_id):
         _mark_job_error(
