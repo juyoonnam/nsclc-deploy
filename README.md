@@ -164,9 +164,9 @@ curl -N -X POST http://localhost:8000/invoke_stream \
    내부에서 in-process로 호출합니다. 향후 container image lambda로 전환 시 AWS
    배포 가능합니다.
 
-2. **AgentCore Gateway는 미적용 상태입니다.** IAM 권한 제약으로 D-day까지 적용하지
-   못했습니다. HTTP/SSE 추상화는 `supervisor_client.py`에 이미 완료되어 있어,
-   권한 확보 후 supervisor 호출 엔드포인트를 Gateway URL로 교체하면 됩니다.
+2. **AgentCore Gateway는 미적용 상태입니다.** 발표 시점까지 적용하지 못해 향후
+   과제로 남겨두었습니다. HTTP/SSE 추상화는 `supervisor_client.py`에 이미 완료되어
+   있어, supervisor 호출 엔드포인트를 Gateway URL로 교체하면 이전 가능합니다.
 
 3. **Supervisor는 worker=1로 고정되어 있습니다.** `_TOOL_INVOKER` 컨텍스트와
    dedup 캐시가 stateful이므로, 멀티 워커 확장 시 Redis 등 외부 캐시 도입이
@@ -180,7 +180,7 @@ curl -N -X POST http://localhost:8000/invoke_stream \
 
 ## 향후 계획
 
-- [ ] AgentCore Runtime + Gateway 이전 (admin policy 확보 후)
+- [ ] AgentCore Runtime + Gateway 이전
 - [ ] `drug_library`를 container image lambda로 AWS 배포
 - [ ] Supervisor / UI 분리 → 컨테이너별 별도 health & metrics
 - [ ] CloudWatch 대시보드 (Lambda invocation, Bedrock token 사용량, latency)
