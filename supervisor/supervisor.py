@@ -104,10 +104,20 @@ _PUBMED_QUERY_HINTS = (
     "abstract", "초록", "evidence paper",
 )
 
+_SHAP_TOOL_NAMES = {"get_shap_explanation"}
+_SHAP_QUERY_HINTS = (
+    "shap", "feature", "features", "피처", "특징", "기여도", "중요도",
+)
+
 
 def _allow_pubmed_tools(query: str) -> bool:
     q = (query or "").lower()
     return any(hint in q for hint in _PUBMED_QUERY_HINTS)
+
+
+def _allow_shap_tools(query: str) -> bool:
+    q = (query or "").lower()
+    return any(hint in q for hint in _SHAP_QUERY_HINTS)
 
 
 def _classify_query_complexity(query: str) -> str:
@@ -694,15 +704,17 @@ class NSCLCSupervisor:
         selected_model, complexity = self._select_model_for_query(query)
         model_query = self._frame_query_for_guardrails(query)
         allow_pubmed_tools = _allow_pubmed_tools(query)
+        allow_shap_tools = _allow_shap_tools(query)
         _log(f"ROUTING: query → {complexity} → {selected_model}")
         log.info(
-            "supervisor_invoke start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s pubmed_enabled=%s",
+            "supervisor_invoke start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s pubmed_enabled=%s shap_enabled=%s",
             _diag_timestamp(),
             len(query),
             len(model_query),
             selected_model,
             complexity,
             allow_pubmed_tools,
+            allow_shap_tools,
         )
 
         token = _TOOL_INVOKER.set(tool_invoker)
@@ -718,6 +730,7 @@ class NSCLCSupervisor:
                     response_text, n_turns = self._invoke_with_bedrock_converse(
                         model_query, tool_invoker, selected_model,
                         allow_pubmed_tools=allow_pubmed_tools,
+                        allow_shap_tools=allow_shap_tools,
                     )
             except Exception as e:
                 _log(f"Primary backend failed: {type(e).__name__}: {e}")
@@ -725,6 +738,7 @@ class NSCLCSupervisor:
                     response_text, n_turns = self._invoke_with_bedrock_converse(
                         model_query, tool_invoker, selected_model,
                         allow_pubmed_tools=allow_pubmed_tools,
+                        allow_shap_tools=allow_shap_tools,
                     )
                     backend = "bedrock_converse_fallback"
                 except Exception as e2:
@@ -769,7 +783,10 @@ class NSCLCSupervisor:
                 complexity=complexity,
             )
         finally:
-            _TOOL_INVOKER.reset(token)
+            try:
+                _TOOL_INVOKER.reset(token)
+            except ValueError:
+                log.info("supervisor_invoke context_reset_skipped")
 
     def invoke_stream(self, query: str) -> Iterator[dict]:
         tool_invoker = ToolInvoker(local_mode=self.local_mode, region=self.region)
@@ -779,6 +796,7 @@ class NSCLCSupervisor:
         selected_model, complexity = self._select_model_for_query(query)
         model_query = self._frame_query_for_guardrails(query)
         allow_pubmed_tools = _allow_pubmed_tools(query)
+        allow_shap_tools = _allow_shap_tools(query)
         _log(f"ROUTING: query → {complexity} → {selected_model}")
 
         token = _TOOL_INVOKER.set(tool_invoker)
@@ -786,25 +804,28 @@ class NSCLCSupervisor:
         try:
             # 라우팅 정보를 첫 chunk로 yield
             log.info(
-                "supervisor_stream start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s pubmed_enabled=%s",
+                "supervisor_stream start started_at=%s query_len=%d model_query_len=%d model=%s complexity=%s pubmed_enabled=%s shap_enabled=%s",
                 _diag_timestamp(),
                 len(query),
                 len(model_query),
                 selected_model,
                 complexity,
                 allow_pubmed_tools,
+                allow_shap_tools,
             )
             yield {
                 "type": "routing",
                 "model": selected_model,
                 "complexity": complexity,
                 "pubmed_enabled": allow_pubmed_tools,
+                "shap_enabled": allow_shap_tools,
             }
             log.info(
-                "supervisor_stream routing_emitted model=%s complexity=%s pubmed_enabled=%s",
+                "supervisor_stream routing_emitted model=%s complexity=%s pubmed_enabled=%s shap_enabled=%s",
                 selected_model,
                 complexity,
                 allow_pubmed_tools,
+                allow_shap_tools,
             )
 
             accumulated_text = ""
@@ -812,6 +833,7 @@ class NSCLCSupervisor:
             for chunk in self._invoke_with_bedrock_converse_stream(
                 model_query, tool_invoker, selected_model,
                 allow_pubmed_tools=allow_pubmed_tools,
+                allow_shap_tools=allow_shap_tools,
             ):
                 if chunk.get("type") == "replace_text":
                     accumulated_text = chunk.get("text", "")
@@ -872,7 +894,10 @@ class NSCLCSupervisor:
             yield {"type": "error", "message": f"{type(e).__name__}: {e}"}
         finally:
             log.info("supervisor_stream exit elapsed_sec=%.3f", time.time() - start_time)
-            _TOOL_INVOKER.reset(token)
+            try:
+                _TOOL_INVOKER.reset(token)
+            except ValueError:
+                log.info("supervisor_stream context_reset_skipped")
 
     def _invoke_with_strands(self, query: str, selected_model: str) -> str:
         from strands import Agent
@@ -889,6 +914,7 @@ class NSCLCSupervisor:
         *,
         include_tools: bool = True,
         allow_pubmed_tools: bool = False,
+        allow_shap_tools: bool = False,
     ) -> dict:
         # ★ v4.1: Haiku 전용 prompt augmentation
         active_prompt = self.system_prompt
@@ -918,11 +944,13 @@ class NSCLCSupervisor:
                 }}
                 for schema in TOOL_REGISTRY.values()
                 if allow_pubmed_tools or schema.name not in _PUBMED_TOOL_NAMES
+                if allow_shap_tools or schema.name not in _SHAP_TOOL_NAMES
             ]
             log.info(
-                "bedrock_converse tool_config tools=%d pubmed_enabled=%s",
+                "bedrock_converse tool_config tools=%d pubmed_enabled=%s shap_enabled=%s",
                 len(tool_specs),
                 allow_pubmed_tools,
+                allow_shap_tools,
             )
             if self.enable_prompt_caching:
                 request["toolConfig"] = {"tools": tool_specs + [{"cachePoint": {"type": "default"}}]}
@@ -1008,6 +1036,7 @@ class NSCLCSupervisor:
         selected_model: str,
         *,
         allow_pubmed_tools: bool = False,
+        allow_shap_tools: bool = False,
     ) -> tuple[str, int]:
         import boto3
         client = boto3.client("bedrock-runtime", region_name=self.region)
@@ -1021,6 +1050,7 @@ class NSCLCSupervisor:
                 messages,
                 selected_model,
                 allow_pubmed_tools=allow_pubmed_tools,
+                allow_shap_tools=allow_shap_tools,
             )
             log.info(
                 "bedrock_converse turn_start turn=%d started_at=%s model=%s messages=%d",
@@ -1044,6 +1074,7 @@ class NSCLCSupervisor:
                         messages,
                         selected_model,
                         allow_pubmed_tools=allow_pubmed_tools,
+                        allow_shap_tools=allow_shap_tools,
                     )
                     response = client.converse(**request)
                 else:
@@ -1131,6 +1162,7 @@ class NSCLCSupervisor:
         selected_model: str,
         *,
         allow_pubmed_tools: bool = False,
+        allow_shap_tools: bool = False,
     ) -> Iterator[dict]:
         import boto3
         client = boto3.client("bedrock-runtime", region_name=self.region)
@@ -1144,6 +1176,7 @@ class NSCLCSupervisor:
                 messages,
                 selected_model,
                 allow_pubmed_tools=allow_pubmed_tools,
+                allow_shap_tools=allow_shap_tools,
             )
             log.info(
                 "bedrock_stream turn_start turn=%d started_at=%s model=%s messages=%d",
@@ -1166,6 +1199,7 @@ class NSCLCSupervisor:
                         messages,
                         selected_model,
                         allow_pubmed_tools=allow_pubmed_tools,
+                        allow_shap_tools=allow_shap_tools,
                     )
                     stream_response = client.converse_stream(**request)
                 else:

@@ -60,15 +60,14 @@ categories:
     icon: "👤"
     questions:
       - id: q1
-        text: "Osimertinib의 EGFR L858R/T790M 근거를 허가·가이드라인, 모델 점수, PRISM 세포주 반응으로 5줄 요약"
+        text: "EGFR 대표 약물 Osimertinib: 라이브러리 포함, 모델 확률, PRISM H1975 반응 5줄 요약"
         stable_demo: true
-        tools: [check_in_library, get_drug_metadata, get_oof_prediction, get_ensemble_probability, get_drug_response, search_clinical_knowledge_base]
+        tools: [check_in_library, get_drug_metadata, get_ensemble_probability, get_drug_response]
         expected_keywords:
           - "Osimertinib"
           - "EGFR"
-          - "T790M"
           - "0.6238"
-          - "PRISM"
+          - "H1975"
 
       - id: q2
         text: "Sotorasib의 KRAS G12C 근거를 허가·가이드라인, 모델 점수, 변이 빈도로 요약"
