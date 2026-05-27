@@ -4478,3 +4478,349 @@ a:hover .mantine-Text-root {
 .chat-pathway-chip:active {
   transform: translateY(1px);
 }
+
+
+/* ============================================================
+ * NSCLC Insight Engine v3.0 — Chat-first Redesign (kiro-redesign-v3)
+ * ============================================================
+ * 기존 토큰/룰을 덮어쓰지 않고 --nsclc- prefix로 추가.
+ * 기존 DOM은 wrapper className만 새로 받으므로 callback id에 영향 없음.
+ * ============================================================ */
+
+:root {
+  --nsclc-bg-base: #050914;
+  --nsclc-bg-panel: #07101d;
+  --nsclc-bg-card: #0c1323;
+  --nsclc-bg-card-soft: #111827;
+
+  --nsclc-border-subtle: rgba(148, 163, 184, 0.14);
+  --nsclc-border-strong: rgba(124, 92, 255, 0.32);
+
+  --nsclc-text-primary: #f3f6fc;
+  --nsclc-text-secondary: #c7d0df;
+  --nsclc-text-muted: #7e8da4;
+  --nsclc-text-tertiary: #a0a8b8;
+
+  --nsclc-accent-violet: #7c5cff;
+  --nsclc-accent-violet-strong: #8b5cf6;
+  --nsclc-accent-cyan: #22d3ee;
+  --nsclc-accent-blue: #60a5fa;
+  --nsclc-accent-green: #5ee2a0;
+  --nsclc-accent-red: #ff7b7b;
+
+  --nsclc-radius-sm: 7px;
+  --nsclc-radius-md: 10px;
+  --nsclc-radius-lg: 12px;
+  --nsclc-radius-xl: 16px;
+
+  --nsclc-header-height: 64px;
+  --nsclc-rail-width: 48px;
+}
+
+/* ============================================================
+ * Header (global)
+ * ============================================================ */
+.nsclc-header {
+  height: var(--nsclc-header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--nsclc-border-subtle);
+  background: rgba(5, 9, 20, 0.98);
+  color: var(--nsclc-text-primary);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.app-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.app-brand-group {
+  align-items: center;
+}
+
+.app-brand-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--accent-purple-bg, rgba(124, 92, 255, 0.18));
+  flex: 0 0 auto;
+}
+
+.app-brand-text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--nsclc-text-primary) !important;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.header-badges,
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.status-badge {
+  height: 26px !important;
+  padding: 0 9px !important;
+  border-radius: 7px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+.header-nav-link {
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--nsclc-text-secondary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.header-nav-link:hover {
+  color: var(--nsclc-text-primary);
+  border-color: var(--nsclc-border-subtle);
+  background: rgba(15, 23, 42, 0.75);
+}
+
+/* 화면 폭이 좁을 때 (1366px 정도) — GitHub 우선 숨김 후 모델 카드 숨김 */
+@media (max-width: 1366px) {
+  .header-nav .header-nav-link:nth-child(3) {
+    /* GitHub 숨김 */
+    display: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .header-nav .header-nav-link:nth-child(2) {
+    /* 모델 카드도 숨김 */
+    display: none;
+  }
+}
+
+/* ============================================================
+ * Home — 4컬럼 grid 본문 (header는 외부, 본문만 grid)
+ * ============================================================ */
+.nsclc-home-shell {
+  display: grid;
+  grid-template-columns: var(--nsclc-rail-width) minmax(260px, 330px) minmax(620px, 1fr) minmax(300px, 380px);
+  gap: 0;
+  /* header(64) + app-shell paddingTop(8) + paddingBottom(24) 보정.
+     app.py outer container가 padding 적용하므로 vh 풀로 잡지 않고 자연 높이 사용. */
+  min-height: calc(100vh - var(--nsclc-header-height) - 64px);
+  background: var(--nsclc-bg-base);
+  color: var(--nsclc-text-primary);
+  border-radius: var(--nsclc-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--nsclc-border-subtle);
+}
+
+/* Rail (48px, 좌측) */
+.nsclc-rail {
+  width: var(--nsclc-rail-width);
+  border-right: 1px solid var(--nsclc-border-subtle);
+  background: #050914;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 0;
+  gap: 10px;
+}
+
+.rail-button {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--nsclc-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #93a4bd;
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rail-button.active {
+  background: linear-gradient(180deg, rgba(60, 52, 137, 0.95), rgba(38, 45, 105, 0.95));
+  color: #ffffff;
+  border-color: rgba(124, 92, 255, 0.35);
+}
+
+/* ============================================================
+ * Scenario panel (좌측)
+ * ============================================================ */
+.scenario-shell {
+  min-width: 0;
+  margin: 8px 6px 10px 10px;
+  border-radius: var(--nsclc-radius-lg);
+  border: 1px solid var(--nsclc-border-subtle);
+  background: rgba(7, 16, 29, 0.92);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* 기존 dmc.Paper의 minHeight/maxHeight 인라인 스타일이 있어 wrapper는 자연 높이 */
+}
+
+.scenario-shell .scenario-panel-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--nsclc-text-primary);
+  margin-bottom: 4px;
+}
+
+/* 시나리오 active 강조 (기존 .scenario-btn-demo-path 보강) */
+.scenario-btn-demo-path {
+  border-left: 3px solid var(--nsclc-accent-violet) !important;
+  background: rgba(124, 92, 255, 0.13) !important;
+  color: #d9ccff !important;
+}
+
+.scenario-btn:hover {
+  background: rgba(124, 92, 255, 0.08);
+}
+
+/* ============================================================
+ * Chat panel (중앙) — wrapper class
+ * ============================================================ */
+.chat-shell {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 8px 8px 10px 8px;
+  border-radius: var(--nsclc-radius-lg);
+  border: 1px solid var(--nsclc-border-subtle);
+  background:
+    radial-gradient(circle at 30% 0%, rgba(74, 92, 255, 0.06), transparent 34%),
+    #07101d;
+  overflow: hidden;
+}
+
+.chat-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 22px 6px 22px;
+  flex: 0 0 auto;
+}
+
+.chat-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--nsclc-text-primary);
+}
+
+.chat-ai-badge {
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #cbbcff;
+  border: 1px solid rgba(124, 92, 255, 0.35);
+  background: rgba(124, 92, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.chat-subtitle {
+  padding: 0 22px 8px 22px;
+  font-size: 12px;
+  color: var(--nsclc-text-muted);
+  font-weight: 500;
+}
+
+/* chat-thread는 home.py가 인라인 style로 flex/scroll 잡고 있으므로
+   여기서는 padding과 색감만 보강 (기존 동작 유지). */
+.chat-thread-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 18px;
+}
+
+.chat-input-wrap {
+  flex: 0 0 auto;
+  padding: 12px 22px 16px 22px;
+  border-top: 1px solid rgba(148, 163, 184, 0.08);
+  background: rgba(5, 9, 20, 0.55);
+}
+
+/* ============================================================
+ * Evidence panel (우측) — wrapper class
+ * ============================================================ */
+.evidence-shell {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 8px 10px 10px 6px;
+  overflow: hidden;
+}
+
+.evidence-shell > * {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* tool trace panel wrapper class 보강 — 기존 dmc.Paper 인라인 minHeight/maxHeight 유지 */
+.tool-trace-card {
+  flex: 0 0 auto;
+}
+
+/* ============================================================
+ * 하단 안내 문구
+ * ============================================================ */
+.nsclc-disclaimer {
+  margin-top: 10px;
+  padding: 10px 18px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--nsclc-text-muted);
+  border-radius: var(--nsclc-radius-md);
+  background: rgba(7, 16, 29, 0.4);
+  border: 1px solid var(--nsclc-border-subtle);
+}
+
+/* ============================================================
+ * 좁은 폭 (1366 미만)에서 기능은 유지하되 수직 스택으로 fallback
+ * — 데스크톱 1600px 이상이 메인. 모바일 우선순위 아님.
+ * ============================================================ */
+@media (max-width: 1180px) {
+  .nsclc-home-shell {
+    grid-template-columns: var(--nsclc-rail-width) 1fr;
+  }
+  .nsclc-home-shell > .scenario-shell,
+  .nsclc-home-shell > .evidence-shell {
+    grid-column: 2;
+  }
+  .nsclc-home-shell > .chat-shell {
+    grid-column: 2;
+  }
+}
